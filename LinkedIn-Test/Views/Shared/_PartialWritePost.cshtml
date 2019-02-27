@@ -1,0 +1,12 @@
+﻿
+@{
+
+    AjaxOptions ajaxopt = new AjaxOptions()
+    {
+        HttpMethod = "post",
+        UpdateTargetId = "user",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "$('#myModal').modal('hide')"
+
+    };
+}

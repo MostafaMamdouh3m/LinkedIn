@@ -1,0 +1,417 @@
+﻿
+.container01{
+   
+  margin:  auto;
+    display: flex;
+flex-direction: row;
+justify-content: center;
+height: 1000px;
+}
+.Middel{
+   
+  
+ height: 1000px;
+  background-color: red
+  
+     
+  }
+.profil01{
+  
+padding: 10px;
+background-color: rgba(240, 238, 238, 0.61);
+box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397)   ;
+
+width: 200px;
+height: 300px;
+}
+.profil02 {
+    bottom: 10px;
+    padding: 10px;
+    position: relative;
+    background-color: white;
+    width: 200px;
+    height: 150px;
+    right: 10px;
+    border-right: 1px solid rgba(0,0,0,.15);
+    border-left: 1px solid rgba(0,0,0,.15);
+    border-top: 1px solid rgba(0,0,0,.15);
+    box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397)   
+
+   
+}
+.profil03 {
+    bottom: 10px;
+    padding: 10px;
+    position: relative;
+    background-color: white;
+    width: 200px;
+    height: 100px;
+    right: 10px;
+    top: -9px;
+    border-right: 1px solid rgba(0,0,0,.15);
+    border-left: 1px solid rgba(0,0,0,.15);
+    box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397);   
+
+    padding: 5px;
+}
+.profil04 {
+    bottom: 10px;
+    padding: 10px;
+    position: relative;
+    background-color: white;
+    font-size: 12px;
+    width: 200px;
+    height: 50px;
+    right: 10px;
+    top: -8px;
+    border-right: 1px solid rgba(0,0,0,.15);
+    border-left: 1px solid rgba(0,0,0,.15);
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397)   
+
+}
+
+
+
+
+.writepost{
+    margin-left: 15px;
+    margin-right: 15px;
+  
+     width:550px;
+    background-color: white;
+    position: relative;
+    height: 100px;
+    box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397)   
+
+   
+  
+
+}
+.posts{
+    margin-left: 15px;
+    margin-right: 15px;
+     width:550px;
+    background-color: white;
+    position: relative;
+    height: 550px;
+    border-right: 1px solid rgba(0,0,0,.15);
+    border-left: 1px solid rgba(0,0,0,.15);
+    border-top: 1px solid rgba(0,0,0,.15);
+    box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397)   
+   
+}
+.post_info{
+    height: 60px;
+    background-color:white;
+}
+#img-circle{
+    position: relative;
+    top: 11px;
+    left: 16px;
+}
+#profil_name{
+    position: relative;
+    bottom: 32px;
+    left: 65px;
+    font-size: 15px;
+}
+#profil_job{
+    position: relative;
+    bottom: 35px;
+    left: 63px;
+    font-size: 11px;
+}
+.post_caption{
+    height: 100px;
+    background-color: white;
+    padding: 10px;
+
+}
+.post_media{
+    height: 300px;
+    right: 1px;
+    position: relative;
+   
+
+}
+.post_Engagment01{
+    height: 40px;
+    background-color:white;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+
+
+}
+.post_Engagment02{
+    height: 50px;
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+}
+.post_Engagment02 .like_comment_share {
+   width: 300px;
+    font-size: 18px;
+    position: relative;
+    left: 20px;
+}
+#like_comment_share{
+    width: 200px;
+    position: relative;
+    left: 40px;
+    top: 5px;
+    display: flex;
+    justify-content: space-between
+}
+
+.job01{
+    padding: 10px;
+   width: 300px;
+  height: 714px;
+    background-color:rgba(240, 238, 238, 0.61);
+
+
+}
+.job02{
+    padding: 10px;
+   width: 300px;
+    height: 400px;
+    background-color:white;
+    position:relative;
+    bottom: 10px;
+    right: 10px;
+    top: -7px;
+    border-right: 1px solid rgba(0,0,0,.15);
+    border-left: 1px solid rgba(0,0,0,.15);
+    border-top: 1px solid rgba(0,0,0,.15);
+    box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397)   
+
+}
+.job03{
+    position:relative;
+    right: 10px;
+   padding: 5px;
+   width: 300px;
+   height: 150px;
+   background-color:white;
+   top: -6px;
+   border-right: 1px solid rgba(0,0,0,.15);
+   border-left: 1px solid rgba(0,0,0,.15);
+   box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397)   
+
+  
+
+}
+.job04{
+    position:relative;
+    right: 10px;
+    padding: 10px;
+        width: 300px;
+   height: 150px;
+   background-color:white;
+   top: -5px;
+   border-right: 1px solid rgba(0,0,0,.15);
+   border-left: 1px solid rgba(0,0,0,.15);
+   border-bottom: 1px solid rgba(0,0,0,.15);
+   box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397)   
+
+
+}
+
+  hr {
+    border-top: 1px solid rgba(29, 29, 29, 0.137);
+    position: relative;
+    left: 16px;
+
+  }
+  .sort_by{
+      font-size: 13px;
+  }
+  .profil_name {
+    position: relative;
+    top: 15px;
+    left: 63px;
+    font-style: unset;
+  }
+  .img-circle{
+   position: relative;
+    left: 55px;
+    bottom: 40px;
+    border: 2px solid rgba(39, 39, 39, 0.15);
+ 
+  }
+  .profil_job{
+    position: relative;
+    top: 43px;
+    font-size: 12px;
+    color: rgba(65, 65, 65, 0.514);
+    left: 10px;
+  }
+ li{
+    font-size: 12px;
+    color: rgba(99, 98, 98, 0.849);
+    padding: 5px;
+ }
+ .cover{
+    position: relative;
+    bottom: 10px;
+    right: 11px;
+ }
+ .img{
+    height: 45px;
+
+ }
+ .profil_name{
+    top: 43px;
+ }
+ #list li{
+    font-size: 11px;
+    color: rgba(99, 98, 98, 0.849);
+    padding: 5px;
+ }
+#start_post{
+    background-color: white;
+    border-right: 1px solid rgba(0,0,0,.15);
+    border-left: 1px solid rgba(0,0,0,.15);
+    border-top: 1px solid rgba(0,0,0,.15);
+    width:550px;
+    height: 60px;
+}
+#Write_article{
+    background-color: rgba(240, 238, 238, 0.61);
+    border: 1px solid rgba(0,0,0,.15);
+    width:550px;
+    height: 40px;
+}
+#Write_article a{
+    font-weight: 600;
+    position: relative;
+    left: 25px;
+    top: 10px
+}
+#Write_article span{
+    
+    position: relative;
+    font-size: 12px;
+    left: 27px;
+    top: 12px
+}
+#start_post a{
+    font-size: 13;
+    font-weight: 600;
+    color: rgba(58, 57, 57, 0.61); 
+    position: relative;
+    top: 5px;
+    left: 10px;
+}
+#artdeco-icon{
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+.btn-default:hover{
+background-color:white;
+border: none;
+outline: none;
+}
+.btn-default{
+    text-decoration: none;
+    text-decoration: none;
+    outline: none;
+    }
+    .btn-default:active{
+        text-decoration: none;
+        text-decoration: none;
+        outline: none;
+        border-style: outset;
+        border: none;
+        background-color:white;
+        }
+
+    
+/*  style for modal post*/
+
+
+.modal-header{
+    background-color: #0073b1;
+        padding: 22px
+}
+
+
+.modal-content{
+    width: 550px;
+border-radius: 0px;
+
+}
+.form-control{
+    min-height: 300px;
+border-radius: 0px;
+}
+.modal-body{
+    min-height: 300px;
+}
+share-box__text-editor-container{
+    height: 500px;
+}
+.media{
+width: 200PX;
+display: inline-block;
+
+}
+.fal fa-camera-alt{
+    font-size: 30px;
+}
+.camera{
+width: 75px;
+position: relative;
+bottom: 10px;
+display: inline-block;
+
+
+}
+.video{
+    width: 75px;
+    position: relative;
+    bottom: 10px;
+display: inline-block;
+
+
+}
+.file{
+    width: 75px;
+    position: relative;
+    bottom: 10px;
+display: inline-block;
+
+
+}.modal-footer{
+    height: 50px;
+    font-size: 30px;
+}
+
+#btnSubmit {
+    position: relative;
+    left: 220px;
+    bottom: 7px;
+    border-radius: 0px;
+    background-color: #0073b1;
+color: white;
+font-weight: 600;
+}
+
+a :hover{
+cursor: pointer
+}
+.image{
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    overflow: hidden;
+    position: relative;
+    left: 235PX;
+    BOTTOM: 35PX;
+    
+}
+.modal-header .close {
+    bottom:15px;
+    color:white;
+
+}

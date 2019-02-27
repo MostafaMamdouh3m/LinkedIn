@@ -1,0 +1,219 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout_mainLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    @*<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.css" />*@
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous">
+    @*<link rel="stylesheet" type="text/css" media="screen" href="Styel.css" />*@
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Home_page.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap -->
+
+</head>
+
+<body>
+
+    <div id="under_nav"></div>
+
+   
+
+    <div class="container01">
+        @Html.Partial("_Partial_Home_profile_part")
+         <!-- partial view of the profile-->
+        <div class="container02">
+            <div class="writepost">
+
+
+
+                <div id="start_post">
+
+                    <button class="btn btn-default" type="button" style="border:none" aria-haspopup="false"
+                            aria-expanded="false">
+                        <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0"
+                             preserveAspectRatio="xMinYMin meet"
+                             class="artdeco-icon" id="artdeco-icon" focusable="false">
+                            <path d="M17,13.75l2-2V20a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V6A1,1,0,0,1,4,5h8.25l-2,2H5V19H17V13.75Zm5-8a1,1,0,0,1-.29.74L13.15,15,7,17l2-6.15,8.55-8.55a1,1,0,0,1,1.41,0L21.71,5A1,1,0,0,1,22,5.71ZM17.93,7.58l-1.5-1.5-6.06,6.06,1.5,1.5Zm1.84-1.84-1.5-1.5L17.09,5.41l1.5,1.5Z" class="large-icon" style="fill: currentColor"></path>
+                        </svg>
+
+                    </button>
+
+
+                    <div class="container" >
+                    <a hrel="#" data-toggle="modal" data-target="#mymodal">Start a Post</a>
+                    <div class="modal fade" id="mymodal">
+
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+
+
+                                </div>
+                                <div class="image"> <img src="~/Content/images/05.jpg"  class="img-responsive" alt="">  </div>
+                                <div class="modal-body">
+                                        <textarea class="form-control" placeholder="What do you want talk about? "></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="row">
+                                        <a rel="#">
+                                            <div class="camera col-lg-2"> <i class="fas fa-camera"></i> </div>
+                                        </a>
+                                        <a rel="#">
+                                            <div class="video col-lg-2"> <i class="fas fa-video"></i></div>
+                                        </a>
+                                        <a rel="#">
+                                            <div class="file col-lg-2"> <i class="far fa-file"></i> </div>
+                                        </a>
+                                        <input type="reset" value="Post" class="btn btn col-lg-2" id="btnSubmit" />
+
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                </div>
+                <div id="Write_article">
+                    <a href="" style="color: #0073b1" style="font-weight: 600">Write an article</a>
+                    <span>On LinkedIn</span>
+
+                </div>
+            </div>
+
+            <div class="line_separet">
+                <div class="hr">
+                    <hr align="left" width="85%">
+                </div>
+
+            </div>
+
+            <!-- <span class="sort_by"> sort by</span> -->
+          <!-- partial view of the post-->
+            @Html.Partial("_Partial_Post")
+        </div>
+
+        <!-- <hr align="left" width="85%" > -->
+        <div class="job01">
+            <div class="job02">
+                <div>
+                    <spa> Add to your feed </spa>
+                </div>
+                <div>
+                    <img id="img-circle" src="~/Content/images/14.jpg" class="img-circle" alt="Cinque Terre" width="40" height="40">
+                    <div id="profil_name"> Mohamed ElMesawy </div>
+                    <div id="profil_job"> Developer at Kemet </div>
+                    <button class="btn btn-default" id="Post_board_attach button" type="button" aria-haspopup="true" style="border-radius:0"
+                            aria-expanded="false">
+                        Follow <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                <div>
+                    <img id="img-circle" src="~/Content/images/13.jpg" class="img-circle" alt="Cinque Terre" width="40" height="40">
+                    <div id="profil_name"> Mostafa Mamdo7 </div>
+                    <div id="profil_job"> Fayum University </div>
+                    <button class="btn btn-default" type="button" aria-haspopup="true" style="border-radius:0"
+                            aria-expanded="false">
+                        Follow <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+                <div>
+                    <img id="img-circle" src="~/Content/images/17.jpg" class="img-circle" alt="Cinque Terre" width="40" height="40">
+                    <div id="profil_name"> Ahmed Oweda</div>
+                    <div id="profil_job"> Civil Engineer </div>
+                    <button class="btn btn-default" type="button" aria-haspopup="true" style="border-radius:0"
+                            aria-expanded="false">
+                        Follow <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+
+                </div>
+
+            </div>
+            <div class="job03">
+                <img src="~/Content/images/16.jpg" height="140" width="290">
+            </div>
+            <div class="job04">
+
+                <ul class="list-unstyled list-group" id="list">
+                    <li>&nbsp;&nbsp; About &emsp;&emsp; Help center&emsp;&emsp; privacy&Terms </li>
+                    <li>&emsp;&emsp;&emsp;&emsp; Advertisig&emsp;&emsp;&emsp; Business Service </li>
+                    <li> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Get the Linked In app &emsp;&emsp;More</li>
+
+
+                </ul>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/CustomScripts/mainLayoutScript.js"></script>
+
+    @*<script src="js/jquery-1.10.2.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>*@
+  
+
+
+</body>
+
+</html>
