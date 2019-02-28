@@ -1,41 +1,244 @@
 ﻿@model LinkedIn_Test.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = null;
 }
 
-<h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - LinkedIn</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    <div class="container body-content myLoginBody">
+
+        <img src="~/images/linkedin-title-logo.png" class="linkedin-title-logo" alt="LinkedIn Logo" />
+
+        <p class="mySlogan">Make the most of your professional life</p>
+
+        @*Form*@
+        <div class="container myLoginForm">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
+
+                <div class="form-group myDiv">
+                    <div>
+                        @Html.LabelFor(m => m.FirstName, new { @class = "control-label myLabel" })
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control myTextBox" })
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group myDiv">
+                    <div>
+                        @Html.LabelFor(m => m.LastName, new { @class = "control-label myLabel" })
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control myTextBox" })
+                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group myDiv">
+                    <div>
+                        @Html.LabelFor(m => m.Email, new { @class = "control-label myLabel" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control myTextBox" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group myDiv">
+                    <div>
+                        @Html.LabelFor(m => m.Password, new { @class = "control-label myLabel" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control myTextBox" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group myDiv">
+                    <div>
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label myLabel" })
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control myTextBox" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div>
+                    <p class="disclosure-text">You agree to the LinkedIn <a target="_blank" class="tapable" href="https://www.linkedin.com/legal/user-agreement?trk=uno-reg-join-user-agreement">User Agreement</a>, <a target="_blank" class="tapable" href="https://www.linkedin.com/legal/privacy-policy?trk=uno-reg-join-privacy-policy">Privacy Policy</a>, and <a target="_blank" class="tapable" href="https://www.linkedin.com/legal/cookie-policy?trk=uno-reg-join-cookie-policy">Cookie Policy</a>.</p>
+                </div>
+
+                <!--Submit-->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary join-btn" data-position-join="right"><span>Agree &amp; Join</span></button>
+                </div>
+
+                <hr />
+                <p>
+                    <span id=" backToLogin">New to LinkedIn? </span>@Html.ActionLink("Sign in", "Login", "Account")
+                </p>
+            }
+
+        </div>
+
+        @*Footer*@
+        <div>
+            <p class="myLoginFooter">LinkedIn Coropration &copy; @DateTime.Now.Year</p>
+        </div>
+
+
+
+        @*Delete Me*@
+        <div class="row">
+
+            @*Place me Here*@
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
+
+<style>
+    hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-top: 1px solid #b8b8b8;
+    }
+
+    # backToLogin {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font: inherit;
+        font-size: 100%;
+        vertical-align: baseline;
+    }
+
+    .join-btn {
+        background-color: #2672ae;
+        background-image: -webkit-linear-gradient(top, #2672ae 0%,#1e4f7e 100%);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+        font-weight: bold;
+        border-width: 1px;
+        border-style: solid;
+        cursor: pointer;
+        margin: 0;
+        overflow: visible;
+        text-decoration: none !important;
+        text-align: center;
+        text-shadow: 0 1px 1px rgba(0,0,0,0.35);
+        border-radius: 3px;
+        padding: 0 15px;
+        box-sizing: border-box;
+        font-size: 16px;
+        border-color: #1b5480;
+        zoom: 1;
+        vertical-align: middle;
+        margin-top: 15px;
+        width: 100%;
+        white-space: normal;
+        height: auto;
+        height: 40px;
+    }
+
+    .disclosure-text {
+        font-size: 12px;
+        line-height: 14px;
+        color: #66696a;
+        text-align: center;
+    }
+
+    Body {
+        background: linear-gradient(45deg, #0077b5,#008891);
+        background-attachment: fixed;
+        background-color: #0077b5;
+    }
+
+    .linkedin-title-logo {
+        width: 13%;
+    }
+
+    .mySlogan {
+        font-family: Calibri;
+        color: white;
+        padding-top: 20px;
+        font-size: 210%;
+    }
+
+    .myLoginBody {
+        /*background-color: rgba(169, 169, 169, 0.26);*/
+        padding-top: 20px;
+        height: calc(100vh - 40px);
+        text-align: center;
+    }
+
+    .myLoginForm {
+        padding: 30px 20px;
+        background-color: #EEE;
+        /*height: 500px;*/
+        width: 36%;
+        padding: 15px 45px;
+        text-align: left;
+    }
+
+    .myLoginFooter {
+        color: #d9d9d9;
+        padding-top: 7px;
+    }
+
+    .myTextBox {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 18px;
+        color: #434649;
+        padding-left: 6px;
+        padding-right: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        transition: border-color 300ms ease-in-out;
+        background: #FFF;
+        border: 1px solid #BFBFBF;
+        border-radius: 2px;
+        height: 32px;
+        outline: 0;
+        position: relative;
+        vertical-align: middle;
+        box-sizing: border-box;
+        width: 100%;
+        display: block !important;
+        max-width: 600px;
+    }
+
+    .myLabel {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font: inherit;
+        font: 100;
+        color: dimgrey;
+        vertical-align: baseline;
+        display: contents;
+        text-align: left !important;
+        display: block;
+        font-size: 13px;
+    }
+
+    .myDiv {
+        margin-bottom: 3px;
+    }
+
+    .text-danger {
+        font-size: 12px;
+    }
+</style>

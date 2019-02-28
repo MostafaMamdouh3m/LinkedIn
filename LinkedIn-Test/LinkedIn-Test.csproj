@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -205,6 +206,10 @@
     <Compile Include="Migrations\201902251630560_first.Designer.cs">
       <DependentUpon>201902251630560_first.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902280534368_UpdateLogin.cs" />
+    <Compile Include="Migrations\201902280534368_UpdateLogin.Designer.cs">
+      <DependentUpon>201902280534368_UpdateLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Skill.cs" />
@@ -247,9 +252,6 @@
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\CustomScripts\HomeScript.js" />
     <Content Include="Scripts\CustomScripts\mainLayoutScript.js" />
@@ -319,6 +321,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902251630560_first.resx">
       <DependentUpon>201902251630560_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902280534368_UpdateLogin.resx">
+      <DependentUpon>201902280534368_UpdateLogin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

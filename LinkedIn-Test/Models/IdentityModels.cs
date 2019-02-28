@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using LinkedIn_Test.Models.Enums;
 using LinkedIn_Test.Models.Entities;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LinkedIn_Test.Models
 {
@@ -19,9 +20,17 @@ namespace LinkedIn_Test.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        [Required]
+        [MaxLength(50)]
         public virtual string FirstName { get; set; }
+
         public virtual string MiddleName { get; set; }
+
+        [Required]
+        [MaxLength(50)]
         public virtual string LastName { get; set; }
+
         public virtual Gender Gender { get; set; }
         public virtual int Age { get; set; }
         public virtual string Headline { get; set; }

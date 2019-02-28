@@ -2,62 +2,181 @@
 @model LoginViewModel
 @{
     ViewBag.Title = "Log in";
+    Layout = null;
 }
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+@*<h2>@ViewBag.Title.</h2>*@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - LinkedIn</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <div class="container body-content myLoginBody">
+
+        <img src="~/images/linkedin-black.png" class="linkedin-title-logo" alt="LinkedIn Logo" />
+
+        <p class="welcomeBack">Welcome Back</p>
+        <p class="myLoginSlogan">Don't miss your next opportunity. Sign in to stay updated on your professional world.</p>
+
+
+        @*Form*@
+        <div class="container myLoginForm">
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @*<h4>Use a local account to log in.</h4>*@
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })*@
+                        @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "form-control myTextBox" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })*@
+                        @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "form-control myTextBox" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
-                        </div>
+
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Sign in" class="btn btn-primary signIn" />
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
+
+                    <div class="form-group checkbox" style="margin-left: 30px;">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe)
                     </div>
-                </div>
-                <p>
-                    @Html.ActionLink("Register as a new user", "Register")
-                </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
+
+                    <hr />
+                    <p id="backToRegister">
+                        <span>New to LinkedIn? </span>@Html.ActionLink("Join now", "Register", "Account", new { @style = "text-decoration: none;" })
+                    </p>
+                    @* Enable this once you have account confirmation enabled for password reset functionality
                     <p>
                         @Html.ActionLink("Forgot your password?", "ForgotPassword")
                     </p>*@
-            }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
-</div>
+                }
+            </section>
+        </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @*Footer*@
+        <div class="myFooter navbar-fixed-bottom" style="display:grid; background-color: white; font-size:12px; border-top: 1px solid dimgray; padding: 10px; height: 50px;">
+            <ul class="myLinks" style="display:inline-flex; justify-content: center; list-style-type:none;">
+                <li><a href="#">User Agreement</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Community Guidlines</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+                <li><a href="#">Send Feedback</a></li>
+            </ul>
+        </div>
+    
+
+
+        @*Delete Me*@
+        <div class="row">
+
+            @*Place me Here*@
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
+
+<style>
+    .myLinks a{
+        text-decoration:none;
+        margin-right: 20px;
+        color:dimgray
+    }
+    .myLinks a:hover {
+        color: #808080
+    }
+    #backToRegister {
+        text-align: center;
+        font-size: 1.6rem;
+        text-decoration: none;
+    }
+    Body {
+        background: white;
+        background-attachment: fixed;
+        line-height: 1.5;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.9);
+    }
+    .linkedin-title-logo {
+        width: 8%;
+        margin-bottom:20px;
+    }
+    .myLoginSlogan {
+        color: #808080;
+        font-weight: 300;
+    }
+    .welcomeBack {
+        font-family: Calibri;
+        font-size: 190%;
+        margin-bottom: 0px;
+    }
+    .myLoginBody {
+        padding-top:65px;
+        text-align:center;
+    }
+    .myLoginForm {
+        padding: -10px 30px 30px 30px;
+        /*background-color: #EEE;*/
+        width: 35%;
+        text-align:left;
+    }
+    .myTextBox {
+        font-size: 1.6rem;
+        line-height: 1.33333;
+        font-weight: 200;
+        color: rgba(0,0,0,0.9);
+        z-index: 1;
+        height: 52px;
+        margin-bottom: 0;
+        max-width: 450px;
+        border-color: dimgrey;
+        border-radius: 0.15rem;
+        padding: 25px 12px;
+        /*position: relative;*/
+    }
+    .myTextBox:focus{
+        border: 1px solid red;
+    }
+    .signIn {
+        max-width: 450px;
+        width: 100%;
+        border-radius: 0.15rem;
+        color: #fff;
+        border-color: #0060c7;
+        background-color: #0073b1;
+        height: 52px;
+        font-size: 17px;
+    }
+    input-internal-autofill-selected {
+        background-color: #EEE !important;
+    }
+    .myLoginFooter {
+        color: #d9d9d9;
+        padding-top: 7px;
+    }
+
+</style>
