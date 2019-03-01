@@ -1,0 +1,130 @@
+﻿@model UserViewModel
+@{
+
+
+    ViewBag.Title = "Edit";
+}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+@{
+
+    AjaxOptions ajaxopt_editform = new AjaxOptions()
+    {
+        HttpMethod = "post",
+        UpdateTargetId = "user",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "$('#myModal').modal('hide')"
+
+    };
+}
+
+
+@using (Ajax.BeginForm("EditHeaderFormAjex", "profile", ajaxopt_editform, new { @class = "editform" }))
+{
+    <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="width: 744px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel" style="color: rgba(0, 0, 0, 0.6); font-size:140%;">Edit intro</h4>
+                </div>
+
+                <div class="background-profile-images">
+
+                    <img src="~/images/1.png" alt="" style="width: 742px;">
+
+                    <div class="profileimage">
+
+                        <img src="~/images/2.png" alt="" height="128" width="128">
+
+                    </div>
+
+                    <button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
+                        <i class="fas fa-pen peneditform"></i>
+                    </button>
+
+
+                </div>
+
+
+                <div class="modal-body">
+
+
+                    @Html.HiddenFor(e => e.User.Id)
+
+                    <div class="fullname">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.User.FirstName, new { @class = "required labels" })
+                            @Html.TextBoxFor(m => m.User.FirstName, new { @class = "form-control " })
+                            @Html.ValidationMessageFor(m => m.User.FirstName)
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.User.LastName, new { @class = "required labels" })
+                            @Html.TextBoxFor(m => m.User.LastName, new { @class = "form-control " })
+                            @Html.ValidationMessageFor(m => m.User.LastName)
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.User.Headline, new { @class = "required labels" })
+                        @Html.TextAreaFor(m => m.User.Headline, new { @class = "form-control largetextarea" })
+                        @Html.ValidationMessageFor(m => m.User.Headline)
+                    </div>
+
+
+
+                    <div class="form-group current-position">
+
+                        @Html.LabelFor(m => m.User.CurrentPosition, new { @class = "labels" })
+                        @Html.TextBoxFor(m => m.User.CurrentPosition, new { @class = "form-control largetextbox" })
+                        @Html.ValidationMessageFor(m => m.User.CurrentPosition)
+
+                        <button type="button" class="btn btn-link add-new-position " data-toggle="modal" data-target="#myModal">
+                            Add new position
+                        </button>
+
+                    </div>
+
+
+                    <div class="form-group new-education">
+                        @Html.LabelFor(m => m.User.CurrentPosition, new { @class = "labels" })
+                        @Html.TextBoxFor(m => m.User.CurrentPosition, new { @class = "form-control largetextbox" })
+                        @Html.ValidationMessageFor(m => m.User.CurrentPosition)
+
+                        <button type="button" class="btn btn-link add-new-education" data-toggle="modal" data-target="#myModal">
+                            Add new education
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.User.Country_id, new { @class = "required labels" })
+                        @Html.TextBoxFor(m => m.User.Country_id, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.User.Country_id)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.User.Summary, new { @class = "labels" })
+                        @Html.TextAreaFor(m => m.User.Summary, new { @class = "form-control largetextarea" })
+                        @Html.ValidationMessageFor(m => m.User.Summary)
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+
+                    <input type="submit" value="Save" class="btn btn-primary" style="border-radius:3px;  padding-top:5px; padding-bottom:5px; padding-left:15px;  padding-right:15px; " />
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+

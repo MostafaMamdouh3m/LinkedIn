@@ -1,0 +1,109 @@
+﻿@model UserViewModel
+
+@{
+    ViewBag.Title = Model.User.FirstName + Model.User.LastName;
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+<div id="user">
+    <div class="first-part">
+
+        <div class="background-profile-images">
+
+            <img src="~/images/1.png" alt="">
+
+            <div class="profileimage">
+
+                <img src="~/images/2.png" alt="" height="128" width="128">
+
+            </div>
+
+        </div>
+
+        <div class="head">
+
+            <div class="name-headline-country">
+                <div class="name">
+                    <h4> @Model.User.FirstName @Model.User.LastName</h4>
+                </div>
+
+                <div class="headline">
+                    <h5> @Model.User.Headline</h5>
+                </div>
+
+                <div class="country">
+
+
+                    <h6>Egypt</h6>
+                </div>
+            </div>
+
+
+
+            <button type="button" class="btn btn-link pen" data-toggle="modal" data-target="#myModal">
+                <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21.71,5L19,2.29a1,1,0,0,0-1.41,0L4,15.85,2,22l6.15-2L21.71,6.45A1,1,0,0,0,22,5.71,1,1,0,0,0,21.71,5ZM6.87,18.64l-1.5-1.5L15.92,6.57l1.5,1.5ZM18.09,7.41l-1.5-1.5,1.67-1.67,1.5,1.5Z" class="large-icon" style="fill: currentColor"></path></svg>
+            </button>
+
+
+            <div class="current-education-contact-friends">
+
+                <h7> <span class="glyphicon glyphicon-briefcase"> </span>   @Model.User.CurrentPosition  </h7>
+                <h7> <i class="fa fa-bank" style="font-size:16px"></i>  @Model.User.CurrentPosition  </h7>
+
+                <div>
+                    <button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
+                        <i class="far fa-address-book"></i>
+                        See contact info
+                    </button>
+                </div>
+
+                <div class="friends">
+                    <button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
+                        <i class="fas fa-user-friends"></i>
+                        See connections
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="virtualdiv">
+
+        </div>
+        <div class="summary">
+
+            <p> @Model.User.Summary</p>
+
+        </div>
+
+    </div>
+
+
+    @*Education part*@
+
+    @Html.Partial("_Partial_Education_Data", Model)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,8 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @*style*@
+
+    @Styles.Render("~/Content/css")
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/mainLayoutStyle.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/ProfilePageStyle.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -24,10 +27,15 @@
 
 
     @*scripts*@
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
+
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    @*<script src="~/Scripts/bootstrap.js"></script>*@
     <script src="~/Scripts/CustomScripts/mainLayoutScript.js"></script>
+    @Scripts.Render("~/bundles/scripts")
+
 
 </body>
 
 </html>
+
+

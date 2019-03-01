@@ -199,6 +199,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -209,6 +210,10 @@
     <Compile Include="Migrations\201902280534368_UpdateLogin.cs" />
     <Compile Include="Migrations\201902280534368_UpdateLogin.Designer.cs">
       <DependentUpon>201902280534368_UpdateLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903010733272_profile-add.cs" />
+    <Compile Include="Migrations\201903010733272_profile-add.Designer.cs">
+      <DependentUpon>201903010733272_profile-add.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -231,10 +236,12 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ProfilePageStyle.css" />
     <Content Include="Content\Home_page.css" />
     <Content Include="Content\images\012.jpg" />
     <Content Include="Content\images\05.jpg" />
@@ -255,9 +262,16 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\CustomScripts\HomeScript.js" />
     <Content Include="Scripts\CustomScripts\mainLayoutScript.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.3.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -306,9 +320,15 @@
     <Content Include="Views\Shared\_Partial_Comment.cshtml" />
     <Content Include="Views\Shared\_Partial_Home_profile_part.cshtml" />
     <Content Include="Views\Shared\_PartialWritePost.cshtml" />
+    <Content Include="Views\Profile\UserProfile.cshtml" />
+    <Content Include="Views\Shared\_Partial_Add_Education.cshtml" />
+    <Content Include="Views\Shared\_Partial_Education_Data.cshtml" />
+    <Content Include="Views\Shared\_Partial_Profile_Header_Work_Education.cshtml" />
+    <Content Include="Views\Shared\_Partial_Profile_EditHeaderForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\CustomStyles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -316,7 +336,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902251630560_first.resx">
@@ -324,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902280534368_UpdateLogin.resx">
       <DependentUpon>201902280534368_UpdateLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903010733272_profile-add.resx">
+      <DependentUpon>201903010733272_profile-add.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

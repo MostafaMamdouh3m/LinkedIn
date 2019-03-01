@@ -39,6 +39,11 @@ namespace LinkedIn_Test.Models
         public virtual string Address { get; set; }
         public virtual string CV { get; set; }
 
+        public virtual string Summary { get; set; }            // add: by mostafa
+        public virtual string CurrentPosition { get; set; }    // add: by mostafa
+
+        public int Country_id { get; set; }                  // add: by mostafa // for test (will be deleted)
+
 
         public List<Workplace> Workplaces { get; set; }
         public List<Education> Educations { get; set; }

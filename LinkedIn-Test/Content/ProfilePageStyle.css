@@ -1,0 +1,309 @@
+﻿
+
+/* First part */
+
+.profileimage img {
+    width: 152px;
+    height: 152px;
+    border: whitesmoke solid 4px;
+    border-radius: 50%;
+}
+
+.background-profile-images {
+    position: relative;
+}
+
+.profileimage {
+    position: absolute;
+    top: 110px;
+    left: 25px;
+}
+
+.name-headline-country {
+    margin-top: 70px;
+    margin-left: 25px;
+}
+
+.headline {
+    color: darkslategrey;
+}
+
+.country {
+    color: gray;
+}
+
+.btn-link {
+    padding: 0;
+    text-align: center;
+}
+
+.head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+    position: relative;
+}
+
+.current-education-contact-friends {
+    margin-top: 80px;
+    margin-right: 35px;
+}
+
+.friends {
+    padding-top: 4px;
+}
+
+.pen {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    font-size: 125%;
+}
+
+.summary {
+    padding: 25px;
+    width: 100%;
+}
+
+.first-part {
+    width: 793px;
+    border: solid lightgrey 1px;
+    margin-bottom: 15px;
+    box-shadow: 1px 1px 1px #888888;
+    margin-left: 35px;
+}
+
+.virtualdiv {
+    width: 85%;
+    border-top: solid lightgrey 1px;
+    margin: auto;
+}
+
+/* Education part */
+
+.education {
+    width: 793px;
+    position: relative;
+    width: 793px;
+    border: solid lightgrey 1px;
+    padding: 25px;
+    padding-top: 20px;
+    box-shadow: 1px 1px 1px #888888;
+    margin-bottom: 15px;
+    margin-left: 35px;
+}
+
+.eduaction-data-image {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.eduaction-data {
+    display: flex;
+    flex-direction: column;
+}
+
+.plus-icon {
+    color: #0073b1;
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    font-size: 125%;
+}
+
+.pen2 {
+    position: absolute;
+    top: 65px;
+    right: 35px;
+    font-size: 125%;
+}
+
+.uni-name {
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+    font-size: 115%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.uni-certificate {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 105%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.uni-date {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 95%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+
+
+/* Edit Form part */
+
+
+.profileimage img {
+    width: 152px;
+    height: 152px;
+    border: whitesmoke solid 4px;
+    border-radius: 50%;
+}
+
+.background-profile-images {
+    position: relative;
+}
+
+.profileimage {
+    position: absolute;
+    top: 110px;
+    left: 25px;
+}
+
+.modal-body {
+    width: 100%;
+    margin-top: 80px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.required:after {
+    content: '*';
+    color: #0073b1;
+    margin-left: 2px;
+}
+
+.labels {
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+input, select, textarea {
+    max-width: 345px;
+}
+
+.largetextarea, .largetextbox, .largedroplist {
+    max-width: 700px;
+}
+
+.form-control {
+    height: 30px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    border-radius: 2px;
+}
+
+.fullname {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.peneditform {
+    display: block;
+    position: absolute;
+    top: 240px;
+    left: 140px;
+    font-size: 120%;
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-shadow: 4px 4px 4px ghostwhite;
+}
+
+.current-position, .new-education {
+    position: relative;
+}
+
+
+.add-new-position, .add-new-education {
+    position: absolute;
+    right: 15px;
+    top: 55px;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+/* Education Edit part */
+
+.modal-body-addeducation {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.duration {
+    display: flex;
+    width: 94%;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Skills part */
+
+.skills {
+    width: 793px;
+    position: relative;
+    width: 793px;
+    border: solid lightgrey 1px;
+    padding: 25px;
+    padding-top: 0px;
+    box-shadow: 1px 1px 1px #888888;
+    margin-bottom: 15px;
+    margin-left: 35px;
+}
+
+.skills-data-image {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pen3 {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    font-size: 125%;
+}
+
+.skill-name {
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+    font-size: 115%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+/* Footer part */
+
+.footercontent {
+    display: flex;
+    justify-content: space-between;
+    width: 793px;
+    margin-left: 35px;
+}
