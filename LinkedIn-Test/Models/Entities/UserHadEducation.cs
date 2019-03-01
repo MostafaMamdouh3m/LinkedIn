@@ -14,6 +14,8 @@ namespace LinkedIn_Test.Models.Entities
         public DateTime EndDate { get; set; }
         public bool CurrentEducation { get; set; }
 
+        public string Degree { get; set; }        // add: by mostafa
+
         [ForeignKey("User")]
         public string Fk_User { get; set; }
         public ApplicationUser User { get; set; }

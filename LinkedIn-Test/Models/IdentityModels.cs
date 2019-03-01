@@ -39,6 +39,11 @@ namespace LinkedIn_Test.Models
         public virtual string Address { get; set; }
         public virtual string CV { get; set; }
 
+        public virtual string Summary { get; set; }            // add: by mostafa
+        public virtual string CurrentPosition { get; set; }    // add: by mostafa
+
+        public int Country_id { get; set; }                  // add: by mostafa // for test (will be deleted)
+
 
         public List<Workplace> Workplaces { get; set; }
         public List<Education> Educations { get; set; }
@@ -47,14 +52,7 @@ namespace LinkedIn_Test.Models
         public List<Friend> Friends { get; set; }
         public List<Message> Messages { get; set; }
         public List<Post> Posts { get; set; }
-
-
-
-
-
-
-
-    }
+ }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -79,11 +77,5 @@ namespace LinkedIn_Test.Models
         public virtual DbSet<UserHadEducation> UserHadEducation { get; set; }
         public virtual DbSet<UserLikePost> UserLikePost { get; set; }
         public virtual DbSet<Workplace> Workplaces { get; set; }
-
-
-
-
-
-
     }
 }
