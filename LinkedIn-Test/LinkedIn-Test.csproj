@@ -203,15 +203,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902280534368_UpdateLogin.cs" />
-    <Compile Include="Migrations\201902280534368_UpdateLogin.Designer.cs">
-      <DependentUpon>201902280534368_UpdateLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903010733272_profile-add.cs" />
-    <Compile Include="Migrations\201903010733272_profile-add.Designer.cs">
-      <DependentUpon>201903010733272_profile-add.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Skill.cs" />
     <Compile Include="Models\Entities\UserHadEducation.cs" />
@@ -325,6 +316,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\CustomStyles\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -332,14 +324,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902280534368_UpdateLogin.resx">
-      <DependentUpon>201902280534368_UpdateLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903010733272_profile-add.resx">
-      <DependentUpon>201903010733272_profile-add.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
