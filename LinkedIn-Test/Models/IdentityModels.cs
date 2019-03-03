@@ -7,6 +7,7 @@ using LinkedIn_Test.Models.Enums;
 using LinkedIn_Test.Models.Entities;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LinkedIn_Test.Models
 {
@@ -33,7 +34,10 @@ namespace LinkedIn_Test.Models
 
         public virtual Gender Gender { get; set; }
         public virtual int Age { get; set; }
+
+        [Required]
         public virtual string Headline { get; set; }
+
         public virtual string ProfilePicture { get; set; }
         public virtual string HeaderPicture { get; set; }
         public virtual string Address { get; set; }
@@ -42,7 +46,16 @@ namespace LinkedIn_Test.Models
         public virtual string Summary { get; set; }            // add: by mostafa
         public virtual string CurrentPosition { get; set; }    // add: by mostafa
 
-        public int Country_id { get; set; }                  // add: by mostafa // for test (will be deleted)
+
+        [ForeignKey("CurrentEducation")]
+        public virtual int Fk_CurrentEducation { get; set; }    // add: by mostafa
+
+        public Education CurrentEducation { get; set; }        // add: by mostafa
+
+
+        [ForeignKey("Country")]
+        public int Fk_Country { get; set; }
+        public Country Country { get; set; }        // add: by mostafa
 
 
         public List<Workplace> Workplaces { get; set; }

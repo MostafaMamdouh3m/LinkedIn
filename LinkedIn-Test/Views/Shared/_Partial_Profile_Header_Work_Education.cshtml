@@ -18,7 +18,15 @@
 
             <div class="profileimage">
 
-                <img src="~/images/2.png" alt="" height="128" width="128">
+                @if (@Model.User.ProfilePicture == "" || @Model.User.ProfilePicture == null)
+                {
+                    <img src="~/images/default.png" alt="" height="128" width="128">
+                }
+                else
+                {
+                    <img src=@Model.User.ProfilePicture alt="" height="128" width="128">
+                }
+
 
             </div>
 
@@ -38,7 +46,7 @@
                 <div class="country">
 
 
-                    <h6>Egypt</h6>
+                    <h6> @Model.User.Country.Name</h6>
                 </div>
             </div>
 
@@ -51,26 +59,31 @@
 
             <div class="current-education-contact-friends">
 
-                <h7> <span class="glyphicon glyphicon-briefcase"> </span>   @Model.User.CurrentPosition  </h7>
-                <h7> <i class="fa fa-bank" style="font-size:16px"></i>  @Model.User.CurrentPosition  </h7>
-
                 <div>
-                    <button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
-                        <i class="far fa-address-book"></i>
-                        See contact info
-                    </button>
+                    <h7> <span class="glyphicon glyphicon-briefcase"> </span>   @Model.User.CurrentPosition  </h7>
                 </div>
+                <div>
+                    <h7> <i class="fa fa-bank" style="font-size:16px"></i>  @Model.User.CurrentEducation.Name  @Model.User.CurrentEducation.Type </h7>
+                </div>
+                    
 
-                <div class="friends">
-                    <button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
-                        <i class="fas fa-user-friends"></i>
-                        See connections
-                    </button>
+                    <div>
+                        <button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
+                            <i class="far fa-address-book"></i>
+                            See contact info
+                        </button>
+                    </div>
+
+                    <div class="friends">
+                        <button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
+                            <i class="fas fa-user-friends"></i>
+                            See connections
+                        </button>
+                    </div>
+
                 </div>
 
             </div>
-
-        </div>
 
         <div class="virtualdiv">
 
@@ -87,8 +100,8 @@
     @*Education part*@
 
     @Html.Partial("_Partial_Education_Data", Model)
-</div>
 
+</div>
 
 
 

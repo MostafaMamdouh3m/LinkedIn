@@ -15,9 +15,13 @@ namespace LinkedIn_Test.Controllers
 
         public ActionResult UserProfile()                           //by: mostafa
         {
-            UserViewModel uvm = new UserViewModel();
-            uvm.User = context.Users.ToList()[0];
+            UserViewModel uvm = new UserViewModel(); 
+            uvm.User = context.Users.ToList()[0];                  // will be edited
             uvm.UserHadEducations = context.UserHadEducation.Where(e => e.Fk_User == uvm.User.Id).ToList();
+            uvm.Countries = context.Countries.ToList();
+            uvm.User.CurrentEducation = context.Educations.Find(uvm.User.Fk_CurrentEducation);
+
+
             List<Education> usereducations = new List<Education>();
             uvm.EducationsAll = context.Educations.ToList();
             uvm.Educations = usereducations;
@@ -28,6 +32,7 @@ namespace LinkedIn_Test.Controllers
                 uvm.Educations.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
             }
 
+
             return View(uvm);
         }
 
@@ -35,6 +40,8 @@ namespace LinkedIn_Test.Controllers
         [HttpPost]
         public ActionResult EditHeaderFormAjex(ApplicationUser user)                   //by: mostafa
         {
+          
+
             if (ModelState.IsValid)
             {
                 ApplicationUser olduser = context.Users.Find(user.Id);
@@ -46,6 +53,11 @@ namespace LinkedIn_Test.Controllers
                 olduser.HeaderPicture = user.HeaderPicture;
                 olduser.Summary = user.Summary;
                 olduser.CurrentPosition = user.CurrentPosition;
+                olduser.Fk_CurrentEducation = user.Fk_CurrentEducation;
+                olduser.CurrentEducation = user.CurrentEducation;
+                olduser.Fk_Country = user.Fk_Country;
+                olduser.Country = context.Countries.Find(user.Fk_Country);
+
                 olduser.Workplaces = user.Workplaces;
                 olduser.Educations = user.Educations;
                 olduser.Skills = user.Skills;
@@ -54,10 +66,20 @@ namespace LinkedIn_Test.Controllers
 
                 UserViewModel uvm = new UserViewModel();
                 uvm.User = user;
+                uvm.User.CurrentEducation = context.Educations.Find(user.Fk_CurrentEducation);
+                uvm.User.Country= context.Countries.Find(user.Fk_Country);
                 uvm.Users = context.Users.ToList();
-                uvm.Educations = context.Educations.ToList();
                 uvm.UserHadEducations = context.UserHadEducation.ToList();
+                uvm.EducationsAll = context.Educations.ToList();
 
+                List<Education> usereducations = new List<Education>();                
+                uvm.Educations = usereducations;
+
+                for (int i = 0; i < uvm.UserHadEducations.Count; i++)
+                {
+                    int temp = uvm.UserHadEducations[i].Fk_Education;
+                    uvm.Educations.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
+                }
 
                 return PartialView("_Partial_Profile_Header_Work_Education", uvm);
             }
@@ -75,9 +97,10 @@ namespace LinkedIn_Test.Controllers
             if (ModelState.IsValid)
             {
                 UserViewModel uvm = new UserViewModel();
+                uvm.User = context.Users.ToList()[0];                           // will be edited
+                userHadEducation.Fk_User = uvm.User.Id;
                 context.UserHadEducation.Add(userHadEducation);
-                context.SaveChanges();
-                uvm.User = context.Users.ToList()[0];
+                context.SaveChanges();              
                 uvm.UserHadEducations = context.UserHadEducation.Where(e => e.Fk_User == uvm.User.Id).ToList();
                 List<Education> educations = new List<Education>();
                 uvm.Educations = educations;
@@ -98,5 +121,66 @@ namespace LinkedIn_Test.Controllers
             }
 
         }
+
+        [HttpPost]
+        public ActionResult EditEducationAjax(UserHadEducation userHadEducation)
+        {
+            userHadEducation.Id = 2;          // will be edited
+            userHadEducation.Fk_User = context.Users.ToList()[0].Id;      // will be edited
+
+            if (ModelState.IsValid)
+            {
+                UserViewModel uvm = new UserViewModel();
+                uvm.UserHadEducation = userHadEducation;
+                uvm.User = context.Users.ToList()[0];            // will be edited
+
+                UserHadEducation old = context.UserHadEducation.Find(userHadEducation.Id);
+
+                old.Activities = userHadEducation.Activities;
+                old.CurrentEducation = userHadEducation.CurrentEducation;
+                old.Degree =  userHadEducation.Degree;
+                old.Description = userHadEducation.Description;
+                old.Education = userHadEducation.Education;
+                old.EndDate = userHadEducation.EndDate;
+                old.FieldOfStudy =userHadEducation.FieldOfStudy;
+                old.Fk_Education = userHadEducation.Fk_Education;
+                old.Fk_User =userHadEducation.Fk_User;
+                old.Grade = userHadEducation.Grade;
+                old.User = userHadEducation.User;
+                old.StartDate = userHadEducation.StartDate;
+
+                context.SaveChanges();
+
+                uvm.UserHadEducation.Fk_User = userHadEducation.Fk_User;
+                uvm.UserHadEducation.Fk_Education = userHadEducation.Fk_Education;
+                uvm.UserHadEducation.Activities = userHadEducation.Activities;
+                uvm.UserHadEducation.Degree = userHadEducation.Degree;
+                uvm.UserHadEducation.Description = userHadEducation.Description;
+                uvm.UserHadEducation.EndDate = userHadEducation.EndDate;
+                uvm.UserHadEducation.FieldOfStudy = userHadEducation.FieldOfStudy;                         
+                uvm.UserHadEducation.Grade = userHadEducation.Grade;         
+                uvm.UserHadEducation.StartDate = userHadEducation.StartDate;
+
+
+                uvm.UserHadEducations = context.UserHadEducation.Where(e => e.Fk_User == uvm.User.Id).ToList();
+                List<Education> educations = new List<Education>();
+                uvm.Educations = educations;
+
+                for (int i = 0; i < uvm.UserHadEducations.Count; i++)
+                {
+                    int temp = uvm.UserHadEducations[i].Fk_Education;
+                    uvm.Educations.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
+                }
+
+                return PartialView("_Partial_Education_Data", uvm);
+            }
+
+            else
+            {
+                return PartialView("_Partial_Edit_Education");
+
+            }
+        }
     }
 }
+

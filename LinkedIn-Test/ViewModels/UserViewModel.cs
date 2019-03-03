@@ -28,9 +28,5 @@ namespace LinkedIn_Test.ViewModels
 
 
 
-
-
-
-
     }
 }

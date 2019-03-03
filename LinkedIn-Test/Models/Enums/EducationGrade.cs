@@ -5,12 +5,11 @@ using System.Web;
 
 namespace LinkedIn_Test.Models.Enums
 {
-    public enum EducationType
+    public enum EducationGrade
     {
-        
-        High_School,
-        University,
-        Institute,
-
+        Excellent,
+        Very_Good,
+        Good,
+        Pass,
     }
 }

@@ -2,10 +2,15 @@
 
 @model UserViewModel
 
-<div class="education" id="education">
-    <button type="button" class="btn btn-link pen2" data-toggle="modal" data-target="#edit_education">
-        <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21.71,5L19,2.29a1,1,0,0,0-1.41,0L4,15.85,2,22l6.15-2L21.71,6.45A1,1,0,0,0,22,5.71,1,1,0,0,0,21.71,5ZM6.87,18.64l-1.5-1.5L15.92,6.57l1.5,1.5ZM18.09,7.41l-1.5-1.5,1.67-1.67,1.5,1.5Z" class="large-icon" style="fill: currentColor"></path></svg>
-    </button>
+@{
+    ViewBag.Title = Model.User.FirstName + Model.User.LastName;
+}
+
+
+
+
+<div class="education" id="education_data">
+
 
     <button type="button" class="btn btn-link plus-icon" data-toggle="modal" data-target="#add_education">
         <li-icon type="plus-icon" role="img" aria-label="Add new education" class="n"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21,13H13v8H11V13H3V11h8V3h2v8h8v2Z" class="large-icon" style="fill: currentColor"></path></svg></li-icon>
@@ -15,23 +20,40 @@
     <h4 style="font-size: 135%; color: rgba(0, 0, 0, 0.6); margin-bottom:20px; ">Education</h4>
 
 
-    <div class="eduaction-data-image">
+    @for (int i = 0; i < Model.Educations.Count; i++)
+    {
+        <div class="eduaction-data-image-button">
+            <div class="eduaction-data-image">
+                <div>
+                    <i class="fa fa-bank eduaction-image" style="font-size:45px; padding-top:4px; color:gray; margin-right:10px;"></i>
+                </div>
+                <div class="eduaction-data">
+                    <p class="uni-name"> @Model.Educations[i].Name @Model.Educations[i].Type </p>
+                    <p class="uni-certificate">@Model.UserHadEducations[i].Degree</p>
+                    <p class="uni-date">@Model.UserHadEducations[i].StartDate @Model.UserHadEducations[i].EndDate</p>
+                </div>
+            </div>
 
-        <div>
-            <i class="fa fa-bank" style="font-size:45px; padding-top:4px; color:gray;"></i>
+            <div>
+                <button type="button" class="btn btn-link " data-toggle="modal" data-target="#edit_education" id="id-@Model.UserHadEducations[i].Id">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21.71,5L19,2.29a1,1,0,0,0-1.41,0L4,15.85,2,22l6.15-2L21.71,6.45A1,1,0,0,0,22,5.71,1,1,0,0,0,21.71,5ZM6.87,18.64l-1.5-1.5L15.92,6.57l1.5,1.5ZM18.09,7.41l-1.5-1.5,1.67-1.67,1.5,1.5Z" class="large-icon" style="fill: currentColor"></path></svg>
+                </button>
+            </div>
+
+
+
+
         </div>
 
-
-        <div class="eduaction-data">
-            @for (int i = 0; i < Model.Educations.Count; i++)
-            {
-                <h4 class="uni-name"> @Model.Educations[i].Name @Model.Educations[i].Type </h4>
-                <h4 class="uni-certificate">@Model.UserHadEducations[i].Degree</h4>
-                <h4 class="uni-date">@Model.UserHadEducations[i].StartDate @Model.UserHadEducations[i].EndDate</h4>
-            }
-        </div>
-    </div>
-
-
+    }
 </div>
+
+
+
+
+
+
+
+
+
 
