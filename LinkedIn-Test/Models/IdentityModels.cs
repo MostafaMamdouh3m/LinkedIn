@@ -35,6 +35,7 @@ namespace LinkedIn_Test.Models
         public virtual Gender Gender { get; set; }
         public virtual int Age { get; set; }
 
+ 
         public virtual string Headline { get; set; }
 
         public virtual string ProfilePicture { get; set; }
@@ -53,7 +54,7 @@ namespace LinkedIn_Test.Models
 
 
         [ForeignKey("Country")]
-        public int CountryId { get; set; }
+        public int Fk_Country { get; set; }
         public Country Country { get; set; }        // add: by mostafa
 
 

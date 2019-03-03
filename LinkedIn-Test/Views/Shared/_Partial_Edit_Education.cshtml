@@ -1,4 +1,5 @@
 ﻿@model UserViewModel
+
 @{
 
     AjaxOptions Edit_Education_ajaxopt = new AjaxOptions()
@@ -14,7 +15,7 @@
 
 
 
-@using (Ajax.BeginForm("EditEducationAjax", "Profile",new {}, Edit_Education_ajaxopt, new { @class = "Edit_Education_form"}))
+@using (Ajax.BeginForm("EditEducationAjax", "Profile", Edit_Education_ajaxopt, new { @class = "Edit_Education_form"}))
 {
     <div class="modal fade " id="edit_education" tabindex="-1" role="dialog" aria-labelledby="edit_education">
         <div class="modal-dialog" role="document" style="width: 744px;">
@@ -30,7 +31,7 @@
                     @*@Html.HiddenFor(e => e.UserHadEducation.Id)*@
 
                     @*@Html.HiddenFor(e => e.UserHadEducation.Fk_User)*@
-
+                    @*<input id="education-Id-edit" name="education.Id" type="hidden" value="">*@
 
                     <div class="form-group">
                         @Html.LabelFor(m => m.Education.Name, new { @class = "labels required" })
