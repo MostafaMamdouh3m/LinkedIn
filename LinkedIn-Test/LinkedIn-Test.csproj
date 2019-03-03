@@ -203,9 +203,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903031330131_updated-profile.cs" />
-    <Compile Include="Migrations\201903031330131_updated-profile.Designer.cs">
-      <DependentUpon>201903031330131_updated-profile.cs</DependentUpon>
+    <Compile Include="Migrations\201903031501193_updateHeadLine6.cs" />
+    <Compile Include="Migrations\201903031501193_updateHeadLine6.Designer.cs">
+      <DependentUpon>201903031501193_updateHeadLine6.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -334,8 +334,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903031330131_updated-profile.resx">
-      <DependentUpon>201903031330131_updated-profile.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903031501193_updateHeadLine6.resx">
+      <DependentUpon>201903031501193_updateHeadLine6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
