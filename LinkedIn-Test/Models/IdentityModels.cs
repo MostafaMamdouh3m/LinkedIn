@@ -35,7 +35,7 @@ namespace LinkedIn_Test.Models
         public virtual Gender Gender { get; set; }
         public virtual int Age { get; set; }
 
-        [Required]
+ 
         public virtual string Headline { get; set; }
 
         public virtual string ProfilePicture { get; set; }
