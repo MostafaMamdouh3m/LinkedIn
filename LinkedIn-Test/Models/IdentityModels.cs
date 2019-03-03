@@ -57,6 +57,8 @@ namespace LinkedIn_Test.Models
         public int Fk_Country { get; set; }
         public Country Country { get; set; }        // add: by mostafa
 
+        public virtual Country Country { get; set; }    // add: by Mesawy
+
 
         public List<Workplace> Workplaces { get; set; }
         public List<Education> Educations { get; set; }
@@ -65,14 +67,7 @@ namespace LinkedIn_Test.Models
         public List<Friend> Friends { get; set; }
         public List<Message> Messages { get; set; }
         public List<Post> Posts { get; set; }
-
-
-
-
-
-
-
-    }
+ }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -97,11 +92,5 @@ namespace LinkedIn_Test.Models
         public virtual DbSet<UserHadEducation> UserHadEducation { get; set; }
         public virtual DbSet<UserLikePost> UserLikePost { get; set; }
         public virtual DbSet<Workplace> Workplaces { get; set; }
-
-
-
-
-
-
     }
 }

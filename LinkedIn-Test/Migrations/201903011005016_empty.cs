@@ -3,7 +3,7 @@ namespace LinkedIn_Test.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class first : DbMigration
+    public partial class empty : DbMigration
     {
         public override void Up()
         {
@@ -29,9 +29,9 @@ namespace LinkedIn_Test.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        FirstName = c.String(),
+                        FirstName = c.String(nullable: false, maxLength: 50),
                         MiddleName = c.String(),
-                        LastName = c.String(),
+                        LastName = c.String(nullable: false, maxLength: 50),
                         Gender = c.Int(nullable: false),
                         Age = c.Int(nullable: false),
                         Headline = c.String(),
@@ -39,6 +39,8 @@ namespace LinkedIn_Test.Migrations
                         HeaderPicture = c.String(),
                         Address = c.String(),
                         CV = c.String(),
+                        Summary = c.String(),
+                        CurrentPosition = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -156,7 +158,7 @@ namespace LinkedIn_Test.Migrations
                         CommentCount = c.Int(nullable: false),
                         Media = c.String(),
                         Fk_PostOwner = c.String(maxLength: 128),
-                        Fk_SharedPost = c.Int(nullable: false),
+                        Fk_SharedPost = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.Fk_PostOwner)
@@ -244,6 +246,7 @@ namespace LinkedIn_Test.Migrations
                         StartDate = c.DateTime(nullable: false),
                         EndDate = c.DateTime(nullable: false),
                         CurrentEducation = c.Boolean(nullable: false),
+                        Degree = c.String(),
                         Fk_User = c.String(maxLength: 128),
                         Fk_Education = c.Int(nullable: false),
                     })
