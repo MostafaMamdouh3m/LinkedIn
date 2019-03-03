@@ -42,7 +42,9 @@ namespace LinkedIn_Test.Models
         public virtual string Summary { get; set; }            // add: by mostafa
         public virtual string CurrentPosition { get; set; }    // add: by mostafa
 
-        //public int Country_id { get; set; }                  // add: by mostafa // for test (will be deleted)
+        public int Country_id { get; set; }                  // add: by mostafa // for test (will be deleted)
+
+        public virtual Country Country { get; set; }    // add: by Mesawy
 
 
         public List<Workplace> Workplaces { get; set; }

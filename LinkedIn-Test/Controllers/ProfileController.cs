@@ -22,10 +22,19 @@ namespace LinkedIn_Test.Controllers
             uvm.EducationsAll = context.Educations.ToList();
             uvm.Educations = usereducations;
 
+            uvm.WorkplacesAll = context.Workplaces.ToList();    // Mesawy
+            uvm.UserAtWorkplaces = context.UserAtWorkplace.Where(e => e.Fk_User == uvm.User.Id).ToList();
+
             for (int i = 0; i < uvm.UserHadEducations.Count; i++)
             {
                 int temp = uvm.UserHadEducations[i].Fk_Education;
                 uvm.Educations.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
+            }
+
+            for (int i = 0; i < uvm.UserAtWorkplaces.Count; i++)
+            {
+                int temp = uvm.UserAtWorkplaces[i].Fk_Workplace;
+                uvm.Workplaces.Add(context.Workplaces.Where(e => e.Id == temp).FirstOrDefault());
             }
 
             return View(uvm);
@@ -70,7 +79,7 @@ namespace LinkedIn_Test.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddEducationAjax(UserHadEducation userHadEducation)
+        public ActionResult AddEducationAjax(UserHadEducation userHadEducation) 
         {
             if (ModelState.IsValid)
             {
@@ -87,16 +96,41 @@ namespace LinkedIn_Test.Controllers
                     int temp = uvm.UserHadEducations[i].Fk_Education;
                     uvm.Educations.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
                 }
-
+               
                 return PartialView("_Partial_Education_Data", uvm);
             }
-
             else
-            {
                 return PartialView("_Partial_Add_Education");
 
-            }
-
         }
+
+        [HttpPost]
+        public ActionResult AddWorkplaceAjax(UserAtWorkplace userAtWorkplace)  //By: Mesawy
+        {
+            if (ModelState.IsValid)
+            {
+
+                context.UserAtWorkplace.Add(userAtWorkplace);
+                context.SaveChanges();
+
+                UserViewModel uvm = new UserViewModel();
+                uvm.User = context.Users.FirstOrDefault();  //Select first user
+                uvm.UserAtWorkplaces = context.UserAtWorkplace.Where(e => e.Fk_User == uvm.User.Id).ToList();   //All workplaces-relations For this user
+
+                for (int i = 0; i < uvm.UserAtWorkplaces.Count; i++)
+                {
+                    int temp = uvm.UserAtWorkplaces[i].Fk_Workplace;
+                    uvm.Workplaces.Add(context.Workplaces.Find(temp));
+                }
+
+                //foreach (UserAtWorkplace item in uvm.UserAtWorkplaces)
+                //    uvm.Workplaces.Add(item.Workplace);
+
+                return PartialView("_PartialExperience", uvm);
+            }
+            else
+                return PartialView("_Partial_Add_Experience");
+        }
+
     }
 }

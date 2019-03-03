@@ -1,6 +1,8 @@
 ﻿@model UserViewModel
 
 @{
+    /**/
+
     ViewBag.Title = Model.User.FirstName + " " + Model.User.LastName;
     Layout = "~/Views/Shared/_Layout_mainLayout.cshtml";
 }
@@ -9,7 +11,6 @@
 @Html.Partial("_Partial_Profile_Header_Work_Education", Model)
 @Html.Partial("_Partial_Profile_EditHeaderForm", Model)
 @Html.Partial("_Partial_Add_Education", Model)
-
 
 
 @* Skills *@
@@ -26,7 +27,8 @@
 
 </div>
 
-
+@Html.Partial("_Partial_Add_Experience", Model)
+@Html.Partial("_Partial_Experience", Model)
 
 
 
