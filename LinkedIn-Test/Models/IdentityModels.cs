@@ -59,6 +59,7 @@ namespace LinkedIn_Test.Models
 
 
 
+
         public List<Workplace> Workplaces { get; set; }
         public List<Education> Educations { get; set; }
         public List<Skill> Skills { get; set; }

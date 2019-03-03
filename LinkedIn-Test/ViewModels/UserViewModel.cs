@@ -24,7 +24,15 @@ namespace LinkedIn_Test.ViewModels
         public UserHadEducation UserHadEducation { get; set; }
 
         public List<Education> EducationsAll { get; set; }
+        public Workplace Workplace { get; set; }
 
+        public UserAtWorkplace UserAtWorkplace { get; set; }
+
+        public List<Workplace> Workplaces { get; set; }
+
+        public List<Workplace> WorkplacesAll { get; set; }
+
+        public List<UserAtWorkplace> UserAtWorkplaces { get; set; }
 
 
 
