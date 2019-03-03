@@ -203,18 +203,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902251630560_first.cs" />
-    <Compile Include="Migrations\201902251630560_first.Designer.cs">
-      <DependentUpon>201902251630560_first.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902280534368_UpdateLogin.cs" />
-    <Compile Include="Migrations\201902280534368_UpdateLogin.Designer.cs">
-      <DependentUpon>201902280534368_UpdateLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903010733272_profile-add.cs" />
-    <Compile Include="Migrations\201903010733272_profile-add.Designer.cs">
-      <DependentUpon>201903010733272_profile-add.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201903020654147_2nd.cs" />
     <Compile Include="Migrations\201903020654147_2nd.Designer.cs">
       <DependentUpon>201903020654147_2nd.cs</DependentUpon>
@@ -384,15 +372,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902251630560_first.resx">
-      <DependentUpon>201902251630560_first.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902280534368_UpdateLogin.resx">
-      <DependentUpon>201902280534368_UpdateLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903010733272_profile-add.resx">
-      <DependentUpon>201903010733272_profile-add.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903020654147_2nd.resx">
       <DependentUpon>201903020654147_2nd.cs</DependentUpon>
     </EmbeddedResource>
