@@ -133,8 +133,20 @@ namespace LinkedIn_Test.Controllers
                 uvm.User = context.Users.FirstOrDefault();  //Select first user
                 uvm.UserAtWorkplaces = context.UserAtWorkplace.Where(e => e.Fk_User == uvm.User.Id).ToList();   //All workplaces-relations For this user
 
-            }
+                for (int i = 0; i < uvm.UserAtWorkplaces.Count; i++)
+                {
+                    int temp = uvm.UserAtWorkplaces[i].Fk_Workplace;
+                    uvm.Workplaces.Add(context.Workplaces.Find(temp));
+                }
 
+                //foreach (UserAtWorkplace item in uvm.UserAtWorkplaces)
+                //    uvm.Workplaces.Add(item.Workplace);
+
+                return PartialView("_PartialExperience", uvm);
+            }
+            else
+                return PartialView("_Partial_Add_Experience");
         }
+
     }
 }

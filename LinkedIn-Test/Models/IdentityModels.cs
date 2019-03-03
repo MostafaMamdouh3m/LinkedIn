@@ -57,7 +57,7 @@ namespace LinkedIn_Test.Models
         public int Fk_Country { get; set; }
         public Country Country { get; set; }        // add: by mostafa
 
-        public virtual Country Country { get; set; }    // add: by Mesawy
+
 
 
         public List<Workplace> Workplaces { get; set; }
