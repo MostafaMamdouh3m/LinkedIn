@@ -3,7 +3,7 @@ namespace LinkedIn_Test.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class updateHeadLine6 : DbMigration
+    public partial class updatemes : DbMigration
     {
         public override void Up()
         {
@@ -42,7 +42,7 @@ namespace LinkedIn_Test.Migrations
                         Summary = c.String(),
                         CurrentPosition = c.String(),
                         Fk_CurrentEducation = c.Int(nullable: false),
-                        CountryId = c.Int(nullable: false),
+                        Fk_Country = c.Int(nullable: false),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -57,11 +57,11 @@ namespace LinkedIn_Test.Migrations
                         Education_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Countries", t => t.CountryId, cascadeDelete: true)
+                .ForeignKey("dbo.Countries", t => t.Fk_Country, cascadeDelete: true)
                 .ForeignKey("dbo.Educations", t => t.Education_Id)
                 .ForeignKey("dbo.Educations", t => t.Fk_CurrentEducation, cascadeDelete: true)
                 .Index(t => t.Fk_CurrentEducation)
-                .Index(t => t.CountryId)
+                .Index(t => t.Fk_Country)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex")
                 .Index(t => t.Education_Id);
             
@@ -330,7 +330,7 @@ namespace LinkedIn_Test.Migrations
             DropForeignKey("dbo.Educations", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUsers", "Fk_CurrentEducation", "dbo.Educations");
             DropForeignKey("dbo.AspNetUsers", "Education_Id", "dbo.Educations");
-            DropForeignKey("dbo.AspNetUsers", "CountryId", "dbo.Countries");
+            DropForeignKey("dbo.AspNetUsers", "Fk_Country", "dbo.Countries");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.WorkplaceApplicationUsers", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.WorkplaceApplicationUsers", new[] { "Workplace_Id" });
@@ -358,7 +358,7 @@ namespace LinkedIn_Test.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", new[] { "Education_Id" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUsers", new[] { "CountryId" });
+            DropIndex("dbo.AspNetUsers", new[] { "Fk_Country" });
             DropIndex("dbo.AspNetUsers", new[] { "Fk_CurrentEducation" });
             DropIndex("dbo.Comments", new[] { "Post_Id" });
             DropIndex("dbo.Comments", new[] { "Fk_CommentOwner" });

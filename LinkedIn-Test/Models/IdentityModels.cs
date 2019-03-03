@@ -48,13 +48,13 @@ namespace LinkedIn_Test.Models
 
 
         [ForeignKey("CurrentEducation")]
-        public virtual int Fk_CurrentEducation { get; set; }    // add: by mostafa
+        public virtual int? Fk_CurrentEducation { get; set; }    // add: by mostafa
 
         public Education CurrentEducation { get; set; }        // add: by mostafa
 
 
         [ForeignKey("Country")]
-        public int Fk_Country { get; set; }
+        public int? Fk_Country { get; set; }
         public Country Country { get; set; }        // add: by mostafa
 
 

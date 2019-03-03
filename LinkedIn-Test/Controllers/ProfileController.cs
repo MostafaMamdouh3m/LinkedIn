@@ -57,8 +57,8 @@ namespace LinkedIn_Test.Controllers
                 olduser.CurrentPosition = user.CurrentPosition;
                 olduser.Fk_CurrentEducation = user.Fk_CurrentEducation;
                 olduser.CurrentEducation = user.CurrentEducation;
-                olduser.CountryId = user.CountryId;
-                olduser.Country = context.Countries.Find(user.CountryId);
+                olduser.Fk_Country = user.Fk_Country;
+                olduser.Country = context.Countries.Find(user.Fk_Country);
 
                 olduser.Workplaces = user.Workplaces;
                 olduser.Educations = user.Educations;
@@ -69,7 +69,7 @@ namespace LinkedIn_Test.Controllers
                 UserViewModel uvm = new UserViewModel();
                 uvm.User = user;
                 uvm.User.CurrentEducation = context.Educations.Find(user.Fk_CurrentEducation);
-                uvm.User.Country= context.Countries.Find(user.CountryId);
+                uvm.User.Country= context.Countries.Find(user.Fk_Country);
                 uvm.Users = context.Users.ToList();
                 uvm.UserHadEducations = context.UserHadEducation.ToList();
                 uvm.EducationsAll = context.Educations.ToList();

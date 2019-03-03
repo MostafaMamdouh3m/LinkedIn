@@ -203,9 +203,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903031501193_updateHeadLine6.cs" />
-    <Compile Include="Migrations\201903031501193_updateHeadLine6.Designer.cs">
-      <DependentUpon>201903031501193_updateHeadLine6.cs</DependentUpon>
+    <Compile Include="Migrations\201903031533269_update-mes.cs" />
+    <Compile Include="Migrations\201903031533269_update-mes.Designer.cs">
+      <DependentUpon>201903031533269_update-mes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903031540055_update-mes2.cs" />
+    <Compile Include="Migrations\201903031540055_update-mes2.Designer.cs">
+      <DependentUpon>201903031540055_update-mes2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -335,8 +339,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903031501193_updateHeadLine6.resx">
-      <DependentUpon>201903031501193_updateHeadLine6.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903031533269_update-mes.resx">
+      <DependentUpon>201903031533269_update-mes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903031540055_update-mes2.resx">
+      <DependentUpon>201903031540055_update-mes2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

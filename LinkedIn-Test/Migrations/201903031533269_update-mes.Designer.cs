@@ -7,13 +7,13 @@ namespace LinkedIn_Test.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class updateHeadLine6 : IMigrationMetadata
+    public sealed partial class updatemes : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updateHeadLine6));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(updatemes));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903031501193_updateHeadLine6"; }
+            get { return "201903031533269_update-mes"; }
         }
         
         string IMigrationMetadata.Source
