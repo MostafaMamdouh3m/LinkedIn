@@ -148,5 +148,65 @@ namespace LinkedIn_Test.Controllers
                 return PartialView("_Partial_Add_Experience");
         }
 
+        [HttpPost]
+        public ActionResult EditEducationAjax(UserHadEducation userHadEducation)
+        {
+            userHadEducation.Id = 2;          // will be edited
+            userHadEducation.Fk_User = context.Users.ToList()[0].Id;      // will be edited
+
+            if (ModelState.IsValid)
+            {
+                UserViewModel uvm = new UserViewModel();
+                uvm.UserHadEducation = userHadEducation;
+                uvm.User = context.Users.ToList()[0];            // will be edited
+
+                UserHadEducation old = context.UserHadEducation.Find(userHadEducation.Id);
+
+                old.Activities = userHadEducation.Activities;
+                old.CurrentEducation = userHadEducation.CurrentEducation;
+                old.Degree = userHadEducation.Degree;
+                old.Description = userHadEducation.Description;
+                old.Education = userHadEducation.Education;
+                old.EndDate = userHadEducation.EndDate;
+                old.FieldOfStudy = userHadEducation.FieldOfStudy;
+                old.Fk_Education = userHadEducation.Fk_Education;
+                old.Fk_User = userHadEducation.Fk_User;
+                old.Grade = userHadEducation.Grade;
+                old.User = userHadEducation.User;
+                old.StartDate = userHadEducation.StartDate;
+
+                context.SaveChanges();
+
+                uvm.UserHadEducation.Fk_User = userHadEducation.Fk_User;
+                uvm.UserHadEducation.Fk_Education = userHadEducation.Fk_Education;
+                uvm.UserHadEducation.Activities = userHadEducation.Activities;
+                uvm.UserHadEducation.Degree = userHadEducation.Degree;
+                uvm.UserHadEducation.Description = userHadEducation.Description;
+                uvm.UserHadEducation.EndDate = userHadEducation.EndDate;
+                uvm.UserHadEducation.FieldOfStudy = userHadEducation.FieldOfStudy;
+                uvm.UserHadEducation.Grade = userHadEducation.Grade;
+                uvm.UserHadEducation.StartDate = userHadEducation.StartDate;
+
+
+                uvm.UserHadEducations = context.UserHadEducation.Where(e => e.Fk_User == uvm.User.Id).ToList();
+                List<Education> educations = new List<Education>();
+                uvm.Educations = educations;
+
+                for (int i = 0; i < uvm.UserHadEducations.Count; i++)
+                {
+                    int temp = uvm.UserHadEducations[i].Fk_Education;
+                    uvm.Educations.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
+                }
+
+                return PartialView("_Partial_Education_Data", uvm);
+            }
+
+            else
+            {
+                return PartialView("_Partial_Edit_Education");
+
+            }
+        }
+
     }
 }
