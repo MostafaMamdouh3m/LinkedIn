@@ -1,9 +1,12 @@
 ﻿using LinkedIn_Test.Models;
 using LinkedIn_Test.Models.Entities;
 using LinkedIn_Test.ViewModels;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,78 +15,60 @@ namespace LinkedIn_Test.Controllers
     public class ProfileController : Controller
     {
         ApplicationDbContext context = new ApplicationDbContext();
+        UserViewModel viewModel = new UserViewModel();
 
-        public ActionResult UserProfile()                           //by: mostafa
+        public ActionResult Index()                           //by: mostafa
         {
-            UserViewModel uvm = new UserViewModel(); 
-            uvm.User = context.Users.ToList()[0];                  // will be edited
-            uvm.UserHadEducations = context.UserHadEducation.Where(e => e.Fk_User == uvm.User.Id).ToList();
-            uvm.Countries = context.Countries.ToList();
-            uvm.User.CurrentEducation = context.Educations.Find(uvm.User.Fk_CurrentEducation);
+           //List<ApplicationUser>  users = context.Users.ToList();
 
+            string userId = User.Identity.GetUserId();
+            viewModel.User = context.Users.Where(e => e.Id == userId).ToList()[0];
+            viewModel.User.UserEductions = context.UserEducations.Where(e => e.Fk_User == userId).ToList();
+            viewModel.Educations = context.Educations.ToList();
+            viewModel.Countries = context.Countries.ToList();
 
-            List<Education> usereducations = new List<Education>();
-            uvm.EducationsAll = context.Educations.ToList();
-            uvm.Educations = usereducations;
+            viewModel.DropDownListForEducationsOfUser = new List<Education>();
 
-            uvm.WorkplacesAll = context.Workplaces.ToList();    // Mesawy
-            uvm.UserAtWorkplaces = context.UserAtWorkplace.Where(e => e.Fk_User == uvm.User.Id).ToList();
-
-            for (int i = 0; i < uvm.UserHadEducations.Count; i++)
+            for (int i = 0; i < viewModel.User.UserEductions.Count; i++)
             {
-                int temp = uvm.UserHadEducations[i].Fk_Education;
-                uvm.Educations.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
+                int temp = viewModel.User.UserEductions[i].Fk_Education;
+                viewModel.DropDownListForEducationsOfUser.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
             }
 
-            return View(uvm);
+            return View(viewModel);
         }
 
-
         [HttpPost]
-        public ActionResult EditHeaderFormAjex(ApplicationUser user)                   //by: mostafa
+        public ActionResult EditHeaderFormAjex(ApplicationUser User)                   //by: mostafa
         {
-          
 
             if (ModelState.IsValid)
             {
-                ApplicationUser olduser = context.Users.Find(user.Id);
-                olduser.FirstName = user.FirstName;
-                olduser.LastName = user.LastName;
-                olduser.Headline = user.Headline;
-                olduser.CurrentPosition = user.CurrentPosition;
-                olduser.ProfilePicture = user.ProfilePicture;
-                olduser.HeaderPicture = user.HeaderPicture;
-                olduser.Summary = user.Summary;
-                olduser.CurrentPosition = user.CurrentPosition;
-                olduser.Fk_CurrentEducation = user.Fk_CurrentEducation;
-                olduser.CurrentEducation = user.CurrentEducation;
-                olduser.Fk_Country = user.Fk_Country;
-                olduser.Country = context.Countries.Find(user.Fk_Country);
+                ApplicationUser olduser = context.Users.Find(User.Id);
+                olduser = User;
 
-                olduser.Workplaces = user.Workplaces;
-                olduser.Educations = user.Educations;
-                olduser.Skills = user.Skills;
-                olduser.Friends = user.Friends;
+                olduser.FirstName = User.FirstName;
+                olduser.LastName = User.LastName;
+                olduser.Headline = User.Headline;
+                olduser.CurrentPosition = User.CurrentPosition;
+                olduser.ProfilePicture = User.ProfilePicture;
+                olduser.HeaderPicture = User.HeaderPicture;
+                olduser.Summary = User.Summary;
+                olduser.CurrentPosition = User.CurrentPosition;
+                olduser.Fk_CurrentEducation = User.Fk_CurrentEducation;
+                olduser.CurrentEducation = User.CurrentEducation;
+                olduser.Fk_Country = User.Fk_Country;
+                olduser.Country = context.Countries.Find(User.Fk_Country);
                 context.SaveChanges();
 
-                UserViewModel uvm = new UserViewModel();
-                uvm.User = user;
-                uvm.User.CurrentEducation = context.Educations.Find(user.Fk_CurrentEducation);
-                uvm.User.Country= context.Countries.Find(user.Fk_Country);
-                uvm.Users = context.Users.ToList();
-                uvm.UserHadEducations = context.UserHadEducation.ToList();
-                uvm.EducationsAll = context.Educations.ToList();
+                viewModel.User = User;
+                viewModel.User.CurrentEducation = context.Educations.Find(User.Fk_CurrentEducation);
+                viewModel.User.Country = context.Countries.Find(User.Fk_Country);
+                viewModel.Users = context.Users.ToList();
+                viewModel.User.UserEductions = context.UserEducations.Where(e => e.Fk_User == User.Id).ToList();
+                viewModel.Educations= context.Educations.ToList();
 
-                List<Education> usereducations = new List<Education>();                
-                uvm.Educations = usereducations;
-
-                for (int i = 0; i < uvm.UserHadEducations.Count; i++)
-                {
-                    int temp = uvm.UserHadEducations[i].Fk_Education;
-                    uvm.Educations.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
-                }
-
-                return PartialView("_Partial_Profile_Header_Work_Education", uvm);
+                return PartialView("_Partial_Profile_Header_Work_Education", viewModel);
             }
 
             else
@@ -94,26 +79,37 @@ namespace LinkedIn_Test.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddEducationAjax(UserHadEducation userHadEducation) 
+        public ActionResult AddWorkplaceAjax(UserWorkplace userAtWorkplace)  //By: Mesawy
         {
+
+            string userId = User.Identity.GetUserId();
+
             if (ModelState.IsValid)
             {
-                UserViewModel uvm = new UserViewModel();
-                uvm.User = context.Users.ToList()[0];                           // will be edited
-                userHadEducation.Fk_User = uvm.User.Id;
-                context.UserHadEducation.Add(userHadEducation);
-                context.SaveChanges();              
-                uvm.UserHadEducations = context.UserHadEducation.Where(e => e.Fk_User == uvm.User.Id).ToList();
-                List<Education> educations = new List<Education>();
-                uvm.Educations = educations;
+                context.UserWorkplaces.Add(userAtWorkplace);
+                context.SaveChanges();
 
-                for (int i = 0; i < uvm.UserHadEducations.Count; i++)
-                {
-                    int temp = uvm.UserHadEducations[i].Fk_Education;
-                    uvm.Educations.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
-                }
-               
-                return PartialView("_Partial_Education_Data", uvm);
+                viewModel.User.UserWorkplaces = context.UserWorkplaces.Include("Workplace").Where(e => e.Fk_User == userId).ToList();
+                return PartialView("_PartialExperience", viewModel);
+            }
+            else
+                return PartialView("_Partial_Add_Experience");
+        }
+
+        [HttpPost]
+        public ActionResult AddEducationAjax(UserEducation userEducation)
+        {
+
+            string userId = User.Identity.GetUserId();
+
+            if (ModelState.IsValid)
+            {
+                userEducation.Fk_User = userId;
+                context.UserEducations.Add(userEducation);
+                context.SaveChanges();
+                viewModel.User = context.Users.Find(userId);
+                viewModel.User.UserEductions = context.UserEducations.Include("Education").Where(e => e.Fk_User == userId).ToList();
+                return PartialView("_Partial_Education_Data", viewModel.User.UserEductions);
             }
             else
                 return PartialView("_Partial_Add_Education");
@@ -121,92 +117,85 @@ namespace LinkedIn_Test.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddWorkplaceAjax(UserAtWorkplace userAtWorkplace)  //By: Mesawy
+        public ActionResult EditEducationAjax(UserEducation userEducation)
         {
-            if (ModelState.IsValid)
-            {
+            string userId = User.Identity.GetUserId();
+            userEducation.Fk_User = userId;
+            userEducation.Education.Type = context.Educations.Where(e => e.Id == userEducation.Fk_Education).ToList()[0].Type;
+            userEducation.Education.Name = context.Educations.Where(e => e.Id == userEducation.Fk_Education).ToList()[0].Name;
 
-                context.UserAtWorkplace.Add(userAtWorkplace);
-                context.SaveChanges();
+            UserEducation oldEducation = context.UserEducations.Find(userEducation.Id);
+            oldEducation = userEducation;
 
-                UserViewModel uvm = new UserViewModel();
-                uvm.User = context.Users.FirstOrDefault();  //Select first user
-                uvm.UserAtWorkplaces = context.UserAtWorkplace.Where(e => e.Fk_User == uvm.User.Id).ToList();   //All workplaces-relations For this user
+            context.UserEducations.Find(userEducation.Id).Activities = userEducation.Activities;
+            oldEducation.Degree = userEducation.Degree;
+            context.UserEducations.Find(userEducation.Id).Description = userEducation.Description;
+            context.UserEducations.Find(userEducation.Id).FieldOfStudy = userEducation.FieldOfStudy;
+            oldEducation.Grade = userEducation.Grade;
+            oldEducation.StartDate = userEducation.StartDate;
+            oldEducation.EndDate = userEducation.EndDate;
+            context.UserEducations.Find(userEducation.Id).Fk_Education = userEducation.Fk_Education;
+            oldEducation.Fk_User = userEducation.Fk_User;
+            oldEducation.Education.Name = userEducation.Education.Name;
+            oldEducation.Education.Type = userEducation.Education.Type;
 
-                for (int i = 0; i < uvm.UserAtWorkplaces.Count; i++)
-                {
-                    int temp = uvm.UserAtWorkplaces[i].Fk_Workplace;
-                    uvm.Workplaces.Add(context.Workplaces.Find(temp));
-                }
+            //context.Entry(oldEducation).State = EntityState.Modified;
+            context.SaveChanges();
 
-                //foreach (UserAtWorkplace item in uvm.UserAtWorkplaces)
-                //    uvm.Workplaces.Add(item.Workplace);
+            viewModel.User = context.Users.Where(e => e.Id == userEducation.Fk_User).ToArray()[0];
 
-                return PartialView("_PartialExperience", uvm);
-            }
-            else
-                return PartialView("_Partial_Add_Experience");
+         
+            viewModel.User.UserEductions = context.UserEducations.Include("Education").Where(e => e.Fk_User == userId).ToList();
+            return PartialView("_Partial_Education_Data", viewModel.User.UserEductions);
+
+        }
+        [HttpGet]
+        public ActionResult EditEducationAjax(int id)
+        {
+                            
+            viewModel.UserEducation = context.UserEducations.Include("Education").Where( e => e.Id == id).ToArray()[0];
+            viewModel.Educations = context.Educations.ToList();
+            viewModel.Education = context.Educations.Where(e => e.Id == viewModel.UserEducation.Fk_Education).ToList()[0];
+            viewModel.Education.Name = context.Educations.Where(e => e.Id == viewModel.UserEducation.Fk_Education).ToList()[0].Name;
+            viewModel.Education.Type = context.Educations.Where(e => e.Id == viewModel.UserEducation.Fk_Education).ToList()[0].Type;
+            viewModel.UserEducation.StartDate = context.UserEducations.Include("Education").Where(e => e.Id == id).ToArray()[0].StartDate;
+            viewModel.UserEducation.EndDate = context.UserEducations.Include("Education").Where(e => e.Id == id).ToArray()[0].EndDate;
+
+
+
+            return PartialView("_Partial_Edit_Education", viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult DeleteEducationAjax(int id)
+        {
+            string userId = User.Identity.GetUserId();
+
+            viewModel.User = context.Users.Where(e => e.Id == userId).ToList()[0];
+            viewModel.UserEducation = context.UserEducations.Include("Education").Where(e => e.Id == id).ToArray()[0];
+            viewModel.Education = context.Educations.Where(e => e.Id == viewModel.UserEducation.Fk_Education).ToList()[0];
+
+            return PartialView("_Partial_Delete_Education", viewModel);
         }
 
         [HttpPost]
-        public ActionResult EditEducationAjax(UserHadEducation userHadEducation)
+        public ActionResult DeleteEducationAjax(UserEducation userEducation)
         {
-            userHadEducation.Id = 2;          // will be edited
-            userHadEducation.Fk_User = context.Users.ToList()[0].Id;      // will be edited
+            string userId = User.Identity.GetUserId();
+            userEducation.Fk_User = userId;
 
-            if (ModelState.IsValid)
-            {
-                UserViewModel uvm = new UserViewModel();
-                uvm.UserHadEducation = userHadEducation;
-                uvm.User = context.Users.ToList()[0];            // will be edited
+            context.UserEducations.Remove(userEducation);
+            
+            context.SaveChanges();
 
-                UserHadEducation old = context.UserHadEducation.Find(userHadEducation.Id);
+            viewModel.User = context.Users.Where(e => e.Id == userEducation.Fk_User).ToArray()[0];
+            viewModel.User.UserEductions = context.UserEducations.Include("Education").Where(e => e.Fk_User == userId).ToList();
+            return PartialView("_Partial_Education_Data", viewModel.User.UserEductions);
 
-                old.Activities = userHadEducation.Activities;
-                old.CurrentEducation = userHadEducation.CurrentEducation;
-                old.Degree = userHadEducation.Degree;
-                old.Description = userHadEducation.Description;
-                old.Education = userHadEducation.Education;
-                old.EndDate = userHadEducation.EndDate;
-                old.FieldOfStudy = userHadEducation.FieldOfStudy;
-                old.Fk_Education = userHadEducation.Fk_Education;
-                old.Fk_User = userHadEducation.Fk_User;
-                old.Grade = userHadEducation.Grade;
-                old.User = userHadEducation.User;
-                old.StartDate = userHadEducation.StartDate;
-
-                context.SaveChanges();
-
-                uvm.UserHadEducation.Fk_User = userHadEducation.Fk_User;
-                uvm.UserHadEducation.Fk_Education = userHadEducation.Fk_Education;
-                uvm.UserHadEducation.Activities = userHadEducation.Activities;
-                uvm.UserHadEducation.Degree = userHadEducation.Degree;
-                uvm.UserHadEducation.Description = userHadEducation.Description;
-                uvm.UserHadEducation.EndDate = userHadEducation.EndDate;
-                uvm.UserHadEducation.FieldOfStudy = userHadEducation.FieldOfStudy;
-                uvm.UserHadEducation.Grade = userHadEducation.Grade;
-                uvm.UserHadEducation.StartDate = userHadEducation.StartDate;
-
-
-                uvm.UserHadEducations = context.UserHadEducation.Where(e => e.Fk_User == uvm.User.Id).ToList();
-                List<Education> educations = new List<Education>();
-                uvm.Educations = educations;
-
-                for (int i = 0; i < uvm.UserHadEducations.Count; i++)
-                {
-                    int temp = uvm.UserHadEducations[i].Fk_Education;
-                    uvm.Educations.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
-                }
-
-                return PartialView("_Partial_Education_Data", uvm);
-            }
-
-            else
-            {
-                return PartialView("_Partial_Edit_Education");
-
-            }
         }
+
 
     }
 }
+
+

@@ -48,20 +48,19 @@ namespace LinkedIn_Test.Models
 
 
         [ForeignKey("CurrentEducation")]
-        public virtual int Fk_CurrentEducation { get; set; }    // add: by mostafa
-
+        public int? Fk_CurrentEducation { get; set; }    // add: by mostafa
         public Education CurrentEducation { get; set; }        // add: by mostafa
 
 
         [ForeignKey("Country")]
-        public int Fk_Country { get; set; }
+        public int? Fk_Country { get; set; }
         public Country Country { get; set; }        // add: by mostafa
 
 
 
 
-        public List<Workplace> Workplaces { get; set; }
-        public List<Education> Educations { get; set; }
+        public List<UserWorkplace> UserWorkplaces { get; set; }
+        public List<UserEducation> UserEductions { get; set; }
         public List<Skill> Skills { get; set; }
         public List<Notification> Notifications { get; set; }
         public List<Friend> Friends { get; set; }
@@ -88,8 +87,8 @@ namespace LinkedIn_Test.Models
         public virtual DbSet<Notification> Notifications { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Skill> Skills { get; set; }
-        public virtual DbSet<UserAtWorkplace> UserAtWorkplace { get; set; }
-        public virtual DbSet<UserHadEducation> UserHadEducation { get; set; }
+        public virtual DbSet<UserWorkplace> UserWorkplaces { get; set; }
+        public virtual DbSet<UserEducation> UserEducations { get; set; }
         public virtual DbSet<UserLikePost> UserLikePost { get; set; }
         public virtual DbSet<Workplace> Workplaces { get; set; }
     }

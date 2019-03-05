@@ -98,10 +98,11 @@
 
                     </div>
 
+    
 
                     <div class="form-group new-education">
                         @Html.LabelFor(m => m.User.CurrentEducation, new { @class = "labels" })
-                        @Html.DropDownListFor(m => m.User.Fk_CurrentEducation, new SelectList(Model.Educations, "Id", "Name"), "Select School/University", new { @class = "form-control largedroplist" })
+                        @Html.DropDownListFor(m => m.User.Fk_CurrentEducation, new SelectList(Model.DropDownListForEducationsOfUser, "Id", "Name"), "Select School/University", new { @class = "form-control largedroplist" })
                         @Html.ValidationMessageFor(m => m.User.CurrentEducation)
 
                         <button type="button" class="btn btn-link add-new-education" data-toggle="modal" data-target="#myModal">

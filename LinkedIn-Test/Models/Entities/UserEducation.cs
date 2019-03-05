@@ -8,7 +8,9 @@ using System.Web;
 
 namespace LinkedIn_Test.Models.Entities
 {
-    public class UserHadEducation
+
+    [Table("UserEducation")]
+    public class UserEducation
     {
 
         public int Id { get; set; }

@@ -28,14 +28,14 @@
                 <div class="modal-body-addeducation">
 
                     @*@Html.HiddenFor(e => e.UserHadEducation.Id)*@
-                    @Html.HiddenFor(e => e.UserHadEducation.Fk_User)
+                    @Html.HiddenFor(e => e.UserEducation.Fk_User)
 
 
                     <div class="form-group">
 
 
                         @Html.LabelFor(m => m.Education.Name, new { @class = "labels required" })
-                        @Html.DropDownListFor(m => m.UserHadEducation.Fk_Education, new SelectList(Model.EducationsAll, "Id", "Name"), "Select School/University", new { @class = "form-control largedroplist" })
+                        @Html.DropDownListFor(m => m.UserEducation.Fk_Education, new SelectList(Model.Educations, "Id", "Name"), "Select School/University", new { @class = "form-control largedroplist" })
                         @Html.ValidationMessageFor(m => m.Education.Name, "", new { @class = "notvalid" })
                     </div>
 
@@ -46,24 +46,24 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.UserHadEducation.Degree, new { @class = "labels" })
-                        @Html.TextBoxFor(m => m.UserHadEducation.Degree, new { @class = "form-control largetextbox" })
-                        @Html.ValidationMessageFor(m => m.UserHadEducation.Degree, "", new { @class = "" })
+                        @Html.LabelFor(m => m.UserEducation.Degree, new { @class = "labels" })
+                        @Html.TextBoxFor(m => m.UserEducation.Degree, new { @class = "form-control largetextbox" })
+                        @Html.ValidationMessageFor(m => m.UserEducation.Degree, "", new { @class = "" })
                     </div>
 
                     <div class="form-group  duration-addeducation">
 
                         <div class="startdate">
 
-                            @Html.LabelFor(m => m.UserHadEducation.StartDate, new { @class = "labels" })
-                            @Html.EditorFor(m => m.UserHadEducation.StartDate, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(m => m.UserHadEducation.StartDate, "", new { @class = "notvalid" })
+                            @Html.LabelFor(m => m.UserEducation.StartDate, new { @class = "labels" })
+                            @Html.EditorFor(m => m.UserEducation.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.UserEducation.StartDate, "", new { @class = "notvalid" })
                         </div>
 
                         <div class="enddate">
-                            @Html.LabelFor(m => m.UserHadEducation.EndDate, new { @class = "labels" })
-                            @Html.EditorFor(m => m.UserHadEducation.EndDate, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(m => m.UserHadEducation.EndDate, "", new { @class = "notvalid" })
+                            @Html.LabelFor(m => m.UserEducation.EndDate, new { @class = "labels" })
+                            @Html.EditorFor(m => m.UserEducation.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.UserEducation.EndDate, "", new { @class = "notvalid" })
                         </div>
 
                     </div>

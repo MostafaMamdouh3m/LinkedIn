@@ -66,6 +66,24 @@
     right: 35px;
     font-size: 125%;
 }
+.pen-photo-edit {
+    position: absolute;
+    top: 230px;
+    left: 140px;
+    font-size: 120%;
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-shadow: 4px 4px 4px ghostwhite;
+    font-weight: normal;
+    color: #428bca;
+    cursor: pointer;
+}
+
+
 
 .summary {
     padding: 25px;
@@ -108,7 +126,7 @@
 }
 
 .eduaction-data-image {
-    width: 40%;
+    width: 45%;
     display: flex;
     justify-content: space-between;
 }
@@ -169,13 +187,11 @@
     margin-bottom: 5px;
 }
 
-
-
-
-
+.education-edit-btn
+{
+    margin-bottom:5px;
+}
 /* Edit Form part */
-
-
 .profileimage img {
     width: 152px;
     height: 152px;

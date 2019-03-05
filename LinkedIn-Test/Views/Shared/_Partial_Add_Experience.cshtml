@@ -1,6 +1,5 @@
-﻿
-@model UserViewModel
-@{ 
+﻿@model UserViewModel
+@{
     AjaxOptions Add_Experience_ajaxOptions = new AjaxOptions()
     {
         HttpMethod = "POST",
@@ -23,37 +22,37 @@
 
 
                 <div class="modal-body-addeducation">
-                    @Html.HiddenFor(e => e.UserAtWorkplace.Fk_User)
+                    @Html.HiddenFor(e => e.UserWorkplace.Fk_User)
 
                     <!--Company-->
                     <div class="form-group">
-                        @Html.LabelFor(m => m.UserAtWorkplace.Title, new { @class = "labels" })
-                        @Html.TextBoxFor(m => m.UserAtWorkplace.Title, new { @class = "form-control largetextbox", placeholder = "Ex: Manager" })
-                        @Html.ValidationMessageFor(m => m.UserAtWorkplace.Title)
+                        @Html.LabelFor(m => m.UserWorkplace.Title, new { @class = "labels" })
+                        @Html.TextBoxFor(m => m.UserWorkplace.Title, new { @class = "form-control largetextbox", placeholder = "Ex: Manager" })
+                        @Html.ValidationMessageFor(m => m.UserWorkplace.Title)
                     </div>
 
                     <!--Company-->
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Workplace.Name, new { @class = "labels" })
-                        @Html.DropDownListFor(m => m.UserAtWorkplace.Fk_Workplace, new SelectList(Model.WorkplacesAll, "Id", "Name"),"Select your Company", new { @class = "form-control largetextbox"})
-                        @Html.ValidationMessageFor(m => m.Workplace.Name)
+                        @Html.LabelFor(m => m.UserWorkplace.Workplace.Name, new { @class = "labels" })
+                        @Html.DropDownListFor(m => m.UserWorkplace.Fk_Workplace, new SelectList(Model.Workplaces, "Id", "Name"), "Select your Company", new { @class = "form-control largetextbox" })
+                        @Html.ValidationMessageFor(m => m.UserWorkplace.Workplace.Name)
                     </div>
-                     @*<div class="form-group">
-                        @Html.LabelFor(m => m.Workplace.Name, new { @class = "labels" })
-                        @Html.TextBoxFor(m => m.Workplace.Name, new { @class = "form-control largetextbox", placeholder = "Ex: Microsoft" })
-                        @Html.ValidationMessageFor(m => m.Workplace.Name)
-                    </div>*@
+                    @*<div class="form-group">
+                            @Html.LabelFor(m => m.Workplace.Name, new { @class = "labels" })
+                            @Html.TextBoxFor(m => m.Workplace.Name, new { @class = "form-control largetextbox", placeholder = "Ex: Microsoft" })
+                            @Html.ValidationMessageFor(m => m.Workplace.Name)
+                        </div>*@
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.UserAtWorkplace.Location, new { @class = "labels" })
-                        @Html.TextBoxFor(m => m.UserAtWorkplace.Location, new { @class = "form-control largetextbox", placeholder = "Ex: London, United Kingdom" })
-                        @Html.ValidationMessageFor(m => m.UserAtWorkplace.Location)
+                        @Html.LabelFor(m => m.UserWorkplace.Location, new { @class = "labels" })
+                        @Html.TextBoxFor(m => m.UserWorkplace.Location, new { @class = "form-control largetextbox", placeholder = "Ex: London, United Kingdom" })
+                        @Html.ValidationMessageFor(m => m.UserWorkplace.Location)
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.UserAtWorkplace.StartDate, new { @class = "labels " })
-                        @Html.TextBoxFor(m => m.UserAtWorkplace.StartDate, new { @class = "form-control largetextbox" })
-                        @Html.ValidationMessageFor(m => m.UserAtWorkplace.StartDate)
+                        @Html.LabelFor(m => m.UserWorkplace.StartDate, new { @class = "labels " })
+                        @Html.TextBoxFor(m => m.UserWorkplace.StartDate, new { @class = "form-control largetextbox" })
+                        @Html.ValidationMessageFor(m => m.UserWorkplace.StartDate)
                     </div>
 
                     <div>
@@ -62,40 +61,35 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.UserAtWorkplace.EndDate, new { @class = "labels  " })
-                        @Html.TextBoxFor(m => m.UserAtWorkplace.EndDate, new { @class = "form-control largetextbox" })
-                        @Html.ValidationMessageFor(m => m.UserAtWorkplace.EndDate)
+                        @Html.LabelFor(m => m.UserWorkplace.EndDate, new { @class = "labels  " })
+                        @Html.TextBoxFor(m => m.UserWorkplace.EndDate, new { @class = "form-control largetextbox" })
+                        @Html.ValidationMessageFor(m => m.UserWorkplace.EndDate)
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.UserAtWorkplace.Industry, new { @class = "labels" })
-                        @Html.DropDownListFor(m => m.UserAtWorkplace.Industry, new SelectList(new[] { "Architecture Engineering", "Civil Engineering", "Medicine", "Commerce", "Art/Composition", "Other" }), new { @class = "form-control largetextbox" })
-                        @Html.ValidationMessageFor(m => m.UserAtWorkplace.Industry)
+                        @Html.LabelFor(m => m.UserWorkplace.Industry, new { @class = "labels" })
+                        @Html.DropDownListFor(m => m.UserWorkplace.Industry, new SelectList(new[] { "Architecture Engineering", "Civil Engineering", "Medicine", "Commerce", "Art/Composition", "Other" }), new { @class = "form-control largetextbox" })
+                        @Html.ValidationMessageFor(m => m.UserWorkplace.Industry)
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.UserAtWorkplace.HeadLine, new { @class = "labels" })
-                        @Html.TextAreaFor(m => m.UserAtWorkplace.HeadLine, new { @class = "form-control largetextbox" })
-                        @Html.ValidationMessageFor(m => m.UserAtWorkplace.HeadLine)
+                        @Html.LabelFor(m => m.UserWorkplace.HeadLine, new { @class = "labels" })
+                        @Html.TextAreaFor(m => m.UserWorkplace.HeadLine, new { @class = "form-control largetextbox" })
+                        @Html.ValidationMessageFor(m => m.UserWorkplace.HeadLine)
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.UserAtWorkplace.Description, new { @class = "labels" })
-                        @Html.TextAreaFor(m => m.UserAtWorkplace.Description, new { @class = "form-control largetextbox" })
-                        @Html.ValidationMessageFor(m => m.UserAtWorkplace.Description)
+                        @Html.LabelFor(m => m.UserWorkplace.Description, new { @class = "labels" })
+                        @Html.TextAreaFor(m => m.UserWorkplace.Description, new { @class = "form-control largetextbox" })
+                        @Html.ValidationMessageFor(m => m.UserWorkplace.Description)
                     </div>
                 </div>
 
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" style="border-radius:3px;  padding-top:5px; padding-bottom:5px; padding-left:15px;  padding-right:15px; " >Save</button>
+                    <button type="submit" class="btn btn-primary" style="border-radius:3px;  padding-top:5px; padding-bottom:5px; padding-left:15px;  padding-right:15px; ">Save</button>
                 </div>
             </div>
         </div>
     </div>
 }
-@*<script type="text/javascript">
-    $(function () { // will trigger when the document is ready
-        $('.datepicker').datepicker(); //Initialise any date pickers
-    });
-</script>*@
