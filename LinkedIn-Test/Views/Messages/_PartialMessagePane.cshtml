@@ -1,0 +1,35 @@
+﻿@model Message
+
+
+@if (Model.Reciver.UserName == User.Identity.Name)
+{
+    <div class="chatter_pane" onclick="LoadChat('@Model.Fk_Sender')" userId="@Model.Fk_Sender">
+        <div class="chatter_pane_sidebar"></div>
+        <div class="chatter_pane_pic">
+            <div>
+                <img src="@Model.Sender.ProfilePicture">
+            </div>
+        </div>
+        <div class="chatter_pane_info">
+            <div>@Model.Sender.FirstName @Model.Sender.LastName</div>
+            <div><span>@Model.Sender.FirstName : </span>@Model.Body</div>
+        </div>
+        <div class="chatter_pane_time">@Model.Date.ToShortTimeString()</div>
+    </div>
+}
+else
+{
+    <div class="chatter_pane" onclick="LoadChat('@Model.Fk_Reciver')"  userId="@Model.Fk_Reciver">
+        <div class="chatter_pane_sidebar"></div>
+        <div class="chatter_pane_pic">
+            <div>
+                <img src="@Model.Reciver.ProfilePicture">
+            </div>
+        </div>
+        <div class="chatter_pane_info">
+            <div>@Model.Reciver.FirstName @Model.Reciver.LastName</div>
+            <div><span>You : </span>@Model.Body</div>
+        </div>
+        <div class="chatter_pane_time">@Model.Date.ToShortTimeString()</div>
+    </div>
+}

@@ -9,34 +9,37 @@
     <title>@ViewBag.Title</title>
     @*style*@
 
-    @Styles.Render("~/Content/css")
+    @*@Styles.Render("~/Content/css")*@
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/mainLayoutStyle.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/ProfilePageStyle.css" rel="stylesheet"  type="text/css" />
+    <link href="~/Content/CustomStyles/mainLayoutStyle.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/CustomStyles/NavbarStyle.css" rel="stylesheet" />
+    <link href="~/Content/CustomStyles/MessagePopupStyle.css" rel="stylesheet" />
+    <link href="~/Content/CustomStyles/MessagePageStyle.css" rel="stylesheet" />
+    <link href="~/Content/ProfilePageStyle.css" rel="stylesheet" />
 </head>
 
-<body>
+    <body>
 
-    @Html.Partial("_Partial_mainNavBar")
-
-
-    @RenderBody()
+        @Html.Partial("_Partial_mainNavBar")
 
 
-    @*@Html.Partial("_Partial_popupMessage")*@
+        @RenderBody()
 
 
-    @*scripts*@
-
-    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
-    @*<script src="~/Scripts/bootstrap.js"></script>*@
-    @Scripts.Render("~/bundles/scripts")
-    <script src="~/Scripts/CustomScripts/mainLayoutScript.js"></script>
-    <script src="~/Scripts/CustomScripts/ProfileScripts.js"></script>
+        @Html.Partial("_Partial_popupMessage")
 
 
+        @*scripts*@
 
-</body>
+        @*@Scripts.Render("~/bundles/scripts")*@
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/CustomScripts/mainLayoutScript.js"></script>
+        <script src="~/Scripts/CustomScripts/Messages.js"></script>
+        <script src="~/Scripts/CustomScripts/InstanceMessages.js"></script>
+
+
+    </body>
 
 </html>
 
