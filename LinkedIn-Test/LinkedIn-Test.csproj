@@ -244,6 +244,7 @@
     <Content Include="Content\CustomStyles\MessagePageStyle.css" />
     <Content Include="Content\CustomStyles\MessagePopupStyle.css" />
     <Content Include="Content\CustomStyles\NavbarStyle.css" />
+    <Content Include="Content\jquery-confirm.js" />
     <Content Include="Content\ProfilePageStyle.css" />
     <Content Include="Content\Home_page.css" />
     <Content Include="Content\images\012.jpg" />
@@ -266,6 +267,7 @@
     <Content Include="Scripts\CustomScripts\HomeScript.js" />
     <Content Include="Scripts\CustomScripts\mainLayoutScript.js" />
     <None Include="Scripts\jquery-3.3.1-vsdoc.js" />
+    <Content Include="Scripts\CustomScripts\Messages.js" />
     <Content Include="Scripts\CustomScripts\ProfileScripts.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
