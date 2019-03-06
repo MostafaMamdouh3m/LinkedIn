@@ -28,21 +28,20 @@
 
                     @*@Html.HiddenFor(e => e.UserHadEducation.Id)*@
                     @Html.HiddenFor(e => e.UserEducation.Fk_User)
+            
+                         <div class="form-group">
+                            @Html.LabelFor(m => m.Education.Name, new { @class = "labels required" })
+                            @Html.TextBoxFor(m => m.Education.Name, new { @class = "form-control largetextbox" })
+                            @Html.ValidationMessageFor(m => m.Education.Name, "", new { @class = "notvalid" })
+                        </div>
 
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Education.Type, new { @class = "labels" })
+                            @Html.EnumDropDownListFor(e => e.Education.Type, "Select Type", new { @class = "form-control largedroplist" })
+                            @Html.ValidationMessageFor(m => m.Education.Type, "", new { @class = "notvalid" })
+                        </div>
 
-                    <div class="form-group">
-
-
-                        @Html.LabelFor(m => m.Education.Name, new { @class = "labels required" })
-                        @Html.DropDownListFor(m => m.UserEducation.Fk_Education, new SelectList(Model.Educations, "Id", "Name"), "Select School/University", new { @class = "form-control largedroplist" })
-                        @Html.ValidationMessageFor(m => m.Education.Name, "", new { @class = "notvalid" })
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Education.Type, new { @class = "labels" })
-                        @Html.EnumDropDownListFor(e => e.Education.Type, "Select Type", new { @class = "form-control largedroplist" })
-                        @Html.ValidationMessageFor(m => m.Education.Type, "", new { @class = "notvalid" })
-                    </div>
+                    
 
                     <div class="form-group">
                         @Html.LabelFor(m => m.UserEducation.Degree, new { @class = "labels" })
@@ -51,9 +50,7 @@
                     </div>
 
                     <div class="form-group  duration-addeducation">
-
                         <div class="startdate">
-
                             @Html.LabelFor(m => m.UserEducation.StartDate, new { @class = "labels" })
                             @Html.EditorFor(m => m.UserEducation.StartDate, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(m => m.UserEducation.StartDate, "", new { @class = "notvalid" })
@@ -64,7 +61,6 @@
                             @Html.EditorFor(m => m.UserEducation.EndDate, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(m => m.UserEducation.EndDate, "", new { @class = "notvalid" })
                         </div>
-
                     </div>
 
                 </div>
@@ -79,4 +75,3 @@
     </div>
 
 }
-

@@ -203,13 +203,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903060146484_1st.cs" />
-    <Compile Include="Migrations\201903060146484_1st.Designer.cs">
-      <DependentUpon>201903060146484_1st.cs</DependentUpon>
+    <Compile Include="Migrations\201903061441295_1st.cs" />
+    <Compile Include="Migrations\201903061441295_1st.Designer.cs">
+      <DependentUpon>201903061441295_1st.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903060150447_2nd.cs" />
-    <Compile Include="Migrations\201903060150447_2nd.Designer.cs">
-      <DependentUpon>201903060150447_2nd.cs</DependentUpon>
+    <Compile Include="Migrations\201903061540231_3rd.cs" />
+    <Compile Include="Migrations\201903061540231_3rd.Designer.cs">
+      <DependentUpon>201903061540231_3rd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -230,6 +230,7 @@
     <Compile Include="Models\Enums\Gender.cs" />
     <Compile Include="Models\Enums\NotificationType.cs" />
     <Compile Include="Models\Enums\EducationType.cs" />
+    <Compile Include="Models\Enums\SkillLevel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -239,6 +240,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CustomStyles\mainLayoutStyle.css" />
+    <Content Include="Content\CustomStyles\MessagePageStyle.css" />
+    <Content Include="Content\CustomStyles\MessagePopupStyle.css" />
+    <Content Include="Content\CustomStyles\NavbarStyle.css" />
     <Content Include="Content\ProfilePageStyle.css" />
     <Content Include="Content\Home_page.css" />
     <Content Include="Content\images\012.jpg" />
@@ -248,7 +253,6 @@
     <Content Include="Content\images\14.jpg" />
     <Content Include="Content\images\16.jpg" />
     <Content Include="Content\images\17.jpg" />
-    <Content Include="Content\mainLayoutStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -332,10 +336,10 @@
     <Content Include="Views\Profile\_Partial_Profile_EditHeaderForm.cshtml" />
     <Content Include="Views\Profile\_Partial_Profile_Header_Work_Education.cshtml" />
     <Content Include="Views\Profile\_Partial_Skill_Data.cshtml" />
+    <Content Include="Views\Profile\_Partial_Skill_Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\CustomStyles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -345,11 +349,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903060146484_1st.resx">
-      <DependentUpon>201903060146484_1st.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903061441295_1st.resx">
+      <DependentUpon>201903061441295_1st.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903060150447_2nd.resx">
-      <DependentUpon>201903060150447_2nd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903061540231_3rd.resx">
+      <DependentUpon>201903061540231_3rd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

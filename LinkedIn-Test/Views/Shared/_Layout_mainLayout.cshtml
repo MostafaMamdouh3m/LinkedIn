@@ -18,28 +18,36 @@
     <link href="~/Content/ProfilePageStyle.css" rel="stylesheet" />
 </head>
 
-    <body>
+<body>
 
-        @Html.Partial("_Partial_mainNavBar")
-
-
-        @RenderBody()
+    @Html.Partial("_Partial_mainNavBar")
 
 
-        @Html.Partial("_Partial_popupMessage")
+    @RenderBody()
 
 
-        @*scripts*@
-
-        @*@Scripts.Render("~/bundles/scripts")*@
-        <script src="~/Scripts/jquery-3.3.1.js"></script>
-        <script src="~/Scripts/bootstrap.js"></script>
-        <script src="~/Scripts/CustomScripts/mainLayoutScript.js"></script>
-        <script src="~/Scripts/CustomScripts/Messages.js"></script>
-        <script src="~/Scripts/CustomScripts/InstanceMessages.js"></script>
+    @Html.Partial("_Partial_popupMessage")
 
 
-    </body>
+    @*scripts*@
+
+    @*@Scripts.Render("~/bundles/scripts")*@
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/CustomScripts/mainLayoutScript.js"></script>
+    <script src="~/Scripts/CustomScripts/Messages.js"></script>
+    <script src="~/Scripts/CustomScripts/InstanceMessages.js"></script>
+    <script src="~/Scripts/CustomScripts/ProfileScripts.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+
+
+
+
+
+
+</body>
 
 </html>
 

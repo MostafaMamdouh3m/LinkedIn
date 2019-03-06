@@ -79,7 +79,7 @@ $(document).on("click", "#Edit_Skill_Submit", function () {
         method: "POST",
         data: $("#edit_skill form").serialize(),
         success: function (result) {
-            console.log(result);
+    
             $("#edit_skill").modal("toggle");
             $('#skill_data').replaceWith(result);
 
@@ -118,3 +118,50 @@ $(document).on("click", "#Delete_Skill_Submit", function () {
         }
     });
 });
+
+
+$("#add-skill-search").focus(function () {
+
+    $("#profile_skill_menu_underlay").removeClass("hidden");
+    $.ajax({
+        url: "/Profile/SearchSkills",
+        type: 'POST',
+        data: { str: $("#add-skill-search").val() },
+        success: function (result) {
+            $("#profile_skill_menu").html(result);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+});
+
+$("#add-skill-search").focusout(function () {
+    setTimeout(temp, 150);
+    function temp() {
+        $("#profile_skill_menu_underlay").addClass("hidden");
+    }
+});
+
+$("#add-skill-search").keyup(function () {
+
+    $("#profile_skill_menu_underlay").removeClass("hidden");
+    $.ajax({
+        url: "/Profile/SearchSkills",
+        type: 'POST',
+        data: { str: $("#add-skill-search").val() },
+        success: function (result) {
+            $("#profile_skill_menu").html(result);
+        },
+        error: function (error) {
+            
+        }
+    });
+
+});
+
+
+function setSkillText(name) {
+    $("#add-skill-search").val(name);
+    $("#profile_skill_menu_underlay").addClass("hidden");
+}

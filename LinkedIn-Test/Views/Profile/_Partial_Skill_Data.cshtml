@@ -10,32 +10,37 @@
 
     @for (int i = 0; i < Model.Count; i++)
     {
-        <div class="skill-data-image-button">
-            <div class="skill-data-image">
-                <div>
-                    <i class="fas fa-book" style="font-size:18px; margin-top:8px; color:gray; margin-right:2px;"></i>
-                </div>
-                <div class="skill-data">
-                    <p class="uni-name"> @Model[i].Skill.Name</p>
-                </div>
+    <div class="skill-data-image-button">
+        <div class="skill-data-image">
+            <div>
+                <i class="fas fa-book" style="font-size:18px; margin-top:8px; color:gray; margin-right:2px;"></i>
             </div>
+            <div class="skill-data">
+                <p class="uni-name"> @Model[i].Skill.Name</p>
+                <p class="uni-name"> @Model[i].Level</p>
+            </div>
+        </div>
 
+        @if (ViewBag.IsCurrentUserPage == true)
+        {
             <div class="skill-buttons">
                 <div>
-                    <button type="button" class="btn btn-link " style="margin-bottom:7px;"  id="@Model[i].Id" onclick="Editskill(this)">
+                    <button type="button" class="btn btn-link " style="margin-bottom:7px;" id="@Model[i].Id" onclick="Editskill(this)">
                         <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21.71,5L19,2.29a1,1,0,0,0-1.41,0L4,15.85,2,22l6.15-2L21.71,6.45A1,1,0,0,0,22,5.71,1,1,0,0,0,21.71,5ZM6.87,18.64l-1.5-1.5L15.92,6.57l1.5,1.5ZM18.09,7.41l-1.5-1.5,1.67-1.67,1.5,1.5Z" class="large-icon" style="fill: currentColor"></path></svg>
                     </button>
                 </div>
 
                 <div>
-                    <button type="button" class="btn btn-link  "  id="@Model[i].Id" onclick="Deleteskill(this)">
+                    <button type="button" class="btn btn-link  " id="@Model[i].Id" onclick="Deleteskill(this)">
                         <span class="glyphicon glyphicon-trash education-delete-btn" style="font-size:18px;"></span>
                     </button>
                 </div>
             </div>
 
+        }
 
-        </div>
+
+    </div>
     }
 </div>
 
