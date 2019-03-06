@@ -199,19 +199,23 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903061549235_intial.cs" />
-    <Compile Include="Migrations\201903061549235_intial.Designer.cs">
-      <DependentUpon>201903061549235_intial.cs</DependentUpon>
+    <Compile Include="Migrations\201903060146484_1st.cs" />
+    <Compile Include="Migrations\201903060146484_1st.Designer.cs">
+      <DependentUpon>201903060146484_1st.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903060150447_2nd.cs" />
+    <Compile Include="Migrations\201903060150447_2nd.Designer.cs">
+      <DependentUpon>201903060150447_2nd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Skill.cs" />
     <Compile Include="Models\Entities\UserEducation.cs" />
+    <Compile Include="Models\Entities\UserSkill.cs" />
     <Compile Include="Models\Entities\UserWorkplace.cs" />
     <Compile Include="Models\Entities\Country.cs" />
     <Compile Include="Models\Entities\Workplace.cs" />
@@ -230,8 +234,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\HomeViewModel.cs" />
-    <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -240,9 +242,9 @@
     <Content Include="Content\CustomStyles\mainLayoutStyle.css" />
     <Content Include="Content\CustomStyles\MessagePageStyle.css" />
     <Content Include="Content\CustomStyles\MessagePopupStyle.css" />
-    <Content Include="Content\CustomStyles\Home_page.css" />
     <Content Include="Content\CustomStyles\NavbarStyle.css" />
     <Content Include="Content\ProfilePageStyle.css" />
+    <Content Include="Content\Home_page.css" />
     <Content Include="Content\images\012.jpg" />
     <Content Include="Content\images\05.jpg" />
     <Content Include="Content\images\10.png" />
@@ -292,6 +294,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -313,31 +317,25 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Partial_mainNavBar.cshtml" />
+    <Content Include="Views\Shared\_Layout_mainLayout.cshtml" />
+    <Content Include="Views\Shared\_Partial_Post.cshtml" />
+    <Content Include="Views\Shared\_Partial_Comment.cshtml" />
+    <Content Include="Views\Shared\_Partial_Home_profile_part.cshtml" />
     <Content Include="Views\Shared\_PartialWritePost.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
-    <Content Include="Views\Shared\_Partial_Add_Education.cshtml" />
-    <Content Include="Views\Shared\_Partial_Education_Data.cshtml" />
-    <Content Include="Views\Shared\_Partial_Profile_Header_Work_Education.cshtml" />
-    <Content Include="Views\Shared\_Partial_Profile_EditHeaderForm.cshtml" />
-    <Content Include="Views\Shared\_Partial_Edit_Education.cshtml" />
-    <Content Include="Views\Shared\_Partial_Experience.cshtml" />
-    <Content Include="Views\Shared\_Partial_Add_Experience.cshtml" />
-    <Content Include="Views\Shared\_Partial_Delete_Education.cshtml" />
-    <Content Include="Views\Messages\Index.cshtml" />
-    <Content Include="Views\Messages\_PartialMessage.cshtml" />
-    <Content Include="Views\Messages\_PartialMessageBoard.cshtml" />
-    <Content Include="Views\Messages\_PartialMessageBoardTitle.cshtml" />
-    <Content Include="Views\Messages\_PartialMessagePane.cshtml" />
-    <Content Include="Views\Messages\_PartialMessagesBundle.cshtml" />
-    <Content Include="Views\Messages\_PartialMessageUpdatePanes.cshtml" />
-    <Content Include="Views\Shared\_Partial_Footer.cshtml" />
-    <Content Include="Views\Shared\_Partial_popupMessage.cshtml" />
-    <Content Include="Views\Shared\_Partial_SearchResults.cshtml" />
-    <Content Include="Views\Home\_Partial_Home_profile_part.cshtml" />
-    <Content Include="Views\Home\_Partial_Post.cshtml" />
-    <Content Include="Views\Home\_PartialComment.cshtml" />
-    <Content Include="Views\Shared\_Layout_mainLayout.cshtml" />
-    <Content Include="Views\Shared\_Partial_mainNavBar.cshtml" />
+    <Content Include="Views\Profile\_Partial_Add_Education.cshtml" />
+    <Content Include="Views\Profile\_Partial_Add_Experience.cshtml" />
+    <Content Include="Views\Profile\_Partial_Add_Skill.cshtml" />
+    <Content Include="Views\Profile\_Partial_Delete_Education.cshtml" />
+    <Content Include="Views\Profile\_Partial_Delete_Skill.cshtml" />
+    <Content Include="Views\Profile\_Partial_Edit_Education.cshtml" />
+    <Content Include="Views\Profile\_Partial_Edit_Skill.cshtml" />
+    <Content Include="Views\Profile\_Partial_Education_Data.cshtml" />
+    <Content Include="Views\Profile\_Partial_Experience.cshtml" />
+    <Content Include="Views\Profile\_Partial_Profile_EditHeaderForm.cshtml" />
+    <Content Include="Views\Profile\_Partial_Profile_Header_Work_Education.cshtml" />
+    <Content Include="Views\Profile\_Partial_Skill_Data.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -350,8 +348,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903061549235_intial.resx">
-      <DependentUpon>201903061549235_intial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903060146484_1st.resx">
+      <DependentUpon>201903060146484_1st.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903060150447_2nd.resx">
+      <DependentUpon>201903060150447_2nd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -372,7 +373,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3485</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:3484/</IISUrl>
+          <IISUrl>http://localhost:3485/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

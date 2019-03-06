@@ -1,0 +1,36 @@
+﻿@model UserViewModel
+
+
+
+<div class="modal fade " id="delete_skill" tabindex="-1" role="dialog" aria-labelledby="delete_skill">
+    <form class="Delete_Skill_form">
+        <div class="modal-dialog" role="document" style="width: 744px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="modal-title" id="myModalLabel" style="color: rgba(0, 0, 0, 0.6); font-size:140%;">Delete Skill</p>
+                </div>
+
+                @if (Model.UserSkill != null)
+                {
+                    @Html.HiddenFor(e => e.UserSkill.Id)
+                    @Html.HiddenFor(e => e.UserSkill.Fk_Skill)
+                    @Html.HiddenFor(e => e.UserSkill.Fk_User)
+
+                }
+
+                <p>Delete This Item?</p>
+
+                <div class="modal-footer">
+
+                    <input type="button" id="Delete_Skill_Submit" value="Delete" class="btn btn-primary" style="border-radius:3px;  padding-top:5px; padding-bottom:5px; padding-left:15px;  padding-right:15px; " />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+

@@ -6,19 +6,41 @@
 
 <div id="under_nav"></div>
 
-<div class="container01">
-    @Html.Partial("_Partial_Home_profile_part")
-    <!-- partial view of the profile-->
-    <div class="container02">
-        <div class="writepost">
-            <div id="start_post">
-                <button class="btn btn-default" type="button" data-toggle="modal" data-target="#mymodal" style="border:none" aria-haspopup="false"
-                        aria-expanded="false">
-                    <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0"
-                         preserveAspectRatio="xMinYMin meet"
-                         class="artdeco-icon" id="artdeco-icon" focusable="false">
-                        <path d="M17,13.75l2-2V20a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V6A1,1,0,0,1,4,5h8.25l-2,2H5V19H17V13.75Zm5-8a1,1,0,0,1-.29.74L13.15,15,7,17l2-6.15,8.55-8.55a1,1,0,0,1,1.41,0L21.71,5A1,1,0,0,1,22,5.71ZM17.93,7.58l-1.5-1.5-6.06,6.06,1.5,1.5Zm1.84-1.84-1.5-1.5L17.09,5.41l1.5,1.5Z" class="large-icon" style="fill: currentColor"></path>
-                    </svg>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        @*<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.css" />*@
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+              crossorigin="anonymous">
+        @*<link rel="stylesheet" type="text/css" media="screen" href="Styel.css" />*@
+
+        <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/Home_page.css" rel="stylesheet" type="text/css" />
+        <!-- Bootstrap -->
+
+    </head>
+
+    <body>
+
+        <div class="container01">
+            @Html.Partial("_Partial_Home_profile_part")
+             <!-- partial view of the profile-->
+            <div class="container02">
+                <div class="writepost">
+
+
+
+                    <div id="start_post">
+
+                        <button class="btn btn-default" type="button" style="border:none" aria-haspopup="false"
+                                aria-expanded="false">
+                            <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0"
+                                 preserveAspectRatio="xMinYMin meet"
+                                 class="artdeco-icon" id="artdeco-icon" focusable="false">
+                                <path d="M17,13.75l2-2V20a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V6A1,1,0,0,1,4,5h8.25l-2,2H5V19H17V13.75Zm5-8a1,1,0,0,1-.29.74L13.15,15,7,17l2-6.15,8.55-8.55a1,1,0,0,1,1.41,0L21.71,5A1,1,0,0,1,22,5.71ZM17.93,7.58l-1.5-1.5-6.06,6.06,1.5,1.5Zm1.84-1.84-1.5-1.5L17.09,5.41l1.5,1.5Z" class="large-icon" style="fill: currentColor"></path>
+                            </svg>
 
                 </button>
                 <a hrel="#" data-toggle="modal" data-target="#mymodal" class="StartPost">Start a Post</a>
@@ -129,54 +151,50 @@
 </div>
 
 
-@*@section scripts{
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script>
-     $("#TextArea_post").keyup(function () {
-         if ($("#TextArea_post").val() != "") {
-             $("#btnSubmit").prop('disabled', false);
-             $("#btnSubmit").removeClass("disabled");
-         }
-         else {
-             $("#btnSubmit").prop('disabled', true);
-             $("#btnSubmit").addClass("disabled");
-         }
-     });
 
-     $("#btnSubmit").on("click", function() {
-         var currentDate = new Date();
 
-         var post = document.getElementById("TextArea_post").value;
-         var data = { Body: post, Date: currentDate.toISOString(), isShared: 0, LikeCount: 0, CommentCount: 0, Media: "", Fk_PostOwner: "", Fk_SharedPost: "" };
-         $.ajax({
-             url: "/Home/AjaxAddPost",
-             type: 'POST',
-             data: data,
-             success: function (result) {
-                 $("#Posts").prepend(result);
-             }
-         });
-         $("#TextArea_post").val('');
-     })
 
-     function WriteComment(id) {
-         if ($(`#TextArea-${id}`).val() != '') {
-             var currentDate = new Date();
-             var CommentBody = $(`#TextArea-${id}`).val();
-             var FK_PostID =id
-             var data = { Body: CommentBody, Date: currentDate.toISOString(), FK_postId: FK_PostID, Fk_CommentOwner: "" };
-             $.ajax({
-                 url: "/Home/AjaxAddComment",
-                 type: 'POST',
-                 data: data,
-                 success: function (result) {
-                     $(`#ListOfCommnets-${id}`).append(result);
 
-                 }
-             });
-         }
-         $(`#TextArea-${id}`).val('');
 
-     }
-    </script>
-}*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/CustomScripts/mainLayoutScript.js"></script>
+
+    @*<script src="js/jquery-1.10.2.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>*@
+  
+
+
+</body>
+
+</html>
