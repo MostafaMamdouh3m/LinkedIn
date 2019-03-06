@@ -320,18 +320,18 @@
     <Content Include="Views\Shared\_Partial_Home_profile_part.cshtml" />
     <Content Include="Views\Shared\_PartialWritePost.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
-    <Content Include="Views\Shared\_Partial_Add_Education.cshtml" />
-    <Content Include="Views\Shared\_Partial_Education_Data.cshtml" />
-    <Content Include="Views\Shared\_Partial_Profile_Header_Work_Education.cshtml" />
-    <Content Include="Views\Shared\_Partial_Profile_EditHeaderForm.cshtml" />
-    <Content Include="Views\Shared\_Partial_Edit_Education.cshtml" />
-    <Content Include="Views\Shared\_Partial_Experience.cshtml" />
-    <Content Include="Views\Shared\_Partial_Add_Experience.cshtml" />
-    <Content Include="Views\Shared\_Partial_Delete_Education.cshtml" />
-    <Content Include="Views\Shared\_Partial_Add_Skill.cshtml" />
-    <Content Include="Views\Shared\_Partial_Skill_Data.cshtml" />
-    <Content Include="Views\Shared\_Partial_Edit_Skill.cshtml" />
-    <Content Include="Views\Shared\_Partial_Delete_Skill.cshtml" />
+    <Content Include="Views\Profile\_Partial_Add_Education.cshtml" />
+    <Content Include="Views\Profile\_Partial_Add_Experience.cshtml" />
+    <Content Include="Views\Profile\_Partial_Add_Skill.cshtml" />
+    <Content Include="Views\Profile\_Partial_Delete_Education.cshtml" />
+    <Content Include="Views\Profile\_Partial_Delete_Skill.cshtml" />
+    <Content Include="Views\Profile\_Partial_Edit_Education.cshtml" />
+    <Content Include="Views\Profile\_Partial_Edit_Skill.cshtml" />
+    <Content Include="Views\Profile\_Partial_Education_Data.cshtml" />
+    <Content Include="Views\Profile\_Partial_Experience.cshtml" />
+    <Content Include="Views\Profile\_Partial_Profile_EditHeaderForm.cshtml" />
+    <Content Include="Views\Profile\_Partial_Profile_Header_Work_Education.cshtml" />
+    <Content Include="Views\Profile\_Partial_Skill_Data.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
