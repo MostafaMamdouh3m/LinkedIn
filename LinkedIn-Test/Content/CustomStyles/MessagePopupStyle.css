@@ -1,0 +1,73 @@
+﻿#msg_underlying {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 0 140px 0 0;
+    width: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+}
+
+#msg_mainBody {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, .3);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+
+
+#msg_mainBody.collapsed {
+    height: 44px;
+    transition: all 0.3s;
+}
+
+#msg_header {
+    width: 320px;
+    height: 43px;
+    background-color: #283e4a;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    padding: 0 20px;
+    user-select: none;
+}
+
+#msg_header p {
+    color: white;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+#msg_board {
+    background-color: white;
+    width: 320px;
+    height: 100%;
+    transition: all 0.3s;
+}
+
+#msg_board.collapsed {
+    height: 0;
+    transition: all 0.3s;
+}
+
+#msg_icons {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+#msg_icons div {
+    margin: 0 3px;
+}
+
+#msg_icons svg {
+    fill: white;
+}

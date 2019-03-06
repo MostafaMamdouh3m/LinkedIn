@@ -1,0 +1,18 @@
+﻿<div class="row" id="message_board_title">
+    <div>
+        @if (ViewBag.ChatInfo != null)
+        {
+            <p id="messaging_name">@ViewBag.ChatInfo.FirstName @ViewBag.ChatInfo.LastName</p>
+            <p id="messaging_work">@ViewBag.ChatInfo.Headline</p>
+        }
+        else
+        {
+            <p id="messaging_name">You don't have any contects yet !!</p>
+            <p id="messaging_work"></p>
+        }
+
+    </div>
+    <div>
+        <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0"><path d="M2,7H4V9H2V7ZM7,9H9V7H7V9Zm5-2V9h2V7H12Z" class="small-icon" style="fill-opacity: 1"></path></svg>
+    </div>
+</div>

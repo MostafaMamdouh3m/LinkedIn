@@ -38,6 +38,7 @@ namespace LinkedIn_Test.Controllers
                 viewModel.DropDownListForEducationsOfUser.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
             }
 
+            ViewBag.User = context.Users.Find(User.Identity.GetUserId());
             return View(viewModel);
         }
 
@@ -96,7 +97,6 @@ namespace LinkedIn_Test.Controllers
             else
                 return PartialView("_Partial_Add_Experience");
         }
-
         [HttpPost]
         public ActionResult AddEducationAjax(UserEducation userEducation)
         {
@@ -117,6 +117,22 @@ namespace LinkedIn_Test.Controllers
 
         }
 
+        [HttpGet]
+        public ActionResult EditEducationAjax(int id)
+        {
+
+            viewModel.UserEducation = context.UserEducations.Include("Education").Where(e => e.Id == id).ToArray()[0];
+            viewModel.Educations = context.Educations.ToList();
+            viewModel.Education = context.Educations.Where(e => e.Id == viewModel.UserEducation.Fk_Education).ToList()[0];
+            viewModel.Education.Name = context.Educations.Where(e => e.Id == viewModel.UserEducation.Fk_Education).ToList()[0].Name;
+            viewModel.Education.Type = context.Educations.Where(e => e.Id == viewModel.UserEducation.Fk_Education).ToList()[0].Type;
+            viewModel.UserEducation.StartDate = context.UserEducations.Include("Education").Where(e => e.Id == id).ToArray()[0].StartDate;
+            viewModel.UserEducation.EndDate = context.UserEducations.Include("Education").Where(e => e.Id == id).ToArray()[0].EndDate;
+
+
+
+            return PartialView("_Partial_Edit_Education", viewModel);
+        }
         [HttpPost]
         public ActionResult EditEducationAjax(UserEducation userEducation)
         {
@@ -150,22 +166,6 @@ namespace LinkedIn_Test.Controllers
             return PartialView("_Partial_Education_Data", viewModel.User.UserEductions);
 
         }
-        [HttpGet]
-        public ActionResult EditEducationAjax(int id)
-        {
-                            
-            viewModel.UserEducation = context.UserEducations.Include("Education").Where( e => e.Id == id).ToArray()[0];
-            viewModel.Educations = context.Educations.ToList();
-            viewModel.Education = context.Educations.Where(e => e.Id == viewModel.UserEducation.Fk_Education).ToList()[0];
-            viewModel.Education.Name = context.Educations.Where(e => e.Id == viewModel.UserEducation.Fk_Education).ToList()[0].Name;
-            viewModel.Education.Type = context.Educations.Where(e => e.Id == viewModel.UserEducation.Fk_Education).ToList()[0].Type;
-            viewModel.UserEducation.StartDate = context.UserEducations.Include("Education").Where(e => e.Id == id).ToArray()[0].StartDate;
-            viewModel.UserEducation.EndDate = context.UserEducations.Include("Education").Where(e => e.Id == id).ToArray()[0].EndDate;
-
-
-
-            return PartialView("_Partial_Edit_Education", viewModel);
-        }
 
         [HttpGet]
         public ActionResult DeleteEducationAjax(int id)
@@ -178,7 +178,6 @@ namespace LinkedIn_Test.Controllers
 
             return PartialView("_Partial_Delete_Education", viewModel);
         }
-
         [HttpPost]
         public ActionResult DeleteEducationAjax(UserEducation userEducation)
         {

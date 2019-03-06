@@ -25,39 +25,28 @@ namespace LinkedIn_Test.Models
         [Required]
         [MaxLength(50)]
         public virtual string FirstName { get; set; }
-
         public virtual string MiddleName { get; set; }
-
         [Required]
         [MaxLength(50)]
         public virtual string LastName { get; set; }
-
         public virtual Gender Gender { get; set; }
         public virtual int Age { get; set; }
-
- 
         public virtual string Headline { get; set; }
-
         public virtual string ProfilePicture { get; set; }
         public virtual string HeaderPicture { get; set; }
         public virtual string Address { get; set; }
         public virtual string CV { get; set; }
-
         public virtual string Summary { get; set; }            // add: by mostafa
         public virtual string CurrentPosition { get; set; }    // add: by mostafa
-
+        public virtual bool MessageUpdated { get; set; }
 
         [ForeignKey("CurrentEducation")]
         public int? Fk_CurrentEducation { get; set; }    // add: by mostafa
         public Education CurrentEducation { get; set; }        // add: by mostafa
 
-
         [ForeignKey("Country")]
         public int? Fk_Country { get; set; }
         public Country Country { get; set; }        // add: by mostafa
-
-
-
 
         public List<UserWorkplace> UserWorkplaces { get; set; }
         public List<UserEducation> UserEductions { get; set; }
