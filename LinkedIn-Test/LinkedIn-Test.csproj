@@ -203,13 +203,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903060146484_1st.cs" />
-    <Compile Include="Migrations\201903060146484_1st.Designer.cs">
-      <DependentUpon>201903060146484_1st.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903060150447_2nd.cs" />
-    <Compile Include="Migrations\201903060150447_2nd.Designer.cs">
-      <DependentUpon>201903060150447_2nd.cs</DependentUpon>
+    <Compile Include="Migrations\201903061826253_intial222.cs" />
+    <Compile Include="Migrations\201903061826253_intial222.Designer.cs">
+      <DependentUpon>201903061826253_intial222.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -234,6 +230,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -290,7 +288,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -336,6 +336,16 @@
     <Content Include="Views\Profile\_Partial_Profile_EditHeaderForm.cshtml" />
     <Content Include="Views\Profile\_Partial_Profile_Header_Work_Education.cshtml" />
     <Content Include="Views\Profile\_Partial_Skill_Data.cshtml" />
+    <Content Include="Views\Home\_PartialComment.cshtml" />
+    <Content Include="Views\Home\_Partial_Home_profile_part.cshtml" />
+    <Content Include="Views\Home\_Partial_Post.cshtml" />
+    <Content Include="Views\Messages\Index.cshtml" />
+    <Content Include="Views\Messages\_PartialMessage.cshtml" />
+    <Content Include="Views\Messages\_PartialMessageBoard.cshtml" />
+    <Content Include="Views\Messages\_PartialMessageBoardTitle.cshtml" />
+    <Content Include="Views\Messages\_PartialMessagePane.cshtml" />
+    <Content Include="Views\Messages\_PartialMessagesBundle.cshtml" />
+    <Content Include="Views\Messages\_PartialMessageUpdatePanes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -348,11 +358,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903060146484_1st.resx">
-      <DependentUpon>201903060146484_1st.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903060150447_2nd.resx">
-      <DependentUpon>201903060150447_2nd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903061826253_intial222.resx">
+      <DependentUpon>201903061826253_intial222.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

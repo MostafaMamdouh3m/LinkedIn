@@ -7,13 +7,13 @@ namespace LinkedIn_Test.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddCountrytoUser : IMigrationMetadata
+    public sealed partial class intial222 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCountrytoUser));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(intial222));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903011024577_AddCountrytoUser"; }
+            get { return "201903061826253_intial222"; }
         }
         
         string IMigrationMetadata.Source
