@@ -203,13 +203,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903060146484_1st.cs" />
-    <Compile Include="Migrations\201903060146484_1st.Designer.cs">
-      <DependentUpon>201903060146484_1st.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903060150447_2nd.cs" />
-    <Compile Include="Migrations\201903060150447_2nd.Designer.cs">
-      <DependentUpon>201903060150447_2nd.cs</DependentUpon>
+    <Compile Include="Migrations\201903061738346_s.cs" />
+    <Compile Include="Migrations\201903061738346_s.Designer.cs">
+      <DependentUpon>201903061738346_s.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -243,6 +239,8 @@
     <Content Include="Content\CustomStyles\MessagePageStyle.css" />
     <Content Include="Content\CustomStyles\MessagePopupStyle.css" />
     <Content Include="Content\CustomStyles\NavbarStyle.css" />
+    <Content Include="Content\images\default.jpg" />
+    <Content Include="Content\images\Untitled.png" />
     <Content Include="Content\ProfilePageStyle.css" />
     <Content Include="Content\Home_page.css" />
     <Content Include="Content\images\012.jpg" />
@@ -348,11 +346,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903060146484_1st.resx">
-      <DependentUpon>201903060146484_1st.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903060150447_2nd.resx">
-      <DependentUpon>201903060150447_2nd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903061738346_s.resx">
+      <DependentUpon>201903061738346_s.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

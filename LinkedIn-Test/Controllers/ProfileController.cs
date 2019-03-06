@@ -354,7 +354,7 @@ namespace LinkedIn_Test.Controllers
             return PartialView("_Partial_Skill_Data", viewModel.User.UserSkills);
         }
 
-
+        [HttpPost]
         public ActionResult UploadProfilePictureAjax(HttpPostedFileBase upload)
         {
             if (upload != null)
