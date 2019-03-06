@@ -10,12 +10,21 @@
     @*style*@
 
     @*@Styles.Render("~/Content/css")*@
-    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/CustomStyles/mainLayoutStyle.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/CustomStyles/NavbarStyle.css" rel="stylesheet" />
     <link href="~/Content/CustomStyles/MessagePopupStyle.css" rel="stylesheet" />
     <link href="~/Content/CustomStyles/MessagePageStyle.css" rel="stylesheet" />
     <link href="~/Content/ProfilePageStyle.css" rel="stylesheet" />
+    <link href="~/Content/CustomStyles/Home_page.css" rel="stylesheet" />
+
+
+
+
 </head>
 
 <body>
@@ -29,17 +38,17 @@
     @Html.Partial("_Partial_popupMessage")
 
 
-    @*scripts*@
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/scripts")
-    @*<script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/CustomScripts/mainLayoutScript.js"></script>
     <script src="~/Scripts/CustomScripts/Messages.js"></script>
     <script src="~/Scripts/CustomScripts/InstanceMessages.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
+    <script src="~/Scripts/CustomScripts/HomeScript.js"></script>
 
-    @RenderSection("scripts", required: false)
 
 </body>
 
