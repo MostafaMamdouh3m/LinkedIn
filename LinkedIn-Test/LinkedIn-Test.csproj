@@ -244,14 +244,11 @@
     <Content Include="Content\CustomStyles\MessagePopupStyle.css" />
     <Content Include="Content\CustomStyles\NavbarStyle.css" />
     <Content Include="Content\icons\three-bars-loader.gif" />
-    <Content Include="Content\jquery-confirm.js" />
     <Content Include="Content\ProfilePageStyle.css" />
-    <Content Include="Content\Home_page.css" />
     <Content Include="Content\images\012.jpg" />
     <Content Include="Content\images\05.jpg" />
     <Content Include="Content\images\10.png" />
     <Content Include="Content\images\13.jpg" />
-    <Content Include="Content\images\14.jpg" />
     <Content Include="Content\images\16.jpg" />
     <Content Include="Content\images\17.jpg" />
     <Content Include="Content\mainLayoutStyle.css" />
