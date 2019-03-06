@@ -1,9 +1,6 @@
 ﻿@model List<UserEducation>
 
 
-
-
-
 <div class="education" id="education_data">
     <h4 style="font-size: 135%; color: rgba(0, 0, 0, 0.6); margin-bottom:20px; ">Education</h4>
 
@@ -20,8 +17,8 @@
                 </div>
                 <div class="eduaction-data">
                     <p class="uni-name"> @Model[i].Education.Name @Model[i].Education.Type</p>
-                    <p class="uni-certificate">@Model[i].Degree -@Model[i].FieldOfStudy -@Model[i].Grade</p>
-                    <p class="uni-date">@Model[i].StartDate @Model[i].EndDate</p>
+                    <p class="uni-certificate">@Model[i].Degree @Model[i].FieldOfStudy @Model[i].Grade</p>
+                    <p class="uni-date">@Model[i].StartDate.Year @Model[i].EndDate.Year</p>
                     <p class="uni-date"> <span>Activities: </span> @Model[i].Activities</p>
                     <p class="uni-date"><span>Description: </span>@Model[i].Description</p>
 

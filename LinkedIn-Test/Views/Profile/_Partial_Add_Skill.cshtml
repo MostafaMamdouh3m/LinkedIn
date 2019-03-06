@@ -1,0 +1,50 @@
+﻿
+
+@model UserViewModel
+@{
+
+    AjaxOptions Add_Skill_ajaxopt = new AjaxOptions()
+    {
+        HttpMethod = "post",
+        UpdateTargetId = "skill_data",
+        InsertionMode = InsertionMode.ReplaceWith,
+        OnSuccess = "$('#add_skill').modal('hide')"
+
+    };
+}
+
+
+
+@using (Ajax.BeginForm("AddSkillAjax", "Profile", Add_Skill_ajaxopt, new { @class = "Add_Skill_form" }))
+{
+    <div class="modal fade " id="add_skill" tabindex="-1" role="dialog" aria-labelledby="add_skill">
+        <div class="modal-dialog" role="document" style="width: 765px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="modal-title" id="myModalLabel" style="color: rgba(0, 0, 0, 0.6); font-size:140%;">Add Skill</p>
+                </div>
+
+                <div class="modal-body-addskill">
+
+                    @Html.HiddenFor(e => e.UserSkill.Fk_User)
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Skill.Name, new { @class = "labels required" })
+                        @Html.TextBoxFor(m => m.Skill.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Skill.Name, "", new { @class = "notvalid" })
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <input type="submit" value="Save" class="btn btn-primary" style="border-radius:3px;  padding-top:5px; padding-bottom:5px; padding-left:15px;  padding-right:15px; " />
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+

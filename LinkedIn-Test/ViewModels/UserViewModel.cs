@@ -12,7 +12,9 @@ namespace LinkedIn_Test.ViewModels
         public int Id { get; set; }
         public ApplicationUser User { get; set; }
         public UserEducation UserEducation { get; set; }
-  
+        public UserSkill UserSkill { get; set; }
+
+
         public UserWorkplace UserWorkplace { get; set; }
 
         // Database Section
@@ -20,6 +22,9 @@ namespace LinkedIn_Test.ViewModels
         public List<Country> Countries { get; set; }
         public Education Education { get; set; }
         public List<Education> Educations { get; set; }
+
+        public Skill Skill{ get; set; }
+        public List<Skill> Skills { get; set; }
         public List<Education> DropDownListForEducationsOfUser { get; set; }
 
         public Workplace Workplace { get; set; }

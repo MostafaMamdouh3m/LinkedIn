@@ -12,5 +12,8 @@ namespace LinkedIn_Test.Models.Entities
         public string Name { get; set; }
         public int Level { get; set; }
 
+
+        public List<ApplicationUser> Users { get; set; }
+
     }
 }
