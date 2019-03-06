@@ -1,9 +1,12 @@
-﻿<nav>
+﻿
+
+
+<nav>
     <div id="navitgation_bar">
         <div id="nav_left_side">
             <div id="nav_logo">
                 <svg id="nav_linkedLogo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                    <rect class="bug-text-color" height="auto" width="auto" fill="#FFFFFF" x="1" y="75" rx="4"></rect>
+                    <rect class="bug-text-color" fill="#FFFFFF" x="1" y="75" rx="4"></rect>
                     <path d="M 416 32 H 31.9 C 14.3 32 0 46.5 0 64.3 v 383.4 C 0 465.5 14.3 480 31.9 480 H 416 c 17.6 0 32 -14.5 32 -32.3 V 64.3 c 0 -17.8 -14.4 -32.3 -32 -32.3 Z M 135.4 416 H 69 V 202.2 h 66.5 V 416 Z m -33.2 -243 c -21.3 0 -38.5 -17.3 -38.5 -38.5 S 80.9 96 102.2 96 c 21.2 0 38.5 17.3 38.5 38.5 c 0 21.3 -17.2 38.5 -38.5 38.5 Z m 282.1 243 h -66.4 V 312 c 0 -24.8 -0.5 -56.7 -34.5 -56.7 c -34.6 0 -39.9 27 -39.9 54.9 V 416 h -66.4 V 202.2 h 63.7 v 29.2 h 0.9 c 8.9 -16.8 30.6 -34.5 62.9 -34.5 c 67.2 0 79.7 44.3 79.7 101.9 V 416 Z" />
                 </svg>
             </div>
@@ -17,7 +20,6 @@
                 <form action="">
                     <input role="combobox" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-invalid="false" aria-expanded="false" placeholder="Search" type="text">
                 </form>
-                @Html.Partial("_Partial_SearchResults", new List<ApplicationUser>())
             </div>
         </div>
 
@@ -46,29 +48,22 @@
                     <div id="nav_profile_container">
                         <ul class="nav_profile_menu hide_menu">
 
-<!-- profile part -->
-                            <li id="nav_profile_menu_profile" userId="@ViewBag.User.Id">
+                            <!-- profile part -->
+                            <li id="nav_profile_menu_profile">
                                 <div id="nav_profile_info">
                                     <div id="nav_profile_img">
-                                        <img src="@ViewBag.User.ProfilePicture">
+                                        <img src="" alt="">
                                     </div>
                                     <div id="nav_profile_name">
-                                        <p>@ViewBag.User.FirstName @ViewBag.User.LastName</p>
-                                        @if (ViewBag.User.Headline != null)
-                                        {
-                                            <p>@ViewBag.User.Headline</p>
-                                        }
-                                        else
-                                        {
-                                            <p>No Headline</p>
-                                        }
+                                        <p>Ahmed Mohamd</p>
+                                        <p>Civil Engineer</p>
                                     </div>
                                 </div>
                                 <div id="nav_profile_view">
                                     <p>View Profile</p>
                                 </div>
                             </li>
-<!-- Account Part -->
+                            <!-- Account Part -->
                             <li>
                                 <p>ACCOUNT</p>
                                 <div>
@@ -76,7 +71,7 @@
                                     <div>Language</div>
                                 </div>
                             </li>
-<!-- Sitting And Logout Part -->
+                            <!-- Sitting And Logout Part -->
                             <li>
                                 <p>MANAGE</p>
                                 <div>
@@ -84,8 +79,6 @@
                                     <div>Sign out</div>
                                 </div>
                             </li>
-
-
 
                         </ul>
                     </div>
