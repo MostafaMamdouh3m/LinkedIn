@@ -10,6 +10,7 @@
 @{
     AjaxOptions ajaxOpt = new AjaxOptions()
     {
+        Confirm = "a7a",
         HttpMethod = "POST",
         //OnFailure = "alert('error')",
         OnSuccess = "myFunc"
@@ -27,13 +28,12 @@
 
                 @if (@Model.User.ProfilePicture == "" || @Model.User.ProfilePicture == null)
                 {
-                    <img src="~/images/default.png" alt="" height="128" width="128">
+                    <img src="~/Content/images/default.jpg" alt="" height="128" width="128" id="profilePicture">
                 }
                 else
                 {
-                    <img src=@Model.User.ProfilePicture alt="" height="128" width="128">
+                    <img src="~/Content/images/@Model.User.ProfilePicture" alt="" height="128" width="128" id="profilePicture">
                 }
-
 
                 @*  -------------------   Button to Upload Image      ----------------    *@
                 @*@using (Html.BeginForm("UploadProfilePictureAjax","Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))*@
@@ -71,7 +71,6 @@
                     }
                 </div>
             </div>
-
 
 
             <button type="button" class="btn btn-link pen" data-toggle="modal" data-target="#myModal">
@@ -120,6 +119,7 @@
         <div class="virtualdiv">
 
         </div>
+
         <div class="summary">
 
             <p> @Model.User.Summary</p>
@@ -143,16 +143,4 @@
         $('#profilePicture').attr('src', data)
     }
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
 
