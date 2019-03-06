@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Web;
@@ -193,8 +194,27 @@ namespace LinkedIn_Test.Controllers
 
         }
 
-        public ActionResult UserProfile(string Id)
+        //  Check this
+        public ActionResult UserProfile(string Id, HttpPostedFileBase upload)
         {
+            return null;
+        }
+
+        public ActionResult UploadProfilePictureAjax(HttpPostedFileBase upload)
+        {
+            if (upload != null)
+            {
+                string path = Path.Combine(Server.MapPath("~/content/images"), upload.FileName);
+                upload.SaveAs(path);
+
+                var currUserId = User.Identity.GetUserId();
+                var currUser = context.Users.SingleOrDefault(e => e.Id == currUserId);
+
+                currUser.ProfilePicture = upload.FileName;
+                context.SaveChanges();
+
+                return Json("/content/images/" + upload.FileName);
+            }
             return null;
         }
     }

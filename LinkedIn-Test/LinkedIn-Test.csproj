@@ -204,13 +204,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903051002311_startDatabase.cs" />
-    <Compile Include="Migrations\201903051002311_startDatabase.Designer.cs">
-      <DependentUpon>201903051002311_startDatabase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903051101156_messageAdds.cs" />
-    <Compile Include="Migrations\201903051101156_messageAdds.Designer.cs">
-      <DependentUpon>201903051101156_messageAdds.cs</DependentUpon>
+    <Compile Include="Migrations\201903061003342_update1.cs" />
+    <Compile Include="Migrations\201903061003342_update1.Designer.cs">
+      <DependentUpon>201903061003342_update1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -353,11 +349,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903051002311_startDatabase.resx">
-      <DependentUpon>201903051002311_startDatabase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903051101156_messageAdds.resx">
-      <DependentUpon>201903051101156_messageAdds.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903061003342_update1.resx">
+      <DependentUpon>201903061003342_update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
