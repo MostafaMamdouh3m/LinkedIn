@@ -1,0 +1,41 @@
+﻿@model Post
+
+
+<div class="Comment" PostId="@Model.Id">
+    @if (Model.Comments != null)
+    {
+        for (int i = 0; i < Model.Comments.Count; i++)
+        {
+            <p>@Model.Comments[i].Body</p>
+            <p>@Model.Comments[i].CommentOwner.FirstName</p>
+        }
+    }
+</div>
+
+
+
+<script>
+        $("#CommentId").on("click", function () {
+
+
+            var currentDate = new Date();
+
+            var FK_PostID = $(".Comment").attr("PostId")
+            var CommentBody = document.getElementById("CommentTextArea").value;
+            var data = { Body: CommentBody, Date: currentDate.toISOString(), FK_postId: FK_PostID, Fk_CommentOwner: FK_PostID };
+
+            $.ajax({
+                url: "/Home/AjaxAddComment",
+                type: 'POST',
+                data: data,
+                success: function (result) {
+                    $(".ListOfCommnets").append(result);
+                }
+            });
+            $("#CommentTextArea").val('');
+        });
+
+
+
+
+    </script>

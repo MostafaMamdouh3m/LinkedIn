@@ -50,7 +50,9 @@ namespace LinkedIn_Test.Models
 
         public List<UserWorkplace> UserWorkplaces { get; set; }
         public List<UserEducation> UserEductions { get; set; }
-        public List<Skill> Skills { get; set; }
+
+        public List<UserSkill> UserSkills { get; set; }
+
         public List<Notification> Notifications { get; set; }
         public List<Friend> Friends { get; set; }
         public List<Message> Messages { get; set; }
@@ -78,6 +80,8 @@ namespace LinkedIn_Test.Models
         public virtual DbSet<Skill> Skills { get; set; }
         public virtual DbSet<UserWorkplace> UserWorkplaces { get; set; }
         public virtual DbSet<UserEducation> UserEducations { get; set; }
+        public virtual DbSet<UserSkill> UserSkills { get; set; }
+
         public virtual DbSet<UserLikePost> UserLikePost { get; set; }
         public virtual DbSet<Workplace> Workplaces { get; set; }
     }

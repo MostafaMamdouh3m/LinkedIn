@@ -1,4 +1,6 @@
 ﻿using LinkedIn_Test.Models;
+using LinkedIn_Test.Models.Entities;
+using LinkedIn_Test.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -27,8 +29,36 @@ namespace LinkedIn_Test.Controllers
                 return Redirect("/Account/Register");
             }
 
+          
+            var currUserId = User.Identity.GetUserId();
+            // Get user friends Posts   //++++++++++++++++++++++++++++++++++++++++//
+            HomeViewModel homeViewModel = new HomeViewModel();
+            homeViewModel.Posts = new List<Post>();
+            homeViewModel.Comments = new List<Comment>();
+
+            //homeViewModel.FriendsOfUser = new List<ApplicationUser>();// From DataBase
+            var usersDummy = context.Users.ToList();
+            homeViewModel.FriendsOfUser = usersDummy.Where(m => m.Id != currUserId).ToList();
+            foreach (var userFriend in homeViewModel.FriendsOfUser)
+            {
+                userFriend.Posts = context.Posts.Where(m => m.Fk_PostOwner == userFriend.Id).ToList();
+                if (userFriend.Posts != null)
+                {
+                    foreach (var post in userFriend.Posts)
+                        post.Comments = context.Comments.Where(m => m.FK_postId == post.Id).ToList();
+                    homeViewModel.Posts.AddRange(userFriend.Posts);
+                }
+            }
+
+            homeViewModel.Posts.OrderByDescending(e => e.Date);
             ViewBag.User = context.Users.Find(User.Identity.GetUserId());
-            return View();
+
+            return View(homeViewModel);
+
+
+
+
+
         }
 
 
@@ -94,6 +124,42 @@ namespace LinkedIn_Test.Controllers
 
             return PartialView("_Partial_SearchResults", users);
         }
+
+        [HttpPost]
+        public PartialViewResult AjaxAddPost(Post post)
+        {
+            var currUserId = User.Identity.GetUserId();
+            var currUser = context.Users.SingleOrDefault(x => x.Id == currUserId);
+            post.Fk_PostOwner = currUserId;
+            post.PostOwner = currUser;
+
+            context.Posts.Add(post);
+            context.SaveChanges();
+
+            //HomeViewModel homeViewModel = new HomeViewModel();
+            //homeViewModel.Post = post;
+            //homeViewModel.User = currUser;
+            //homeViewModel.Posts = context.Posts.Where(m => m.Fk_PostOwner == currUserId).ToList();
+
+            return PartialView("_Partial_Post", post);
+        }
+
+        [HttpPost]
+        public PartialViewResult AjaxAddComment(Comment Comment)
+        {
+            var currUserId = User.Identity.GetUserId();
+            var currUser = context.Users.SingleOrDefault(x => x.Id == currUserId);
+
+            Comment.CommentOwner = currUser;
+            Comment.Fk_CommentOwner = currUserId;
+            Comment.Post = context.Posts.Find(Comment.FK_postId);
+
+            context.Comments.Add(Comment);
+            context.SaveChanges();
+
+            return PartialView("_PartialComment", Comment);
+        }
+
 
     }
 }

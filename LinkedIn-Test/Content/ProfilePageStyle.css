@@ -67,20 +67,14 @@
     font-size: 125%;
 }
 .pen-photo-edit {
-    position: absolute;
-    top: 230px;
-    left: 140px;
-    font-size: 120%;
+    /*position: absolute;
+    top: 330px;
+    left: 170px;
+    font-size: 10%;
     border: 1px solid lightgray;
     border-radius: 50%;
     padding: 5px;
-    background-color: white;
-    padding-left: 5px;
-    padding-right: 5px;
-    text-shadow: 4px 4px 4px ghostwhite;
-    font-weight: normal;
-    color: #428bca;
-    cursor: pointer;
+    background-color: #EEE;*/
 }
 
 
@@ -126,9 +120,9 @@
 }
 
 .eduaction-data-image {
-    width: 45%;
+    width: 35%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .eduaction-data {
@@ -338,12 +332,6 @@ input, select, textarea {
 
 
 
-
-
-
-
-
-
 /* Skills part */
 .skills {
     width: 793px;
@@ -378,9 +366,38 @@ input, select, textarea {
     margin-bottom: 5px;
 }
 
+.skill-data-image 
+{
+    width:18%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.skill-buttons
+{
+    display:flex;
+    flex-direction:row;
+}
+
+.skill-buttons button{
+
+    margin-left:2px;
+    margin-right:2px;
+
+ }
+
+    .skill-data-image-button {
+        margin-bottom: 5px;
+        margin-top: 5px;
+        width: 100%;
+        flex-direction: row;
+        display: flex;
+        justify-content: space-between;
+        padding-right: 10px;
+    }
+
 
 /* Footer part */
-
 .footercontent {
     display: flex;
     justify-content: space-between;

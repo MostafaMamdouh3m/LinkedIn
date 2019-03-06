@@ -199,23 +199,23 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903051002311_startDatabase.cs" />
-    <Compile Include="Migrations\201903051002311_startDatabase.Designer.cs">
-      <DependentUpon>201903051002311_startDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201903060146484_1st.cs" />
+    <Compile Include="Migrations\201903060146484_1st.Designer.cs">
+      <DependentUpon>201903060146484_1st.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903051101156_messageAdds.cs" />
-    <Compile Include="Migrations\201903051101156_messageAdds.Designer.cs">
-      <DependentUpon>201903051101156_messageAdds.cs</DependentUpon>
+    <Compile Include="Migrations\201903060150447_2nd.cs" />
+    <Compile Include="Migrations\201903060150447_2nd.Designer.cs">
+      <DependentUpon>201903060150447_2nd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Skill.cs" />
     <Compile Include="Models\Entities\UserEducation.cs" />
+    <Compile Include="Models\Entities\UserSkill.cs" />
     <Compile Include="Models\Entities\UserWorkplace.cs" />
     <Compile Include="Models\Entities\Country.cs" />
     <Compile Include="Models\Entities\Workplace.cs" />
@@ -234,7 +234,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -297,6 +296,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -325,24 +326,18 @@
     <Content Include="Views\Shared\_Partial_Home_profile_part.cshtml" />
     <Content Include="Views\Shared\_PartialWritePost.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
-    <Content Include="Views\Shared\_Partial_Add_Education.cshtml" />
-    <Content Include="Views\Shared\_Partial_Education_Data.cshtml" />
-    <Content Include="Views\Shared\_Partial_Profile_Header_Work_Education.cshtml" />
-    <Content Include="Views\Shared\_Partial_Profile_EditHeaderForm.cshtml" />
-    <Content Include="Views\Shared\_Partial_Edit_Education.cshtml" />
-    <Content Include="Views\Shared\_Partial_Experience.cshtml" />
-    <Content Include="Views\Shared\_Partial_Add_Experience.cshtml" />
-    <Content Include="Views\Shared\_Partial_Delete_Education.cshtml" />
-    <Content Include="Views\Messages\Index.cshtml" />
-    <Content Include="Views\Messages\_PartialMessage.cshtml" />
-    <Content Include="Views\Messages\_PartialMessageBoard.cshtml" />
-    <Content Include="Views\Messages\_PartialMessageBoardTitle.cshtml" />
-    <Content Include="Views\Messages\_PartialMessagePane.cshtml" />
-    <Content Include="Views\Messages\_PartialMessagesBundle.cshtml" />
-    <Content Include="Views\Messages\_PartialMessageUpdatePanes.cshtml" />
-    <Content Include="Views\Shared\_Partial_Footer.cshtml" />
-    <Content Include="Views\Shared\_Partial_popupMessage.cshtml" />
-    <Content Include="Views\Shared\_Partial_SearchResults.cshtml" />
+    <Content Include="Views\Profile\_Partial_Add_Education.cshtml" />
+    <Content Include="Views\Profile\_Partial_Add_Experience.cshtml" />
+    <Content Include="Views\Profile\_Partial_Add_Skill.cshtml" />
+    <Content Include="Views\Profile\_Partial_Delete_Education.cshtml" />
+    <Content Include="Views\Profile\_Partial_Delete_Skill.cshtml" />
+    <Content Include="Views\Profile\_Partial_Edit_Education.cshtml" />
+    <Content Include="Views\Profile\_Partial_Edit_Skill.cshtml" />
+    <Content Include="Views\Profile\_Partial_Education_Data.cshtml" />
+    <Content Include="Views\Profile\_Partial_Experience.cshtml" />
+    <Content Include="Views\Profile\_Partial_Profile_EditHeaderForm.cshtml" />
+    <Content Include="Views\Profile\_Partial_Profile_Header_Work_Education.cshtml" />
+    <Content Include="Views\Profile\_Partial_Skill_Data.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -355,11 +350,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903051002311_startDatabase.resx">
-      <DependentUpon>201903051002311_startDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903060146484_1st.resx">
+      <DependentUpon>201903060146484_1st.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903051101156_messageAdds.resx">
-      <DependentUpon>201903051101156_messageAdds.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903060150447_2nd.resx">
+      <DependentUpon>201903060150447_2nd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

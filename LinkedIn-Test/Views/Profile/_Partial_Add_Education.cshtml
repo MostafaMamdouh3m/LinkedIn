@@ -1,0 +1,82 @@
+﻿
+
+@model UserViewModel
+@{
+
+    AjaxOptions Add_Education_ajaxopt = new AjaxOptions()
+    {
+        HttpMethod = "post",
+        UpdateTargetId = "education_data",
+        InsertionMode = InsertionMode.ReplaceWith,
+        OnSuccess = "$('#add_education').modal('hide')"
+
+    };
+}
+
+
+@using (Ajax.BeginForm("AddEducationAjax", "Profile", Add_Education_ajaxopt, new { @class = "Add_Education_form" }))
+{
+    <div class="modal fade " id="add_education" tabindex="-1" role="dialog" aria-labelledby="add_education">
+        <div class="modal-dialog" role="document" style="width: 765px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="modal-title" id="myModalLabel" style="color: rgba(0, 0, 0, 0.6); font-size:140%;">Add Education</p>
+                </div>
+
+                <div class="modal-body-addeducation">
+
+                    @*@Html.HiddenFor(e => e.UserHadEducation.Id)*@
+                    @Html.HiddenFor(e => e.UserEducation.Fk_User)
+
+
+                    <div class="form-group">
+
+
+                        @Html.LabelFor(m => m.Education.Name, new { @class = "labels required" })
+                        @Html.DropDownListFor(m => m.UserEducation.Fk_Education, new SelectList(Model.Educations, "Id", "Name"), "Select School/University", new { @class = "form-control largedroplist" })
+                        @Html.ValidationMessageFor(m => m.Education.Name, "", new { @class = "notvalid" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Education.Type, new { @class = "labels" })
+                        @Html.EnumDropDownListFor(e => e.Education.Type, "Select Type", new { @class = "form-control largedroplist" })
+                        @Html.ValidationMessageFor(m => m.Education.Type, "", new { @class = "notvalid" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserEducation.Degree, new { @class = "labels" })
+                        @Html.TextBoxFor(m => m.UserEducation.Degree, new { @class = "form-control largetextbox" })
+                        @Html.ValidationMessageFor(m => m.UserEducation.Degree, "", new { @class = "" })
+                    </div>
+
+                    <div class="form-group  duration-addeducation">
+
+                        <div class="startdate">
+
+                            @Html.LabelFor(m => m.UserEducation.StartDate, new { @class = "labels" })
+                            @Html.EditorFor(m => m.UserEducation.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.UserEducation.StartDate, "", new { @class = "notvalid" })
+                        </div>
+
+                        <div class="enddate">
+                            @Html.LabelFor(m => m.UserEducation.EndDate, new { @class = "labels" })
+                            @Html.EditorFor(m => m.UserEducation.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.UserEducation.EndDate, "", new { @class = "notvalid" })
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <input type="submit" value="Save" class="btn btn-primary" style="border-radius:3px;  padding-top:5px; padding-bottom:5px; padding-left:15px;  padding-right:15px; " />
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+

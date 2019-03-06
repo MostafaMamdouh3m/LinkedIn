@@ -75,20 +75,29 @@ namespace LinkedIn_Test.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            try
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+                switch (result)
+                {
+                    case SignInStatus.Success:
+                        return RedirectToLocal(returnUrl);
+                    case SignInStatus.LockedOut:
+                        return View("Lockout");
+                    case SignInStatus.RequiresVerification:
+                        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    case SignInStatus.Failure:
+                    default:
+                        ModelState.AddModelError("", "Invalid login attempt.");
+                        return View(model);
+                }
             }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+            
         }
 
         //
@@ -149,9 +158,10 @@ namespace LinkedIn_Test.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+
+                try
                 {
                     var user = new ApplicationUser { FirstName = model.FirstName, LastName = model.LastName, UserName = model.Email, Email = model.Email };
                     var result = await UserManager.CreateAsync(user, model.Password);
@@ -169,14 +179,13 @@ namespace LinkedIn_Test.Controllers
                     }
                     AddErrors(result);
                 }
+                catch (Exception e)
+                {
 
+                    throw;
+                }
+               
             }
-            catch (Exception e)
-            {
-
-                throw;
-            }
-            
             
             // If we got this far, something failed, redisplay form
             return View(model);

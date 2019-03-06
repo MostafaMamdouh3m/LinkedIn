@@ -1,0 +1,61 @@
+﻿
+@model Post
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="Post">
+    <div class="post_info">
+        <div>
+            <img id="img-circle" src="~/Content/images/@Model.PostOwner.ProfilePicture" class="img-circle" alt="Cinque Terre" width="40" height="40">
+            <div id="profil_name">@Model.PostOwner.FirstName @Model.PostOwner.LastName</div>
+            <div id="profil_job"> Civil Engineering Informatics </div>
+        </div>
+    </div>
+    <div class="post_caption">
+        <p class="text-justify">
+            @Model.Body
+        </p>
+    </div>
+    <div class="post_media">
+        <img id="" src="~/Content/images/012.jpg" width="550" height="300">
+    </div>
+
+    <div class="post_Engagment01">
+        <div id="like_comment_share">
+            <span>like</span>
+            <span>Comment</span>
+            <span></span>
+        </div>
+    </div>
+    <div class="post_Engagment02">
+        <div class="like_comment_share">
+            <button class="btn btn-default" type="button" style="border:none" aria-haspopup="false"
+                    aria-expanded="false">
+                Like <span class="glyphicon glyphicon-thumbs-up"></span>
+            </button>
+            <button class="btn btn-default" onclick="WriteComment(@Model.Id)" id="@Model.Id" PostId="@Model.Id" type="button" style="border:none" aria-expanded="true">
+                Comment
+            </button>
+            <button class="btn btn-default" type="button" style="border:none" aria-haspopup="true"
+                    aria-expanded="false">
+                Share <span class="glyphicon glyphicon-share-alt"></span>
+            </button>
+        </div>
+        <div class="CommentTextArea1">
+            <textarea id="TextArea-@Model.Id" class="CommentTextArea"></textarea>
+        </div>
+    </div>
+    @*ListOfCommnets*@
+    <div id="ListOfCommnets-@Model.Id" CommentList="@Model.Id">
+        @if (Model.Comments != null)
+        {
+            for (int i = 0; i < Model.Comments.Count; i++)
+            {
+                @Html.Partial("_PartialComment", Model.Comments[i]);
+            }
+        }
+
+    </div>
+</div>

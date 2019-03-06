@@ -1,0 +1,43 @@
+﻿@model UserViewModel
+
+
+
+<div class="modal fade " id="delete_education" tabindex="-1" role="dialog" aria-labelledby="delete_education">
+    <form class="Delete_Education_form">
+        <div class="modal-dialog" role="document" style="width: 744px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="modal-title" id="myModalLabel" style="color: rgba(0, 0, 0, 0.6); font-size:140%;">Delete Education</p>
+                </div>
+
+                @if (Model.UserEducation != null)
+                {
+                    @Html.HiddenFor(e => e.UserEducation.Id)
+                    @Html.HiddenFor(e => e.UserEducation.Fk_Education)
+                    @Html.HiddenFor(e => e.UserEducation.Fk_User)
+                    @Html.HiddenFor(e => e.UserEducation.Activities)
+                    @Html.HiddenFor(e => e.UserEducation.Description)
+                    @Html.HiddenFor(e => e.UserEducation.FieldOfStudy)
+                    @Html.HiddenFor(e => e.UserEducation.Grade)
+                    @Html.HiddenFor(e => e.UserEducation.Degree)               
+                    @Html.HiddenFor(e => e.UserEducation.StartDate)
+                    @Html.HiddenFor(e => e.UserEducation.EndDate)
+
+                }
+
+                <p>Delete This Item?</p>
+
+                <div class="modal-footer">
+
+                    <input type="button" id="Delete_Education_Submit" value="Delete" class="btn btn-primary" style="border-radius:3px;  padding-top:5px; padding-bottom:5px; padding-left:15px;  padding-right:15px; " />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
