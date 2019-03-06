@@ -36,6 +36,22 @@
     font-weight: 500;
 }
 
+#message_chatters_title div{
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+}
+
+#message_chatters_title div:hover{
+    background-color: #eeeeee;
+    cursor: pointer;
+}
+
+#message_chatters_title svg{
+    position: relative;
+    top: 4px;
+    left: 4px;
+}
 
 #message_chatters_search {
     height: 45px;
