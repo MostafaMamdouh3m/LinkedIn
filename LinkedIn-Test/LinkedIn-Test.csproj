@@ -239,6 +239,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CustomStyles\mainLayoutStyle.css" />
+    <Content Include="Content\CustomStyles\MessagePageStyle.css" />
+    <Content Include="Content\CustomStyles\MessagePopupStyle.css" />
+    <Content Include="Content\CustomStyles\NavbarStyle.css" />
     <Content Include="Content\ProfilePageStyle.css" />
     <Content Include="Content\Home_page.css" />
     <Content Include="Content\images\012.jpg" />
@@ -335,7 +339,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\CustomStyles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
