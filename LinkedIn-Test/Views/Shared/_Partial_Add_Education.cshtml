@@ -7,12 +7,11 @@
     {
         HttpMethod = "post",
         UpdateTargetId = "education_data",
-        InsertionMode = InsertionMode.Replace,
+        InsertionMode = InsertionMode.ReplaceWith,
         OnSuccess = "$('#add_education').modal('hide')"
 
     };
 }
-
 
 
 @using (Ajax.BeginForm("AddEducationAjax", "Profile", Add_Education_ajaxopt, new { @class = "Add_Education_form" }))

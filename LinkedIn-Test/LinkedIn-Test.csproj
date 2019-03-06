@@ -203,14 +203,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903041431351_1st.cs" />
-    <Compile Include="Migrations\201903041431351_1st.Designer.cs">
-      <DependentUpon>201903041431351_1st.cs</DependentUpon>
+    <Compile Include="Migrations\201903060146484_1st.cs" />
+    <Compile Include="Migrations\201903060146484_1st.Designer.cs">
+      <DependentUpon>201903060146484_1st.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903060150447_2nd.cs" />
+    <Compile Include="Migrations\201903060150447_2nd.Designer.cs">
+      <DependentUpon>201903060150447_2nd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Skill.cs" />
     <Compile Include="Models\Entities\UserEducation.cs" />
+    <Compile Include="Models\Entities\UserSkill.cs" />
     <Compile Include="Models\Entities\UserWorkplace.cs" />
     <Compile Include="Models\Entities\Country.cs" />
     <Compile Include="Models\Entities\Workplace.cs" />
@@ -323,6 +328,10 @@
     <Content Include="Views\Shared\_Partial_Experience.cshtml" />
     <Content Include="Views\Shared\_Partial_Add_Experience.cshtml" />
     <Content Include="Views\Shared\_Partial_Delete_Education.cshtml" />
+    <Content Include="Views\Shared\_Partial_Add_Skill.cshtml" />
+    <Content Include="Views\Shared\_Partial_Skill_Data.cshtml" />
+    <Content Include="Views\Shared\_Partial_Edit_Skill.cshtml" />
+    <Content Include="Views\Shared\_Partial_Delete_Skill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -336,8 +345,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903041431351_1st.resx">
-      <DependentUpon>201903041431351_1st.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903060146484_1st.resx">
+      <DependentUpon>201903060146484_1st.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903060150447_2nd.resx">
+      <DependentUpon>201903060150447_2nd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

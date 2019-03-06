@@ -24,7 +24,10 @@ namespace LinkedIn_Test.Controllers
             string userId = User.Identity.GetUserId();
             viewModel.User = context.Users.Where(e => e.Id == userId).ToList()[0];
             viewModel.User.UserEductions = context.UserEducations.Where(e => e.Fk_User == userId).ToList();
+            viewModel.User.UserSkills = context.UserSkills.Where(e => e.Fk_User == userId).ToList();
+
             viewModel.Educations = context.Educations.ToList();
+            viewModel.Skills = context.Skills.ToList();
             viewModel.Countries = context.Countries.ToList();
 
             viewModel.DropDownListForEducationsOfUser = new List<Education>();
@@ -45,14 +48,12 @@ namespace LinkedIn_Test.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser olduser = context.Users.Find(User.Id);
-                olduser = User;
+                //olduser = User;
 
                 olduser.FirstName = User.FirstName;
                 olduser.LastName = User.LastName;
                 olduser.Headline = User.Headline;
                 olduser.CurrentPosition = User.CurrentPosition;
-                olduser.ProfilePicture = User.ProfilePicture;
-                olduser.HeaderPicture = User.HeaderPicture;
                 olduser.Summary = User.Summary;
                 olduser.CurrentPosition = User.CurrentPosition;
                 olduser.Fk_CurrentEducation = User.Fk_CurrentEducation;
@@ -61,7 +62,7 @@ namespace LinkedIn_Test.Controllers
                 olduser.Country = context.Countries.Find(User.Fk_Country);
                 context.SaveChanges();
 
-                viewModel.User = User;
+                viewModel.User = context.Users.Find(User.Id);
                 viewModel.User.CurrentEducation = context.Educations.Find(User.Fk_CurrentEducation);
                 viewModel.User.Country = context.Countries.Find(User.Fk_Country);
                 viewModel.Users = context.Users.ToList();
@@ -125,17 +126,17 @@ namespace LinkedIn_Test.Controllers
             userEducation.Education.Name = context.Educations.Where(e => e.Id == userEducation.Fk_Education).ToList()[0].Name;
 
             UserEducation oldEducation = context.UserEducations.Find(userEducation.Id);
-            oldEducation = userEducation;
 
-            context.UserEducations.Find(userEducation.Id).Activities = userEducation.Activities;
+            oldEducation.Activities = userEducation.Activities;
             oldEducation.Degree = userEducation.Degree;
-            context.UserEducations.Find(userEducation.Id).Description = userEducation.Description;
-            context.UserEducations.Find(userEducation.Id).FieldOfStudy = userEducation.FieldOfStudy;
+            oldEducation.Description = userEducation.Description;
+            oldEducation.FieldOfStudy = userEducation.FieldOfStudy;
             oldEducation.Grade = userEducation.Grade;
             oldEducation.StartDate = userEducation.StartDate;
             oldEducation.EndDate = userEducation.EndDate;
-            context.UserEducations.Find(userEducation.Id).Fk_Education = userEducation.Fk_Education;
+            oldEducation.Fk_Education = userEducation.Fk_Education;
             oldEducation.Fk_User = userEducation.Fk_User;
+            oldEducation.Education= context.Educations.Find(userEducation.Fk_Education);
             oldEducation.Education.Name = userEducation.Education.Name;
             oldEducation.Education.Type = userEducation.Education.Type;
 
@@ -173,7 +174,7 @@ namespace LinkedIn_Test.Controllers
 
             viewModel.User = context.Users.Where(e => e.Id == userId).ToList()[0];
             viewModel.UserEducation = context.UserEducations.Include("Education").Where(e => e.Id == id).ToArray()[0];
-            viewModel.Education = context.Educations.Where(e => e.Id == viewModel.UserEducation.Fk_Education).ToList()[0];
+
 
             return PartialView("_Partial_Delete_Education", viewModel);
         }
@@ -184,17 +185,175 @@ namespace LinkedIn_Test.Controllers
             string userId = User.Identity.GetUserId();
             userEducation.Fk_User = userId;
 
+            context.UserEducations.Attach(userEducation);
+
             context.UserEducations.Remove(userEducation);
             
             context.SaveChanges();
 
-            viewModel.User = context.Users.Where(e => e.Id == userEducation.Fk_User).ToArray()[0];
+            viewModel.User = context.Users.Find(userId);
             viewModel.User.UserEductions = context.UserEducations.Include("Education").Where(e => e.Fk_User == userId).ToList();
             return PartialView("_Partial_Education_Data", viewModel.User.UserEductions);
+
+
+        }
+
+        [HttpPost]
+        public ActionResult AddSkillAjax(Skill skill)
+        {
+
+            string userId = User.Identity.GetUserId();
+            Skill existedSkill = new Skill();
+
+            if (ModelState.IsValid)
+            {
+                // Skill database
+                bool skillIsExistedInDB = false;
+
+                for (int i=0;i<context.Skills.ToList().Count;i++)
+                {
+                    if (skill.Name == context.Skills.ToList()[i].Name)
+                    {
+                        skillIsExistedInDB = true;
+                    }
+                }
+                if (skillIsExistedInDB == false)
+                {
+                    context.Skills.Add(skill);
+                }
+               
+                else
+                {
+                   existedSkill = context.Skills.Where(e => e.Name == skill.Name).ToList()[0];
+                }
+                context.SaveChanges();
+
+                // UserSkill database
+
+                UserSkill userSkill = new UserSkill();
+                userSkill.Fk_User = userId;
+
+                if (skillIsExistedInDB == false)
+                {
+                    userSkill.Fk_Skill = skill.Id;
+                }
+                else
+                {
+                    userSkill.Fk_Skill = existedSkill.Id;
+                }
+              
+                context.UserSkills.Add(userSkill);
+
+                context.SaveChanges();
+                viewModel.User = context.Users.Find(userId);
+                viewModel.User.UserSkills = context.UserSkills.Include("Skill").Where(e => e.Fk_User == userId).ToList();
+                return PartialView("_Partial_Skill_Data", viewModel.User.UserSkills);
+            }
+            else
+                return PartialView("_Partial_Add_Skill", viewModel);
 
         }
 
 
+        [HttpGet]
+        public ActionResult EditSkillAjax(int id)
+        {
+
+            viewModel.UserSkill = context.UserSkills.Include("Skill").Where(e => e.Id == id).ToArray()[0];
+            viewModel.Skills = context.Skills.ToList();
+            viewModel.Skill = context.Skills.Where(e => e.Id == viewModel.UserSkill.Fk_Skill).ToList()[0];
+            viewModel.Skill.Name = context.Skills.Where(e => e.Id == viewModel.UserSkill.Fk_Skill).ToList()[0].Name;
+           
+            return PartialView("_Partial_Edit_Skill", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult EditSkillAjax(UserSkill userSkill)
+        {
+            //userSkill.Skill = context.Skills.Where(e => e.Id == userSkill.Fk_Skill).ToList()[0];
+
+            if (ModelState.IsValid)
+            {
+                // Skill database
+                string userId = User.Identity.GetUserId();
+                userSkill.Fk_User = userId;
+
+                Skill newSkill = new Skill();
+                bool skillIsExistedInDB = false;
+               
+                for (int i = 0; i < context.Skills.ToList().Count; i++)
+                {
+                    if (userSkill.Skill.Name == context.Skills.ToList()[i].Name)
+                    {
+                        skillIsExistedInDB = true;
+                    }
+                }
+                if (skillIsExistedInDB == false)
+                {
+                    newSkill = userSkill.Skill;
+                    context.Skills.Add(newSkill);
+                }
+                context.SaveChanges();
+
+                // UserSkill database
+
+                UserSkill oldSkill = context.UserSkills.Where(e => e.Id == userSkill.Id).ToList()[0];
+                oldSkill.Fk_User = userId;
+                oldSkill.Skill.Name = userSkill.Skill.Name;
+
+
+                if (skillIsExistedInDB == false)
+                {
+                    oldSkill.Fk_Skill = newSkill.Id;
+
+                }
+                else
+                {
+                    oldSkill.Fk_Skill = context.Skills.Where(e => e.Name == userSkill.Skill.Name).ToList()[0].Id;
+                }
+                context.SaveChanges();
+
+                viewModel.User = context.Users.Where(e => e.Id == userSkill.Fk_User).ToArray()[0];
+
+                viewModel.User.UserSkills = context.UserSkills.Include("Skill").Where(e => e.Fk_User == userId).ToList();
+                return PartialView("_Partial_Skill_Data", viewModel.User.UserSkills);
+            }
+            else
+            {
+                return PartialView("_Partial_Edit_Skill", viewModel.User.UserSkills);
+            }
+            
+
+        }
+
+
+        [HttpGet]
+        public ActionResult DeleteSkillAjax(int id)
+        {
+            string userId = User.Identity.GetUserId();
+
+            viewModel.User = context.Users.Where(e => e.Id == userId).ToList()[0];
+            viewModel.UserSkill = context.UserSkills.Include("Skill").Where(e => e.Id == id).ToArray()[0];
+
+            return PartialView("_Partial_Delete_Skill", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteSkillAjax(UserSkill userSkill)
+        {
+            string userId = User.Identity.GetUserId();
+            userSkill.Fk_User = userId;
+
+            context.UserSkills.Attach(userSkill);
+
+            context.UserSkills.Remove(userSkill);
+
+            context.SaveChanges();
+
+            viewModel.User = context.Users.Find(userId);
+            viewModel.User.UserSkills = context.UserSkills.Include("Skill").Where(e => e.Fk_User == userId).ToList();
+            return PartialView("_Partial_Skill_Data", viewModel.User.UserSkills);
+        }
     }
 }
 
