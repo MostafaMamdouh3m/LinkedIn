@@ -78,9 +78,28 @@ namespace LinkedIn_Test.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult AjaxLoadMoreChats()
+        public PartialViewResult AjaxLoadMoreChats(int currentChatsNumber)
         {
-            return null;
+            int trial = 0;
+            List<Message> msgs = context.Messages.OrderByDescending(e => e.Date).Where(e => e.Sender.Id == userId || e.Reciver.Id == userId).ToList();
+            List<Message> temp;
+            do
+            {
+                trial++;
+                userId = User.Identity.GetUserId();
+                temp = context.Messages.Include("Sender").Include("Reciver").OrderByDescending(e => e.Date).Where(e => e.Sender.Id == userId || e.Reciver.Id == userId).ToList();
+                viewModel.lastMessages = GetChatsCount(msgs, userId);
+
+            } while (viewModel.lastMessages.Count <= currentChatsNumber && temp.Count < msgs.Count);
+
+            if (viewModel.lastMessages.Count == currentChatsNumber)
+            {
+                return null;
+            }
+            else
+            {
+                return PartialView("_PartialMessageUpdatePanes", viewModel.lastMessages);
+            }
         }
 
         [HttpPost] // Done
@@ -92,16 +111,10 @@ namespace LinkedIn_Test.Controllers
             return PartialView("_PartialMessageBoard", viewModel.Chat);
         }
 
-        [HttpPost]
-        public PartialViewResult SearchChats(string str)
-        {
-            return null;
-        }
-
         [HttpPost] // Done
         public bool CheckChats()
         {
-            return context.Users.Where(e => e.UserName == User.Identity.Name).ToArray()[0].MessageUpdated;
+            return context.Users.Find(User.Identity.GetUserId()).MessageUpdated;
         }
 
         [HttpPost] // Done

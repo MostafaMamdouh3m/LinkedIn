@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Web;
@@ -286,9 +287,8 @@ namespace LinkedIn_Test.Controllers
 
             viewModel.User = context.Users.Find(userId);
             viewModel.User.UserEductions = context.UserEducations.Include("Education").Where(e => e.Fk_User == userId).ToList();
+
             return PartialView("_Partial_Education_Data", viewModel.User.UserEductions);
-
-
         }
 
         [HttpPost]
@@ -499,6 +499,27 @@ namespace LinkedIn_Test.Controllers
             viewModel.User.UserSkills = context.UserSkills.Include("Skill").Where(e => e.Fk_User == userId).ToList();
             return PartialView("_Partial_Skill_Data", viewModel.User.UserSkills);
         }
+
+        [HttpPost]
+        public ActionResult UploadProfilePictureAjax(HttpPostedFileBase upload)
+        {
+            if (upload != null)
+            {
+                string path = Path.Combine(Server.MapPath("~/content/images"), upload.FileName);
+                upload.SaveAs(path);
+
+                var currUserId = User.Identity.GetUserId();
+                var currUser = context.Users.SingleOrDefault(e => e.Id == currUserId);
+
+                currUser.ProfilePicture = upload.FileName;
+                context.SaveChanges();
+
+                return Json("/content/images/" + upload.FileName);
+            }
+            return null;
+        }
+
+
     }
 }
 

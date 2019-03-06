@@ -20,6 +20,10 @@ namespace LinkedIn_Test.Models.Entities
         [Display(Name = "Comment Owner")]
         public string Fk_CommentOwner { get; set; }
         public ApplicationUser CommentOwner { get; set; }
+        public Post Post { get; set; }
+
+        [ForeignKey("Post")]
+        public int FK_postId { get; set; }
 
     }
 }

@@ -49,10 +49,11 @@ $(document).ready(function () {
     });
     $("#message_board_new textarea").keyup(function (e) {
         var key = e.which || e.keyCode;
-        if (key === 13) {
-            $("#message_board_attach button").trigger("click");
+        if (key === 13 && GetActivePaneId() != undefined) {
+             $("#message_board_attach button").trigger("click");
+
         }
-        if ($("#message_board_new textarea").val() != "") {
+        if ($("#message_board_new textarea").val() != "" && GetActivePaneId() != undefined) {
             $("#message_board_attach button").prop('disabled', false);
             $("#message_board_attach button").removeClass("disabled");
         }
@@ -90,6 +91,24 @@ $(document).ready(function () {
         }
 
     });
+    $("#load_more_panes").on("click", function () {
+        $.ajax({
+            url: "/Messages/AjaxLoadMoreChats",
+            type: 'POST',
+            success: function (result) {
+                console.log("Working");
+            },
+            error: function () {
+                $.confirm({
+                    title: 'ERROR',
+                    content: 'Bad things happened \0/',
+                    draggable: true,
+                    dragWindowGap: 0
+                });
+            }
+        });
+    });
+
 
     //-------------------------------------------------------------------------------------------------- functions Calls
 
