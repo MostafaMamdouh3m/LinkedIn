@@ -1,6 +1,7 @@
 ﻿using LinkedIn_Test.Models;
 using LinkedIn_Test.Models.Entities;
 using LinkedIn_Test.ViewModels;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -125,12 +126,16 @@ namespace LinkedIn_Test.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                var userId = User.Identity.GetUserId();
+                userAtWorkplace.Fk_User = userId;
+                
+                //  DataBase
                 context.UserAtWorkplace.Add(userAtWorkplace);
                 context.SaveChanges();
-
+               
+                //  View
                 UserViewModel uvm = new UserViewModel();
-                uvm.User = context.Users.FirstOrDefault();  //Select first user
+                uvm.User = context.Users.Find(userId);  //Select Logged-in >>USER
                 uvm.UserAtWorkplaces = context.UserAtWorkplace.Where(e => e.Fk_User == uvm.User.Id).ToList();   //All workplaces-relations For this user
 
                 for (int i = 0; i < uvm.UserAtWorkplaces.Count; i++)
@@ -142,7 +147,7 @@ namespace LinkedIn_Test.Controllers
                 //foreach (UserAtWorkplace item in uvm.UserAtWorkplaces)
                 //    uvm.Workplaces.Add(item.Workplace);
 
-                return PartialView("_PartialExperience", uvm);
+                return PartialView("_Partial_Experience", uvm);
             }
             else
                 return PartialView("_Partial_Add_Experience");

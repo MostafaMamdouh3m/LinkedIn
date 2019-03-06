@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
+
+
+
 <div id="user">
     <div class="first-part">
 
@@ -65,25 +68,25 @@
                 <div>
                     <h7> <i class="fa fa-bank" style="font-size:16px"></i>  @Model.User.CurrentEducation.Name  @Model.User.CurrentEducation.Type </h7>
                 </div>
-                    
 
-                    <div>
-                        <button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
-                            <i class="far fa-address-book"></i>
-                            See contact info
-                        </button>
-                    </div>
 
-                    <div class="friends">
-                        <button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
-                            <i class="fas fa-user-friends"></i>
-                            See connections
-                        </button>
-                    </div>
+                <div>
+                    <button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
+                        <i class="far fa-address-book"></i>
+                        See contact info
+                    </button>
+                </div>
 
+                <div class="friends">
+                    <button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
+                        <i class="fas fa-user-friends"></i>
+                        See connections
+                    </button>
                 </div>
 
             </div>
+
+        </div>
 
         <div class="virtualdiv">
 
@@ -101,12 +104,18 @@
 
     @Html.Partial("_Partial_Education_Data", Model)
 
+    @*Work Experience part*@
+    @Html.Partial("_Partial_Experience", Model)
+
 </div>
 
 
 
-
-
+<style>
+    .field-validation-error{
+        color:#9e0707;
+    }
+</style>
 
 
 

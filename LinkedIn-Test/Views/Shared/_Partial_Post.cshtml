@@ -1,55 +1,96 @@
-﻿
-<div class="posts">
-    <div class="post_info">
-        <div>
-            <img id="img-circle" src="~/Content/images/05.jpg" class="img-circle" alt="Cinque Terre" width="40" height="40">
-            <div id="profil_name"> Amr Rizk </div>
-            <div id="profil_job"> Civil Engineering Informatics </div>
+﻿@model HomeViewModel 
 
+@{
+    ViewBag.Title = "Index";
+}
+
+@for (int i = 0; i < Model.FriendsOfUser.Count; i++)
+{
+    <div class="Post">
+        <div class="post_info">
+            <div>
+                @*<img id="img-circle" src="~/Content/images/@Model.FriendsOfUser[i].ProfilePicture" class="img-circle" alt="Cinque Terre" width="40" height="40">*@
+                <img id="img-circle" src="~/Content/images/@Model.FriendsOfUser[i].ProfilePicture" class="img-circle" alt="Cinque Terre" width="40" height="40">
+                <div id="profil_name">@Model.FriendsOfUser[i].Posts[0].PostOwner.FirstName</div>
+                <div id="profil_job"> Civil Engineering Informatics </div>
+            </div>
+        </div>
+        <div class="post_caption">
+            <p class="text-justify">
+                @Model.FriendsOfUser[i].Posts[0].Body
+            </p>
+        </div>
+        <div class="post_media">
+            <img id="" src="~/Content/images/012.jpg" width="550" height="300">
         </div>
 
-    </div>
-    <div class="post_caption">
-        <p class="text-justify">
-            Steel Structure for Sale Why Choose our Steel Structure?
-            ü Easy to joint mo dules together
-            of your steel structure save your assemble
-            and install budget. ü The earlier your steel structure
-            to be used, the earlier you could make profit from your
-            project. ü All modules and components of steel...
-        </p>
-
-    </div>
-    <div class="post_media">
-        <img id="" src="~/Content/images/012.jpg" width="550" height="300">
-    </div>
-    <div class="post_Engagment01">
-        <div id="like_comment_share">
-            <span>like</span>
-            <span>Comment</span>
-            <span></span>
+        <div class="post_Engagment01">
+            <div id="like_comment_share">
+                <span>like</span>
+                <span>Comment</span>
+                <span></span>
+            </div>
         </div>
-    </div>
-    <div class="post_Engagment02">
-        <div class="like_comment_share">
-            <button class="btn btn-default" type="button" style="border:none" aria-haspopup="false"
-                    aria-expanded="false">
-                Like <span class="glyphicon glyphicon-thumbs-up"></span>
-            </button>
-            <button class="btn btn-default" type="button" style="border:none" aria-haspopup="true"
-                    aria-expanded="false">
-                Comment <span class=glyphicon glyphicon-comment"></span>
-            </button>
-            <button class="btn btn-default" type="button" style="border:none" aria-haspopup="true"
-                    aria-expanded="false">
-                Share <span class="glyphicon glyphicon-share-alt"></span>
-            </button>
+        <div class="post_Engagment02">
+            <div class="like_comment_share">
+                <button class="btn btn-default" type="button" style="border:none" aria-haspopup="false"
+                        aria-expanded="false">
+                    Like <span class="glyphicon glyphicon-thumbs-up"></span>
+                </button>
+                <button class="btn btn-default" type="button" style="border:none" data-toggle="collapse" data-target="" aria-expanded="false" aria-controls="collapseExample">
+                    Comment
+                </button>
+                <button class="btn btn-default" type="button" style="border:none" aria-haspopup="true"
+                        aria-expanded="false">
+                    Share <span class="glyphicon glyphicon-share-alt"></span>
+                </button>
+            </div>
+            <div class="CommentTextArea1">
+                <textarea id="CommentTextArea"></textarea>
+            </div>
         </div>
 
-
-
-
+        <div class="ListOfCommnets">
+            @Html.Partial("_PartialComment", Model.FriendsOfUser[i].Posts[0]);
+        </div>
     </div>
+}
 
 
-</div>  
+
+<script>
+    $("#CommentId").on("click", function () {
+
+
+        var currentDate = new Date();
+
+      var FK_PostID = $(".Comment").attr("PostId")
+      var CommentBody = document.getElementById("CommentTextArea").value;
+      var data = { Body: CommentBody, Date: currentDate.toISOString(), FK_postId: FK_PostID, Fk_CommentOwner: FK_PostID };
+
+        $.ajax({
+           url: "/Home/AjaxAddComment",
+           type: 'POST',
+            data: data,
+           success: function (result) {
+               $("#Posts").append(`<p>${result.CommnetOwnerName}`);
+           }
+        });
+        $("#CommentTextArea").val('');
+    });
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>

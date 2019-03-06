@@ -11,9 +11,6 @@
 
     <h4 style="font-size: 135%; color: rgba(0, 0, 0, 0.6); margin-bottom:25px; ">Experience</h4>
 
-    @*<h4 class="skill-name">Experience</h4>*@
-
-
    
     <div class="eduaction-data-image">
 
@@ -22,13 +19,17 @@
         </div>
 
         <div class="eduaction-data" id="">
-            @for (int i = 0; i < Model.Workplaces.Count; i++)
+            @if (Model.Workplaces != null)
             {
-                <h4 class="uni-name">@Model.UserAtWorkplace.Title</h4>
-                <h4 class="uni-certificate">@Model.Workplace.Name</h4>
-                <h4 class="uni-date">@Model.UserAtWorkplace.StartDate - >@Model.UserAtWorkplace.EndDate</h4>
-                <h4 class="uni-date">@Model.UserAtWorkplace.Location</h4>
+                for (int i = 0; i < Model.Workplaces.Count; i++)
+                {
+                    <h4 class="uni-name">@Model.UserAtWorkplace.Title</h4>
+                    <h4 class="uni-certificate">@Model.Workplace.Name</h4>
+                    <h4 class="uni-date">@Model.UserAtWorkplace.StartDate - >@Model.UserAtWorkplace.EndDate</h4>
+                    <h4 class="uni-date">@Model.UserAtWorkplace.Location</h4>
+                }
             }
+
 
         </div>
     </div>

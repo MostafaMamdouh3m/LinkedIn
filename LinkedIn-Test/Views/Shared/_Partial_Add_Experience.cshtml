@@ -1,6 +1,7 @@
 ﻿
 @model UserViewModel
-@{ 
+
+@{
     AjaxOptions Add_Experience_ajaxOptions = new AjaxOptions()
     {
         HttpMethod = "POST",
@@ -9,6 +10,7 @@
         OnSuccess = "$('#add_experienceModal').modal('hide')"
     };
 }
+
 
 @using (Ajax.BeginForm("AddWorkplaceAjax", "Profile", Add_Experience_ajaxOptions, new { @class = "Add_Education_form" }))
 {
@@ -35,14 +37,14 @@
                     <!--Company-->
                     <div class="form-group">
                         @Html.LabelFor(m => m.Workplace.Name, new { @class = "labels" })
-                        @Html.DropDownListFor(m => m.UserAtWorkplace.Fk_Workplace, new SelectList(Model.WorkplacesAll, "Id", "Name"),"Select your Company", new { @class = "form-control largetextbox"})
+                        @Html.DropDownListFor(m => m.UserAtWorkplace.Fk_Workplace, new SelectList(Model.WorkplacesAll, "Id", "Name"), "Select your Company", new { @class = "form-control largetextbox" })
                         @Html.ValidationMessageFor(m => m.Workplace.Name)
                     </div>
-                     @*<div class="form-group">
-                        @Html.LabelFor(m => m.Workplace.Name, new { @class = "labels" })
-                        @Html.TextBoxFor(m => m.Workplace.Name, new { @class = "form-control largetextbox", placeholder = "Ex: Microsoft" })
-                        @Html.ValidationMessageFor(m => m.Workplace.Name)
-                    </div>*@
+                    @*<div class="form-group">
+                            @Html.LabelFor(m => m.Workplace.Name, new { @class = "labels" })
+                            @Html.TextBoxFor(m => m.Workplace.Name, new { @class = "form-control largetextbox", placeholder = "Ex: Microsoft" })
+                            @Html.ValidationMessageFor(m => m.Workplace.Name)
+                        </div>*@
 
                     <div class="form-group">
                         @Html.LabelFor(m => m.UserAtWorkplace.Location, new { @class = "labels" })
@@ -52,7 +54,7 @@
 
                     <div class="form-group">
                         @Html.LabelFor(m => m.UserAtWorkplace.StartDate, new { @class = "labels " })
-                        @Html.TextBoxFor(m => m.UserAtWorkplace.StartDate, new { @class = "form-control largetextbox" })
+                        @Html.EditorFor(m => m.UserAtWorkplace.StartDate, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(m => m.UserAtWorkplace.StartDate)
                     </div>
 
@@ -63,7 +65,7 @@
 
                     <div class="form-group">
                         @Html.LabelFor(m => m.UserAtWorkplace.EndDate, new { @class = "labels  " })
-                        @Html.TextBoxFor(m => m.UserAtWorkplace.EndDate, new { @class = "form-control largetextbox" })
+                        @Html.EditorFor(m => m.UserAtWorkplace.EndDate, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(m => m.UserAtWorkplace.EndDate)
                     </div>
 
@@ -88,14 +90,12 @@
 
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" style="border-radius:3px;  padding-top:5px; padding-bottom:5px; padding-left:15px;  padding-right:15px; " >Save</button>
+                    <button type="submit" class="btn btn-primary" style="border-radius:3px;  padding-top:5px; padding-bottom:5px; padding-left:15px;  padding-right:15px; ">Save</button>
                 </div>
             </div>
         </div>
     </div>
 }
-@*<script type="text/javascript">
-    $(function () { // will trigger when the document is ready
-        $('.datepicker').datepicker(); //Initialise any date pickers
-    });
-</script>*@
+
+@*<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
