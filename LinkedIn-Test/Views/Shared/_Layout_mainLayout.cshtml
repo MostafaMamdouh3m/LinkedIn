@@ -10,19 +10,14 @@
     @*style*@
 
     @*@Styles.Render("~/Content/css")*@
-
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="~/Content/CustomStyles/mainLayoutStyle.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/CustomStyles/NavbarStyle.css" rel="stylesheet" />
     <link href="~/Content/CustomStyles/MessagePopupStyle.css" rel="stylesheet" />
     <link href="~/Content/CustomStyles/MessagePageStyle.css" rel="stylesheet" />
     <link href="~/Content/ProfilePageStyle.css" rel="stylesheet" />
     <link href="~/Content/CustomStyles/Home_page.css" rel="stylesheet" />
-
-
 
 
 </head>
@@ -38,20 +33,17 @@
     @Html.Partial("_Partial_popupMessage")
 
 
+    @*scripts*@
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/scripts")
+    @*@Scripts.Render("~/bundles/scripts")*@
     <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-confirm.js"></script>
     <script src="~/Scripts/CustomScripts/mainLayoutScript.js"></script>
     <script src="~/Scripts/CustomScripts/Messages.js"></script>
-    <script src="~/Scripts/CustomScripts/InstanceMessages.js"></script>
     <script src="~/Scripts/CustomScripts/HomeScript.js"></script>
 
 
 </body>
 
 </html>
-
-

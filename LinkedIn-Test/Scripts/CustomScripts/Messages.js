@@ -49,10 +49,11 @@ $(document).ready(function () {
     });
     $("#message_board_new textarea").keyup(function (e) {
         var key = e.which || e.keyCode;
-        if (key === 13) {
-            $("#message_board_attach button").trigger("click");
+        if (key === 13 && GetActivePaneId() != undefined) {
+             $("#message_board_attach button").trigger("click");
+
         }
-        if ($("#message_board_new textarea").val() != "") {
+        if ($("#message_board_new textarea").val() != "" && GetActivePaneId() != undefined) {
             $("#message_board_attach button").prop('disabled', false);
             $("#message_board_attach button").removeClass("disabled");
         }
