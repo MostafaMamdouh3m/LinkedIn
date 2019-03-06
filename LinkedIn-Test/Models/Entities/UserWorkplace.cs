@@ -7,7 +7,9 @@ using System.Web;
 
 namespace LinkedIn_Test.Models.Entities
 {
-    public class UserAtWorkplace
+
+    [Table("UserWorkplace")]
+    public class UserWorkplace
     {
         public int Id { get; set; }
         [Required]

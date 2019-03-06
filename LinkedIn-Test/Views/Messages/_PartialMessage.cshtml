@@ -1,0 +1,16 @@
+﻿@model Message
+
+<div>
+    <div class="message_board_pics">
+        <div>
+            <img src="@Model.Sender.ProfilePicture" alt="">
+        </div>
+    </div>
+    <div class="message_board_body">
+        <div>
+            <p><span>@Model.Sender.FirstName @Model.Sender.LastName</span>&nbsp;</p>
+            <p>&nbsp;<span>@Model.Date.ToShortTimeString()</span></p>
+        </div>
+        <div>@Model.Body</div>
+    </div>
+</div>
