@@ -1,4 +1,7 @@
 ﻿
+body{
+    background-color: rgba(240, 238, 238, 0.61);
+}
 .container01{
    
   margin:  auto;
@@ -83,27 +86,32 @@ height: 300px;
     position: relative;
     height: 100px;
     box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397)   
-
-   
-  
-
 }
-.posts{
+
+#Posts{
     margin-left: 15px;
     margin-right: 15px;
+}
+.post{
+
      width:550px;
-    background-color: white;
+    /*background-color: white;*/
     position: relative;
+    margin-bottom:45px;
     height: 550px;
-    border-right: 1px solid rgba(0,0,0,.15);
-    border-left: 1px solid rgba(0,0,0,.15);
-    border-top: 1px solid rgba(0,0,0,.15);
-    box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397)   
-   
+    width: 550px;
+
+    /*box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397);
+    border-bottom: 2px solid rgba(0,0,0,.15);*/
+    /*padding:20px;*/
 }
 .post_info{
     height: 60px;
+     width: 550px;
     background-color:white;
+    border-left: 1px solid rgba(0,0,0,.15);
+    border-right: 1px solid rgba(0,0,0,.15);
+    border-top: 1px solid rgba(0,0,0,.15);
 }
 #img-circle{
     position: relative;
@@ -123,12 +131,18 @@ height: 300px;
     font-size: 11px;
 }
 .post_caption{
+    border-left: 1px solid rgba(0,0,0,.15);
+    border-right: 1px solid rgba(0,0,0,.15);
+     width: 550px;
     height: 100px;
     background-color: white;
     padding: 10px;
 
 }
 .post_media{
+     border-left: 1px solid rgba(0,0,0,.15);
+    border-right: 1px solid rgba(0,0,0,.15);
+     width: 550px;
     height: 300px;
     right: 1px;
     position: relative;
@@ -136,16 +150,23 @@ height: 300px;
 
 }
 .post_Engagment01{
+    border-left: 1px solid rgba(0,0,0,.15);
+    border-right: 1px solid rgba(0,0,0,.15);
     height: 40px;
+    width: 550px;
     background-color:white;
     border-bottom: 1px solid rgba(0,0,0,.15);
 
 
 }
 .post_Engagment02{
+    border-left: 1px solid rgba(0,0,0,.15);
+    border-right: 1px solid rgba(0,0,0,.15);
     height: 50px;
+     width: 550px;
     background-color: white;
     border-bottom: 1px solid rgba(0,0,0,.15);
+    margin-bottom:60px;
 }
 .post_Engagment02 .like_comment_share {
    width: 300px;
@@ -295,12 +316,14 @@ height: 300px;
     top: 12px
 }
 #start_post a{
-    font-size: 13;
+    font-size: 13px;
     font-weight: 600;
     color: rgba(58, 57, 57, 0.61); 
     position: relative;
-    top: 5px;
-    left: 10px;
+    top: 22px;
+}
+#start_post a:hover{
+    cursor:pointer;
 }
 #artdeco-icon{
     position: relative;
@@ -414,4 +437,31 @@ cursor: pointer
     bottom:15px;
     color:white;
 
+}
+.StartPost{
+    position:fixed;
+    top:15px;
+}
+
+
+/* comment part Style */
+.CommentTextArea{
+    height: 50px;
+    width:100%;
+}
+/* #collapseExample{
+    position: relative;
+    right: 21px;
+    top: 17px;
+    height: 50px;
+    width: 550px;
+} */
+#CommentTextArea{
+    right: 21px;
+    top: 17px;
+    height: 50px;
+    width:100%;
+}
+input, select, textarea {
+   max-width: 600px;
 }

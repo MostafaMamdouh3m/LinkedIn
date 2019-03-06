@@ -90,6 +90,24 @@ $(document).ready(function () {
         }
 
     });
+    $("#load_more_panes").on("click", function () {
+        $.ajax({
+            url: "/Messages/AjaxLoadMoreChats",
+            type: 'POST',
+            success: function (result) {
+                console.log("Working");
+            },
+            error: function () {
+                $.confirm({
+                    title: 'ERROR',
+                    content: 'Bad things happened \0/',
+                    draggable: true,
+                    dragWindowGap: 0
+                });
+            }
+        });
+    });
+
 
     //-------------------------------------------------------------------------------------------------- functions Calls
 
