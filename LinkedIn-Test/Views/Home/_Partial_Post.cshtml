@@ -1,5 +1,4 @@
-﻿
-@model Post
+﻿@model Post
 
 @{
     ViewBag.Title = "Index";
@@ -24,15 +23,15 @@
 
     <div class="post_Engagment01">
         <div id="like_comment_share">
+            <span id="like-count-@Model.Id" isLiked="false">5</span>
             <span>like</span>
+            <span id="comment-count"></span>
             <span>Comment</span>
-            <span></span>
         </div>
     </div>
     <div class="post_Engagment02">
         <div class="like_comment_share">
-            <button class="btn btn-default" type="button" style="border:none" aria-haspopup="false"
-                    aria-expanded="false">
+            <button class="btn btn-default" onclick="addLike(@Model.Id)" type="button" style="border:none">
                 Like <span class="glyphicon glyphicon-thumbs-up"></span>
             </button>
             <button class="btn btn-default" onclick="WriteComment(@Model.Id)" id="@Model.Id" PostId="@Model.Id" type="button" style="border:none" aria-expanded="true">
@@ -59,3 +58,51 @@
 
     </div>
 </div>
+
+
+<script>
+
+    function addLike(id) {
+
+        //var FK_PostID = element;
+        alert("sassssss");
+        var data = { Fk_Post: id };
+        var linkeNumder = new Number($(`#like-count-${id}`).text());
+
+        $.ajax({
+            url: "/Home/AjaxAddLike",
+            type: 'POST',
+            data: data,
+            success: function () {
+                if ($(`#like-count-${id}`).attr("isLiked") == "false") {
+                    $(`#like-count-${id}`).attr("isLiked", "true");
+                    linkeNumder++;
+                }
+                else {
+                    $(`#like-count-${id}`).attr("isLiked", "false");
+                    linkeNumder--;
+                }
+                $(`#like-count-${id}`).text(linkeNumder);
+            }
+        });
+
+
+    }
+
+    //function addLike(id) {
+    //    {
+    //        var FK_PostID = id;
+    //        var data = { id: "", FK_postId: FK_PostID, Fk_User: "" };
+    //        $.ajax({
+    //            url: "/Home/AjaxAddLike",
+    //            type: 'POST',
+    //            data: data,
+    //            success: function (result) {
+    //                $(`#like-count-${id}`).text(result);
+    //               //document.getElementById(`like-count-${id}`).textContent(result);
+    //            }
+    //        });
+    //    }
+
+    //}
+</script>
