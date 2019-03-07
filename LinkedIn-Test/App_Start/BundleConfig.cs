@@ -15,7 +15,10 @@ namespace LinkedIn_Test
             "~/ Scripts/respond.js",
             "~/Scripts/jquery.validate*",
             "~/Scripts/jquery.validate.unobtrusive.min.js",
-            "~/Scripts/jquery.unobtrusive-ajax.js"));
+            "~/Scripts/jquery.unobtrusive-ajax.js",
+            "~/Scripts/CustomScripts/HomeScript.js"));
+
+
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

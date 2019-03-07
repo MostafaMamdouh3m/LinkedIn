@@ -4,9 +4,6 @@
     ViewBag.Title = Model.User.FirstName + Model.User.LastName;
 }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 @{
     AjaxOptions ajaxOpt = new AjaxOptions()
     {
@@ -27,13 +24,12 @@
 
                 @if (@Model.User.ProfilePicture == "" || @Model.User.ProfilePicture == null)
                 {
-                    <img src="~/images/default.png" alt="" height="128" width="128">
+                    <img src="~/Content/images/default.jpg" alt="" height="128" width="128" id="profilePicture">
                 }
                 else
                 {
-                    <img src=@Model.User.ProfilePicture alt="" height="128" width="128">
+                    <img src="~/Content/images/@Model.User.ProfilePicture" alt="" height="128" width="128" id="profilePicture">
                 }
-
 
                 @*  -------------------   Button to Upload Image      ----------------    *@
                 @*@using (Html.BeginForm("UploadProfilePictureAjax","Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))*@
@@ -73,10 +69,13 @@
             </div>
 
 
+            @if (ViewBag.IsCurrentUserPage == true)
+            {
+                <button type="button" class="btn btn-link pen" data-toggle="modal" data-target="#myModal">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21.71,5L19,2.29a1,1,0,0,0-1.41,0L4,15.85,2,22l6.15-2L21.71,6.45A1,1,0,0,0,22,5.71,1,1,0,0,0,21.71,5ZM6.87,18.64l-1.5-1.5L15.92,6.57l1.5,1.5ZM18.09,7.41l-1.5-1.5,1.67-1.67,1.5,1.5Z" class="large-icon" style="fill: currentColor"></path></svg>
+                </button>
+            }
 
-            <button type="button" class="btn btn-link pen" data-toggle="modal" data-target="#myModal">
-                <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21.71,5L19,2.29a1,1,0,0,0-1.41,0L4,15.85,2,22l6.15-2L21.71,6.45A1,1,0,0,0,22,5.71,1,1,0,0,0,21.71,5ZM6.87,18.64l-1.5-1.5L15.92,6.57l1.5,1.5ZM18.09,7.41l-1.5-1.5,1.67-1.67,1.5,1.5Z" class="large-icon" style="fill: currentColor"></path></svg>
-            </button>
 
 
             <div class="current-education-contact-friends">
@@ -117,13 +116,10 @@
 
         </div>
 
-        <div class="virtualdiv">
+        <div class="virtualdiv"></div>
 
-        </div>
         <div class="summary">
-
             <p> @Model.User.Summary</p>
-
         </div>
 
     </div>
@@ -143,16 +139,4 @@
         $('#profilePicture').attr('src', data)
     }
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
 

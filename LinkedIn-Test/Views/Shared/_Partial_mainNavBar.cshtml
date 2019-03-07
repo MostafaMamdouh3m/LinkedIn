@@ -20,6 +20,7 @@
                 <form action="">
                     <input role="combobox" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-invalid="false" aria-expanded="false" placeholder="Search" type="text">
                 </form>
+                @Html.Partial("_Partial_SearchResults", new List<ApplicationUser>())
             </div>
         </div>
 
@@ -48,24 +49,32 @@
                     <div id="nav_profile_container">
                         <ul class="nav_profile_menu hide_menu">
 
-                            <!-- profile part -->
-                            <li id="nav_profile_menu_profile">
+<!-- profile part -->
+                            <li id="nav_profile_menu_profile" userId="@ViewBag.User.Id">
                                 <div id="nav_profile_info">
                                     <div id="nav_profile_img">
-                                        <img src="" alt="">
+                                        <img src="@ViewBag.User.ProfilePicture">
                                     </div>
                                     <div id="nav_profile_name">
-                                        <p>Ahmed Mohamd</p>
-                                        <p>Civil Engineer</p>
+                                        <p>@ViewBag.User.FirstName @ViewBag.User.LastName</p>
+                                        @if (ViewBag.User.Headline != null)
+                                        {
+                                            <p>@ViewBag.User.Headline</p>
+                                        }
+                                        else
+                                        {
+                                            <p>No Headline</p>
+                                        }
                                     </div>
                                 </div>
                                 <div id="nav_profile_view">
                                     <p>View Profile</p>
                                 </div>
                             </li>
+
                             <!-- Account Part -->
                             <li>
-                                <p>ACCOUNT</p>
+                                <p class="nav_profile_menu_headline">ACCOUNT</p>
                                 <div>
                                     <div>Sitting and Privacy</div>
                                     <div>Language</div>
@@ -73,7 +82,7 @@
                             </li>
                             <!-- Sitting And Logout Part -->
                             <li>
-                                <p>MANAGE</p>
+                                <p class="nav_profile_menu_headline">MANAGE</p>
                                 <div>
                                     <div>Posts and Activites</div>
                                     <div>Sign out</div>

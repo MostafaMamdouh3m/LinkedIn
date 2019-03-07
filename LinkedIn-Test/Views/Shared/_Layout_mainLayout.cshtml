@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 
 <html>
 
@@ -10,26 +11,31 @@
 
     @*@Styles.Render("~/Content/css")*@
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="~/Content/jquery-confirm.css" rel="stylesheet" />
     <link href="~/Content/CustomStyles/mainLayoutStyle.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/CustomStyles/NavbarStyle.css" rel="stylesheet" />
     <link href="~/Content/CustomStyles/MessagePopupStyle.css" rel="stylesheet" />
     <link href="~/Content/CustomStyles/MessagePageStyle.css" rel="stylesheet" />
     <link href="~/Content/ProfilePageStyle.css" rel="stylesheet" />
     <link href="~/Content/CustomStyles/Home_page.css" rel="stylesheet" />
+
+
 </head>
 
-<body>
+    <body>
 
-    @Html.Partial("_Partial_mainNavBar")
-
-
-    @RenderBody()
+        @Html.Partial("_Partial_mainNavBar")
 
 
-    @Html.Partial("_Partial_popupMessage")
+        @RenderBody()
 
 
-    @*scripts*@
+        @Html.Partial("_Partial_popupMessage")
+
+
+        @*scripts*@
 
     @*@Scripts.Render("~/bundles/scripts")*@
     <script src="~/Scripts/jquery-3.3.1.js"></script>
@@ -37,9 +43,11 @@
     <script src="~/Scripts/CustomScripts/mainLayoutScript.js"></script>
     <script src="~/Scripts/CustomScripts/Messages.js"></script>
     <script src="~/Scripts/CustomScripts/InstanceMessages.js"></script>
-    <script src="~/Scripts/CustomScripts/HomeScript.js"></script>
+    <script src="~/Scripts/CustomScripts/ProfileScripts.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
 
-</body>
+    </body>
 
 </html>

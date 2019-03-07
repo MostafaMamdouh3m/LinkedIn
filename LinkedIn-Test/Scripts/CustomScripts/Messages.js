@@ -49,10 +49,11 @@ $(document).ready(function () {
     });
     $("#message_board_new textarea").keyup(function (e) {
         var key = e.which || e.keyCode;
-        if (key === 13) {
-            $("#message_board_attach button").trigger("click");
+        if (key === 13 && GetActivePaneId() != undefined) {
+             $("#message_board_attach button").trigger("click");
+
         }
-        if ($("#message_board_new textarea").val() != "") {
+        if ($("#message_board_new textarea").val() != "" && GetActivePaneId() != undefined) {
             $("#message_board_attach button").prop('disabled', false);
             $("#message_board_attach button").removeClass("disabled");
         }
@@ -83,10 +84,74 @@ $(document).ready(function () {
         }
         else {
 
-            console.log(tempChats);
             $("#message_chatters_contacts").html(tempChats);
             tempChats = "";
 
+        }
+
+    });
+    $("#load_more_panes").on("click", function () {
+
+        var chats = $("#load_more_panes > div");
+        var Id = GetActivePaneId();
+
+        $.ajax({
+            url: "/Messages/AjaxLoadMoreChats",
+            type: 'POST',
+            data: { currentChatsNumber: chats.length-1 },
+            beforeSend: function () {
+                $("#chat_loader").css("display", "block");
+                $("#load_more_panes p").css("display", "none");
+            },
+            success: function (result) {
+                if (result != "") {
+                    $("#message_chatters_contacts").replaceWith(result);
+                    SetActivePane(Id);
+                }
+            },
+            error: function (error) {
+                $.confirm({
+                    title: 'Encountered an error!',
+                    content: 'Something went downhill, this may be serious',
+                    type: 'red',
+                    typeAnimated: true,
+                    buttons: {
+                        close: function () {}
+                    }
+                });
+            },
+            complete: function () {
+                setTimeout(temp, 500);
+                function temp() {
+                    $("#load_more_panes p").css("display", "block");
+                    $("#chat_loader").css("display", "none");
+                }
+            }
+        });
+    });
+    $("#message_chatters_title div").on("click", function () {
+
+        $("#message_board_title").toggle("hidden");
+        $("#message_board_messages").toggle("hidden");
+        $("#search_users").toggle("nonActive");
+        $("#search_users_board").toggle("nonActive");
+
+    });
+    $("#search_users input").keyup(function () {
+
+        if ($("#search_users input").val() != "") {
+
+            $.ajax({
+                url: "/Messages/SearchUsers",
+                type: 'POST',
+                data: { str: $("#search_users input").val() },
+                success: function (result) {
+                    $("#search_users_board").html(result);
+                }
+            });
+        }
+        else {
+            $("#search_users_board").html('<div id="messages_no_user_found">Enter name in the search bar</div>');
         }
 
     });

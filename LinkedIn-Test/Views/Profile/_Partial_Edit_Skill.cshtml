@@ -11,18 +11,27 @@
                     <p class="modal-title" id="myModalLabel" style="color: rgba(0, 0, 0, 0.6); font-size:140%;">Edit Skill</p>
                 </div>
 
-                <div class="modal-body-editskill">
+                <div class="profile_modal_body">
 
 
                     @Html.HiddenFor(e => e.UserSkill.Id)
                     @Html.HiddenFor(e => e.UserSkill.Fk_Skill)
 
-
-
                     <div class="form-group">
                         @Html.LabelFor(m => m.UserSkill.Skill.Name)
                         @Html.TextBoxFor(m => m.UserSkill.Skill.Name, new { @class = "form-control largetextbox" })
                         @Html.ValidationMessageFor(m => m.UserSkill.Skill.Name, "", new { @class = "notvalid" })
+                        <div id="profile_skill_menu_underlay" class="hidden">
+                            <div id="profile_skill_menu">
+                                @Html.Partial("_Partial_Skill_Search", new List<Skill>())
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserSkill.Level, new { @class = "labels" })
+                        @Html.EnumDropDownListFor(e => e.UserSkill.Level, "Select Level", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.UserSkill.Level, "", new { @class = "notvalid" })
                     </div>
 
 
