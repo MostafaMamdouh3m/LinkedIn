@@ -27,12 +27,22 @@
 
                 <div class="profile_modal_body">
 
-                    @Html.HiddenFor(e => e.UserSkill.Fk_User)
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Skill.Name, new { @class = "labels" })
+                        @Html.TextBoxFor(m => m.Skill.Name, new { @class = "form-control" ,id="add-skill-search", autocomplete = "off"})
+                        @Html.ValidationMessageFor(m => m.Skill.Name, "", new { @class = "notvalid" })
+                        <div id="profile_skill_menu_underlay" class="hidden">
+                            <div id="profile_skill_menu">
+                                @Html.Partial("_Partial_Skill_Search", new List<Skill>())
+                            </div>
+                        </div>
+
+                    </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Skill.Name, new { @class = "labels required" })
-                        @Html.TextBoxFor(m => m.Skill.Name, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Skill.Name, "", new { @class = "notvalid" })
+                        @Html.LabelFor(m => m.UserSkill.Level, new { @class = "labels" })
+                        @Html.EnumDropDownListFor(e => e.UserSkill.Level,"Select Level", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.UserSkill.Level, "", new { @class = "notvalid" })
                     </div>
 
                 </div>

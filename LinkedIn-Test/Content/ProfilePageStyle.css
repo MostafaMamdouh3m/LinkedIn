@@ -366,12 +366,7 @@ input, select, textarea {
     margin-bottom: 5px;
 }
 
-.skill-data-image 
-{
-    width:18%;
-    display: flex;
-    justify-content: space-between;
-}
+
 
 .skill-buttons
 {
@@ -403,6 +398,45 @@ input, select, textarea {
     justify-content: space-between;
     width: 793px;
     margin-left: 35px;
+}
+
+
+
+#profile_skill_menu_underlay {
+    position: fixed;
+    height: 0;
+    width: 0;
+}
+
+#profile_skill_menu_underlay.hidden{
+    display: none;
+}
+
+#profile_skill_menu {
+    width: 315px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-height: 150px;
+    overflow-y: scroll;
+    border: 1px solid gray;
+    background-color: white;
+    border-top: none;
+}
+
+#profile_skill_menu div{
+    display: flex;
+    padding: 10px;
+    min-height: 40px;
+}
+
+#profile_skill_menu div:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+#profile_skill_menu div p{
+    margin: 0;
 }
 
 

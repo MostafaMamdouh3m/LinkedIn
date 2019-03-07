@@ -4,9 +4,14 @@
 <div class="education" id="education_data">
     <h4 style="font-size: 135%; color: rgba(0, 0, 0, 0.6); margin-bottom:20px; ">Education</h4>
 
-    <button type="button" class="btn btn-link plus-icon" data-toggle="modal" data-target="#add_education">
-        <li-icon type="plus-icon" role="img" aria-label="Add new education" class="n"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21,13H13v8H11V13H3V11h8V3h2v8h8v2Z" class="large-icon" style="fill: currentColor"></path></svg></li-icon>
-    </button>
+    @if (ViewBag.IsCurrentUserPage == true)
+    {
+        <button type="button" class="btn btn-link plus-icon" data-toggle="modal" data-target="#add_education">
+            <li-icon type="plus-icon" role="img" aria-label="Add new education" class="n"><svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21,13H13v8H11V13H3V11h8V3h2v8h8v2Z" class="large-icon" style="fill: currentColor"></path></svg></li-icon>
+        </button>
+    }
+
+
 
     @for (int i = 0; i < Model.Count; i++)
     {
@@ -25,21 +30,26 @@
                 </div>
             </div>
 
-            <div class="education-buttons">
-                <div>
-                    <button type="button" class="btn btn-link " style="margin-bottom:7px;" @*data-toggle="modal" data-target="#edit_education"*@ id="@Model[i].Id" onclick="Editeducation(this)">
-                        <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21.71,5L19,2.29a1,1,0,0,0-1.41,0L4,15.85,2,22l6.15-2L21.71,6.45A1,1,0,0,0,22,5.71,1,1,0,0,0,21.71,5ZM6.87,18.64l-1.5-1.5L15.92,6.57l1.5,1.5ZM18.09,7.41l-1.5-1.5,1.67-1.67,1.5,1.5Z" class="large-icon" style="fill: currentColor"></path></svg>
-                    </button>
-                </div>
+            @if (ViewBag.IsCurrentUserPage == true)
+            {
+                <div class="education-buttons">
+                    <div>
+                        <button type="button" class="btn btn-link " style="margin-bottom:7px;" @*data-toggle="modal" data-target="#edit_education"*@ id="@Model[i].Id" onclick="Editeducation(this)">
+                            <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21.71,5L19,2.29a1,1,0,0,0-1.41,0L4,15.85,2,22l6.15-2L21.71,6.45A1,1,0,0,0,22,5.71,1,1,0,0,0,21.71,5ZM6.87,18.64l-1.5-1.5L15.92,6.57l1.5,1.5ZM18.09,7.41l-1.5-1.5,1.67-1.67,1.5,1.5Z" class="large-icon" style="fill: currentColor"></path></svg>
+                        </button>
+                    </div>
 
-                <div>
-                    <button type="button" class="btn btn-link  " @*data-toggle="modal" data-target="#edit_education"*@ id="@Model[i].Id" onclick="Deleteducation(this)">
-                        <span class="glyphicon glyphicon-trash education-delete-btn" style="font-size:18px;"></span>
-                    </button>
+                    <div>
+                        <button type="button" class="btn btn-link  " @*data-toggle="modal" data-target="#edit_education"*@ id="@Model[i].Id" onclick="Deleteducation(this)">
+                            <span class="glyphicon glyphicon-trash education-delete-btn" style="font-size:18px;"></span>
+                        </button>
+                    </div>
                 </div>
-            </div>
-           
-            
+            }
+
+
+
+
         </div>
     }
 </div>
