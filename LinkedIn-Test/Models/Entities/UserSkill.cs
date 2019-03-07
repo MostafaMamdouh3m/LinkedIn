@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LinkedIn_Test.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -11,6 +12,9 @@ namespace LinkedIn_Test.Models.Entities
     {
         public int Id { get; set; }
 
+        public int MyProperty { get; set; }
+
+        public SkillLevel Level { get; set; }
 
         [ForeignKey("User")]
         public string Fk_User { get; set; }

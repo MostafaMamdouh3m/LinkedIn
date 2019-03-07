@@ -1,32 +1,28 @@
-﻿
-body{
+﻿body{
     background-color: rgba(240, 238, 238, 0.61);
 }
-.container01{
-   
-  margin:  auto;
-    display: flex;
-flex-direction: row;
-justify-content: center;
-height: 1000px;
-}
-.Middel{
-   
-  
- height: 1000px;
-  background-color: red
-  
-     
-  }
-.profil01{
-  
-padding: 10px;
-background-color: rgba(240, 238, 238, 0.61);
-box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397)   ;
 
-width: 200px;
-height: 300px;
+.container01{
+    margin:  auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 1000px;
 }
+
+.Middel{
+     height: 1000px;
+     background-color: red;
+ }
+
+.profil01{
+    padding: 10px;
+    background-color: rgba(240, 238, 238, 0.61);
+    box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397);
+    width: 200px;
+    height: 300px;
+}
+
 .profil02 {
     bottom: 10px;
     padding: 10px;
@@ -39,9 +35,8 @@ height: 300px;
     border-left: 1px solid rgba(0,0,0,.15);
     border-top: 1px solid rgba(0,0,0,.15);
     box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397)   
-
-   
 }
+
 .profil03 {
     bottom: 10px;
     padding: 10px;
@@ -54,9 +49,9 @@ height: 300px;
     border-right: 1px solid rgba(0,0,0,.15);
     border-left: 1px solid rgba(0,0,0,.15);
     box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397);   
-
     padding: 5px;
 }
+
 .profil04 {
     bottom: 10px;
     padding: 10px;
@@ -359,18 +354,23 @@ outline: none;
 }
 
 
-.modal-content{
-    width: 550px;
-border-radius: 0px;
+.modal-content {
+    width: 100%;
+    min-width: 400px;
+    border-radius: 0px;
+}
 
-}
 .form-control{
-    min-height: 300px;
-border-radius: 0px;
+    min-height: 20px;
+    border-radius: 0px;
 }
-.modal-body{
+
+/*edited by salem*/
+.home_custom_modal-body {
     min-height: 300px;
 }
+
+
 share-box__text-editor-container{
     height: 500px;
 }
@@ -405,7 +405,10 @@ display: inline-block;
 display: inline-block;
 
 
-}.modal-footer{
+}
+
+/*edited by salem*/
+.home_custom_modal_footer {
     height: 50px;
     font-size: 30px;
 }

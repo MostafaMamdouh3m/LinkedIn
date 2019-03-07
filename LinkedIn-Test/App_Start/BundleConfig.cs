@@ -19,6 +19,8 @@ namespace LinkedIn_Test
             "~/Scripts/CustomScripts/HomeScript.js"));
 
 
+
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
