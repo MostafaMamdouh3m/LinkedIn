@@ -128,6 +128,9 @@
     align-items: center;
     align-content: center;
 }
+#message_board_title.hidden{
+    display: none;
+}
 
 #messaging_name {
     margin: 0;
@@ -144,6 +147,9 @@
 #message_board_messages {
     height: calc(80vh - 255px);
     overflow-y: auto;
+}
+#message_board_messages.hidden{
+    display:none;
 }
 
 #message_board_messages > div {
@@ -361,3 +367,59 @@
     padding: 14px 0 0 8px;
     font-size: 15px;
 }
+
+
+#search_users {
+    height: 45px;
+    border-bottom: 1px solid #c3c3c3;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+    align-content: center;
+    margin: 0 -2%;
+}
+#search_users.nonActive{
+    display: none;
+}
+#search_users input{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border: none;
+}
+#search_users input:focus {
+    outline: none;
+}
+#search_users_board {
+    height: calc(80vh - 255px);
+    overflow-y: auto;
+    margin: 0 -2%;
+}
+#search_users_board.nonActive {
+    display: none;
+}
+#search_users_board div{
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    padding: 0 20px;
+}
+#search_users_board div:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+#messages_no_user_found {
+    justify-content: center;
+    user-select: none;
+}
+#messages_no_user_found:hover {
+    background-color: white;
+    justify-content: center;
+    cursor: default;
+}
+
+

@@ -31,7 +31,10 @@
                         @Html.Partial("_PartialMessagePane", Model.lastMessages[i].Value)
                     }
                 }
-                <div id="load_more_panes" requestNumber="0">
+                <div id="load_more_panes">
+                    <div id="chat_loader" style="display : none">
+                        <img src="~/Content/icons/three-bars-loader.gif" />
+                    </div>
                     <p>Load More Chats</p>
                 </div>
             </div>
@@ -39,6 +42,12 @@
         </div>
         <div id="message_chat_board" class="col-md-8">
 
+            <div id="search_users" class="nonActive">
+                <input type="text" placeholder="Enter user name to send a message ..." />
+            </div>
+            <div id="search_users_board" class="nonActive">
+                @Html.Partial("_PartialUsersToMessages", new List<ApplicationUser>())
+            </div>
 
             @Html.Partial("_PartialMessageBoardTitle")
 

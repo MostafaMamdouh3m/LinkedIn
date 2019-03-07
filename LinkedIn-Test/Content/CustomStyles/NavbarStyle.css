@@ -187,7 +187,7 @@
     transition: color .2s;
 }
 
-#nav_icons li > p {
+#nav_icons > li > p {
     font-size: 9px;
     margin: 0;
     display: -webkit-box;
@@ -239,10 +239,36 @@
     list-style: none;
 }
 
+.nav_profile_menu_headline {
+    font-size: 15px;
+    margin: 0 0 10px 0;
+    user-select: none;
+    color: #283e4a;
+    font-style: italic;
+}
+
+.nav_profile_menu > li > div > div {
+    margin: 7px 0;
+}
+
+.nav_profile_menu > li > div > div:hover{
+    color: cornflowerblue;
+    cursor: pointer;
+}
+
+#nav_profile_name {
+    color: darkgray;
+}
+
+#nav_profile_name:hover {
+    color: darkgray;
+    cursor: default;
+}
+
 #nav_profile_menu_profile {
     display: flex;
     flex-direction: column;
-    margin: 10px 0;
+    margin: 10px 0 0;
 }
 
 
@@ -279,6 +305,7 @@
     margin: 10px 0;
     color: #0073b1;
     font-weight: 600;
+    align-items: center;
 }
 #nav_profile_view p:hover{
     cursor: pointer;
