@@ -3,7 +3,7 @@ namespace LinkedIn_Test.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _3rd : DbMigration
+    public partial class remigration : DbMigration
     {
         public override void Up()
         {

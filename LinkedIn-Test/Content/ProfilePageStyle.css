@@ -1,6 +1,15 @@
-﻿.input-validation-error {
+﻿.base_div {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 45px;
+}
+
+.input-validation-error {
     border: solid 1px red;
 }
+
 .notvalid {
     color: red;
 }

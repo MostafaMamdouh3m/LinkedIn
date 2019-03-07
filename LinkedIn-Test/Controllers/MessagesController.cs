@@ -52,7 +52,7 @@ namespace LinkedIn_Test.Controllers
             context.SaveChanges();
 
             // ViewBag for filling the Nav_Bar User details
-            ViewBag.User = context.Users.Where(e => e.UserName == User.Identity.Name).ToArray()[0];
+            ViewBag.User = context.Users.Find(User.Identity.GetUserId());
             if (viewModel.lastMessages.Count > 0)
             {
                 string ChatInfoKey = viewModel.lastMessages[0].Key;

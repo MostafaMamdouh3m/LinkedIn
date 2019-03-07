@@ -200,13 +200,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\MynetworkController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903061819030_mig.cs" />
-    <Compile Include="Migrations\201903061819030_mig.Designer.cs">
-      <DependentUpon>201903061819030_mig.cs</DependentUpon>
+    <Compile Include="Migrations\201903071138544_remigration.cs" />
+    <Compile Include="Migrations\201903071138544_remigration.Designer.cs">
+      <DependentUpon>201903071138544_remigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -227,6 +228,7 @@
     <Compile Include="Models\Enums\Gender.cs" />
     <Compile Include="Models\Enums\NotificationType.cs" />
     <Compile Include="Models\Enums\EducationType.cs" />
+    <Compile Include="Models\Enums\SkillLevel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -252,7 +254,6 @@
     <Content Include="Content\images\13.jpg" />
     <Content Include="Content\images\16.jpg" />
     <Content Include="Content\images\17.jpg" />
-    <Content Include="Content\mainLayoutStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -360,6 +361,8 @@
     <Content Include="Views\Shared\_Partial_popupMessage.cshtml" />
     <Content Include="Views\Shared\_Partial_SearchResults.cshtml" />
     <Content Include="Views\Messages\_PartialUsersToMessages.cshtml" />
+    <Content Include="Views\Shared\_Partial_UnderConstruction.cshtml" />
+    <Content Include="Views\Mynetwork\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -372,8 +375,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903061819030_mig.resx">
-      <DependentUpon>201903061819030_mig.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903071138544_remigration.resx">
+      <DependentUpon>201903071138544_remigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
