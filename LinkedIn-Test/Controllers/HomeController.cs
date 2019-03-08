@@ -57,15 +57,11 @@ namespace LinkedIn_Test.Controllers
             homeViewModel.Posts.OrderByDescending(e => e.Date);
 
 
-            List<Friend> friendRequest = context.Friends.Include("UserOne").Include("UserTwo").Where(e => e.Fk_UserOne == currUserId || e.Fk_UserTwo == currUserId && e.isAccepted == false).ToList();
+            List<Friend> friendRequest = context.Friends.Include("UserOne").Where(e => e.Fk_UserOne == currUserId || e.Fk_UserTwo == currUserId && e.isAccepted == false).ToList();
             homeViewModel.FriendRequest = new List<ApplicationUser>();
             for (int i = 0; i < friendRequest.Count; i++)
             {
-                if (friendRequest[i].Fk_UserOne == currUserId)
-                {
-                    homeViewModel.FriendRequest.Add(friendRequest[i].UserTwo);
-                }
-                else
+                if (friendRequest[i].Fk_UserTwo == currUserId)
                 {
                     homeViewModel.FriendRequest.Add(friendRequest[i].UserOne);
                 }
