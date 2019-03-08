@@ -4,6 +4,10 @@
     let icons_svgs = $(".nav_icon svg");
     let icons_paras = $(".nav_icon p");
     let menu_opened = false;
+    let AddAntiForgeryToken = function (data) {
+        data.__RequestVerificationToken = $('#token').attr("val");
+        return data;
+    };
 
     for (let i = 0; i < icons_itemlist.length; i++) {
         $(icons_itemlist[i]).hover(function(){
@@ -39,7 +43,6 @@
         window.location.href = "/Notifications/Index";
     });
 
-
     $(icons_itemlist[4]).on("click", function () {
         $(".nav_profile_menu").toggleClass("hide_menu");
         menu_opened = !menu_opened;
@@ -49,13 +52,24 @@
         window.location.href = "/Profile/Index";
     });
 
+    $("#lnk_signOut").on("click", function () {
+        $.ajax({
+            url: "/Account/LogOff",
+            type: 'POST',
+            //data: AddAntiForgeryToken({ id: parseInt($(this).attr("title")) })
+            success: function (result) {
+                window.location.href = "/home/Index";
+            }
+        });
+    });
+
+    
 
 
     $("#msg_header").on("click", function(){
         $("#msg_mainBody").toggleClass("collapsed");
         $("#msg_board").toggleClass("collapsed");
     });
-
 
     $("#nav_search input").focus(function(){
         $("#nav_search svg").attr("class", "fouced");

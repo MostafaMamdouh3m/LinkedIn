@@ -28,7 +28,7 @@
                 <div class="profile_modal_body">
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Skill.Name, new { @class = "labels" })
+                        @Html.LabelFor(m => m.Skill.Name, new { @class = "labels required" })
                         @Html.TextBoxFor(m => m.Skill.Name, new { @class = "form-control" ,id="add-skill-search", autocomplete = "off"})
                         @Html.ValidationMessageFor(m => m.Skill.Name, "", new { @class = "notvalid" })
                         <div id="profile_skill_menu_underlay" class="hidden">

@@ -42,6 +42,7 @@ $(document).ready(function () {
                 $("#message_board_messages").append(user.getMessage(message, currentDate.getHours() + ":" + currentDate.getMinutes() + " " + ampm));
                 CollectMessages();
                 $(".chatter_pane[userId=\"" + GetActivePaneId() + "\"] .chatter_pane_info div:nth-child(2)").html("<span>You : </span>" + message);
+                $(".chatter_pane[userId=\"" + GetActivePaneId() + "\"] .chatter_pane_time").text(currentDate.getHours() + ":" + currentDate.getMinutes() + " " + ampm);
 
             }
         });
@@ -135,6 +136,8 @@ $(document).ready(function () {
         $("#message_board_messages").toggle("hidden");
         $("#search_users").toggle("nonActive");
         $("#search_users_board").toggle("nonActive");
+        $("#search_users input").val("");
+
 
     });
     $("#search_users input").keyup(function () {
@@ -163,8 +166,6 @@ $(document).ready(function () {
     $("#message_board_attach button").prop('disabled', true);
     $("#message_board_attach button").addClass("disabled");
     setInterval(CheckMessagesUpdate, 1500);
-
-
 
 
 });
@@ -286,4 +287,20 @@ function SetActivePane(Id) {
     ClearActivePanes();
     $("[userId =" + Id + "]").addClass("active");
     $("[userId =" + Id + "] .chatter_pane_sidebar").addClass("active");
+}
+function NewMessage(Id) {
+
+    var panes = $("#message_chatters_contacts")[0].children;
+    console.log(panes)
+
+    $.ajax({
+        url: "/Messages/StartNewMessage",
+        type: 'POST',
+        data: {Id : Id},
+        success: function (result) {
+            $("#message_chatters_title div").trigger("click");
+            $(result).insertBefore(panes[0]);
+            $(".chatter_pane[userId='"+ Id +"']").trigger("click");
+        }
+    })
 }

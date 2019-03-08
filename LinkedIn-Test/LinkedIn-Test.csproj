@@ -201,13 +201,14 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\MynetworkController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903071339279_intial.cs" />
-    <Compile Include="Migrations\201903071339279_intial.Designer.cs">
-      <DependentUpon>201903071339279_intial.cs</DependentUpon>
+    <Compile Include="Migrations\201903071138544_remigration.cs" />
+    <Compile Include="Migrations\201903071138544_remigration.Designer.cs">
+      <DependentUpon>201903071138544_remigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -364,6 +365,8 @@
     <Content Include="Views\Messages\_PartialUsersToMessages.cshtml" />
     <Content Include="Views\Shared\_Partial_UnderConstruction.cshtml" />
     <Content Include="Views\Mynetwork\Index.cshtml" />
+    <Content Include="Views\Messages\_PartialNewMessage.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -376,8 +379,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903071339279_intial.resx">
-      <DependentUpon>201903071339279_intial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903071138544_remigration.resx">
+      <DependentUpon>201903071138544_remigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

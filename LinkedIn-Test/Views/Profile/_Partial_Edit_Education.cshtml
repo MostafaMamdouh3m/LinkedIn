@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Education.Type, new { @class = "labels" })
+                        @Html.LabelFor(m => m.Education.Type, new { @class = "labels required" })
                         @Html.EnumDropDownListFor(e => e.Education.Type, "Select Type", new { @class = "form-control largedroplist" })
                         @Html.ValidationMessageFor(m => m.Education.Type, "", new { @class = "notvalid" })
                     </div>
@@ -63,13 +63,13 @@
 
                         <div class="startdate">
 
-                            @Html.LabelFor(m => m.UserEducation.StartDate, new { @class = "labels" })
+                            @Html.LabelFor(m => m.UserEducation.StartDate, new { @class = "labels required" })
                             @Html.EditorFor(m => m.UserEducation.StartDate, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(m => m.UserEducation.StartDate, "", new { @class = "notvalid" })
                         </div>
 
                         <div class="enddate">
-                            @Html.LabelFor(m => m.UserEducation.EndDate, new { @class = "labels" })
+                            @Html.LabelFor(m => m.UserEducation.EndDate, new { @class = "labels required" })
                             @Html.EditorFor(m => m.UserEducation.EndDate, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(m => m.UserEducation.EndDate, "", new { @class = "notvalid" })
                         </div>
