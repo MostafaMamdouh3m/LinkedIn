@@ -20,6 +20,11 @@ namespace LinkedIn_Test.Controllers
 
         public ActionResult Index()
         {
+            if (User.Identity.Name == "")
+            {
+                return Redirect("/Account/Register");
+            }
+
             ViewBag.User = context.Users.Find(User.Identity.GetUserId());
             return View();
         }

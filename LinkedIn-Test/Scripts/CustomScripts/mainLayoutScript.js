@@ -40,7 +40,7 @@
     });
 
     $(icons_itemlist[3]).on("click", function () {
-        window.location.href = "/Notifications/Index";
+        window.location.href = "/Notification/Index";
     });
 
     $(icons_itemlist[4]).on("click", function () {

@@ -247,6 +247,11 @@
     <Content Include="Content\CustomStyles\MessagePopupStyle.css" />
     <Content Include="Content\CustomStyles\NavbarStyle.css" />
     <Content Include="Content\icons\three-bars-loader.gif" />
+    <Content Include="Content\images\1.jpg" />
+    <Content Include="Content\images\default.png" />
+    <Content Include="Content\images\Mesawy.jpg" />
+    <Content Include="Content\images\Untitled.png" />
+    <Content Include="Content\images\‪+20 106 310 4736‬ 20170819_214946.jpg" />
     <Content Include="Content\jquery-confirm.css" />
     <Content Include="Content\ProfilePageStyle.css" />
     <Content Include="Content\images\012.jpg" />
