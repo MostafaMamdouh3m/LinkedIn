@@ -23,6 +23,7 @@ namespace LinkedIn_Test.Controllers
 
         public ActionResult Index()
         {
+            //home
 
             if (User.Identity.Name == "" )
             {
