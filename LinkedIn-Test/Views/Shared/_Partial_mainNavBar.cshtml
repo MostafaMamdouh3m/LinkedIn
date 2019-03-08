@@ -52,7 +52,14 @@
                             <li id="nav_profile_menu_profile" userId="@ViewBag.User.Id">
                                 <div id="nav_profile_info">
                                     <div id="nav_profile_img">
-                                        <img src="@ViewBag.User.ProfilePicture">
+                                        @if (@ViewBag.User.ProfilePicture == null || @ViewBag.User.ProfilePicture == "")
+                                        {
+                                            <img src="~/images/default.png" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@ViewBag.User.ProfilePicture">
+                                        }
                                     </div>
                                     <div id="nav_profile_name">
                                         <p>@ViewBag.User.FirstName @ViewBag.User.LastName</p>

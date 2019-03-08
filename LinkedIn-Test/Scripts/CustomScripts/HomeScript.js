@@ -62,3 +62,26 @@ function WriteComment(id) {
     $(`#TextArea-${id}`).val('');
 
 }
+
+
+function acceptRequest(Id) {
+    $.ajax({
+        url: "/Home/AcceptRequest",
+        type: 'POST',
+        data: { Id : Id },
+        success: function (result) {
+            $("[requestId='" + Id + "']").remove();
+        }
+    });
+}
+
+function removeRequest(Id) {
+    $.ajax({
+        url: "/Home/RemoveRequest",
+        type: 'POST',
+        data: { Id: Id },
+        success: function (result) {
+            $("[requestId='" + Id + "']").remove();
+        }
+    });
+}

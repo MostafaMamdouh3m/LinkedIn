@@ -1,14 +1,8 @@
 ﻿@model UserViewModel
 @{
 
-
     ViewBag.Title = "Edit";
 }
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 @{
 
@@ -33,11 +27,9 @@
                 </div>
 
                 <div class="background-profile-images">
-
                     <img src="~/images/1.png" alt="" style="width: 722px;">
-
                     <div class="profileimage">
-                        @if (@Model.User.ProfilePicture == "" || @Model.User.ProfilePicture == null)
+                        @if (@Model.User.ProfilePicture == null || @Model.User.ProfilePicture == "")
                         {
                             <img src="~/content/images/default.png" alt="" height="128" width="128">
                         }
@@ -45,17 +37,11 @@
                         {
                             <img src="~/content/images/@Model.User.ProfilePicture" alt="" height="128" width="128">
                         }
-
-          
                     </div>
-
                     @*<button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
                         <i class="fas fa-pen peneditform"></i>
                     </button>*@
-
-
                 </div>
-
 
                 <div class="profile_modal_body editform_body">
 
@@ -74,8 +60,6 @@
                             @Html.ValidationMessageFor(m => m.User.LastName)
                         </div>
                     </div>
-
-
 
                     <div class="form-group">
                         @Html.LabelFor(m => m.User.Headline, new { @class = " labels" })

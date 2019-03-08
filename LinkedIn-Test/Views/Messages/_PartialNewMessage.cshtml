@@ -4,7 +4,14 @@
     <div class="chatter_pane_sidebar"></div>
     <div class="chatter_pane_pic">
         <div>
-            <img src="@Model.ProfilePicture">
+            @if (@Model.ProfilePicture == null || @Model.ProfilePicture == "")
+            {
+                <img src="~/images/default.png" />
+            }
+            else
+            {
+                <img src="@Model.ProfilePicture">
+            }
         </div>
     </div>
     <div class="chatter_pane_info">

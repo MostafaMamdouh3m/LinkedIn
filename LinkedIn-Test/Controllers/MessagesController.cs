@@ -288,6 +288,11 @@ namespace LinkedIn_Test.Controllers
 
         public PartialViewResult StartNewMessage(string Id)
         {
+            List<Message> msgs = context.Messages.Include("Sender").Include("Reciver").OrderByDescending(e => e.Date).Where(e => (e.Sender.UserName == User.Identity.Name || e.Reciver.UserName == User.Identity.Name) && (e.Sender.Id == Id || e.Reciver.Id == Id)).Take(1).ToList();
+            if (msgs.Count > 0)
+            {
+                return PartialView("_PartialMessage", msgs[0]);
+            }
             return PartialView("_PartialNewMessage", context.Users.Find(Id));
         }
 

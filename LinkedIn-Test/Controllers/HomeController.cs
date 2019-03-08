@@ -49,10 +49,24 @@ namespace LinkedIn_Test.Controllers
                     homeViewModel.Posts.AddRange(userFriend.Posts);
                 }
             }
-
             homeViewModel.Posts.OrderByDescending(e => e.Date);
-            ViewBag.User = context.Users.Find(User.Identity.GetUserId());
 
+
+            List<Friend> friendRequest = context.Friends.Include("UserOne").Include("UserTwo").Where(e => e.Fk_UserOne == currUserId || e.Fk_UserTwo == currUserId && e.isAccepted == false).ToList();
+            homeViewModel.FriendRequest = new List<ApplicationUser>();
+            for (int i = 0; i < friendRequest.Count; i++)
+            {
+                if (friendRequest[i].Fk_UserOne == currUserId)
+                {
+                    homeViewModel.FriendRequest.Add(friendRequest[i].UserTwo);
+                }
+                else
+                {
+                    homeViewModel.FriendRequest.Add(friendRequest[i].UserOne);
+                }
+            }
+
+            ViewBag.User = context.Users.Find(User.Identity.GetUserId());
             return View(homeViewModel);
         }
 
@@ -179,6 +193,24 @@ namespace LinkedIn_Test.Controllers
                 context.SaveChanges();
             }
           
+        }
+
+
+        [HttpPost]
+        public void AcceptRequest(string Id)
+        {
+            string userId = User.Identity.GetUserId();
+            Friend request = context.Friends.Where(e => e.Fk_UserOne == userId && e.Fk_UserTwo == Id || e.Fk_UserOne == Id && e.Fk_UserTwo == userId).ToList()[0];
+            request.isAccepted = true;
+            context.SaveChanges();
+        }
+        [HttpPost]
+        public void RemoveRequest(string Id)
+        {
+            string userId = User.Identity.GetUserId();
+            Friend request = context.Friends.Where(e => e.Fk_UserOne == userId && e.Fk_UserTwo == Id || e.Fk_UserOne == Id && e.Fk_UserTwo == userId).ToList()[0];
+            context.Friends.Remove(request);
+            context.SaveChanges();
         }
     }
 }

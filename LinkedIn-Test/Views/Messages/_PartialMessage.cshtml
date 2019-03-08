@@ -3,7 +3,14 @@
 <div>
     <div class="message_board_pics">
         <div>
-            <img src="@Model.Sender.ProfilePicture" alt="">
+            @if (@Model.Sender.ProfilePicture == null || @Model.Sender.ProfilePicture == "")
+            {
+                <img src="~/images/default.png" />
+            }
+            else
+            {
+                <img src="@Model.Sender.ProfilePicture">
+            }
         </div>
     </div>
     <div class="message_board_body">

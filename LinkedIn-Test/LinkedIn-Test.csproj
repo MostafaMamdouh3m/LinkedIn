@@ -206,13 +206,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903080346136_6th.cs" />
-    <Compile Include="Migrations\201903080346136_6th.Designer.cs">
-      <DependentUpon>201903080346136_6th.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903080349057_8th.cs" />
-    <Compile Include="Migrations\201903080349057_8th.Designer.cs">
-      <DependentUpon>201903080349057_8th.cs</DependentUpon>
+    <Compile Include="Migrations\201903081114095_start.cs" />
+    <Compile Include="Migrations\201903081114095_start.Designer.cs">
+      <DependentUpon>201903081114095_start.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -309,8 +305,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -370,6 +364,8 @@
     <Content Include="Views\Mynetwork\Index.cshtml" />
     <Content Include="Views\Messages\_PartialNewMessage.cshtml" />
     <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\Profile\_Partial_SendMessage.cshtml" />
+    <Content Include="Views\Home\_Partial_FriendRequests.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -382,11 +378,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903080346136_6th.resx">
-      <DependentUpon>201903080346136_6th.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903080349057_8th.resx">
-      <DependentUpon>201903080349057_8th.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903081114095_start.resx">
+      <DependentUpon>201903081114095_start.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

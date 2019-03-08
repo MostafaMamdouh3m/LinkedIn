@@ -169,7 +169,6 @@
 .message_board_pics div {
     height: 40px;
     width: 40px;
-    background-color: black;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -336,12 +335,16 @@
 }
 
 .chatter_pane_pic div {
-    background-color: blue;
     height: 70px;
     min-width: 70px;
     width: 70px;
     border-radius: 50%;
     overflow: hidden;
+}
+
+.chatter_pane_pic img {
+    height: 100%;
+    width: auto;
 }
 
 .chatter_pane_info {

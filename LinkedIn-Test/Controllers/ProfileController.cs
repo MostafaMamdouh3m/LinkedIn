@@ -20,12 +20,14 @@ namespace LinkedIn_Test.Controllers
         UserViewModel viewModel = new UserViewModel();
 
         public ActionResult Index()                           //by: mostafa
-
         {
-           //List<ApplicationUser>  users = context.Users.ToList();
+            if (User.Identity.Name == "")
+            {
+                return Redirect("/account/register");
+            }
 
             string userId = User.Identity.GetUserId();
-            viewModel.User = context.Users.Where(e => e.Id == userId).ToList()[0];
+            viewModel.User = context.Users.Find(userId);
             viewModel.User.UserEductions = context.UserEducations.Where(e => e.Fk_User == userId).ToList();
             viewModel.User.UserSkills = context.UserSkills.Where(e => e.Fk_User == userId).ToList();
 
@@ -554,26 +556,56 @@ namespace LinkedIn_Test.Controllers
             {
                 // Go to not fount page
             }
-            viewModel.User.UserEductions = context.UserEducations.Where(e => e.Fk_User == Id).ToList();
-            viewModel.User.UserSkills = context.UserSkills.Where(e => e.Fk_User == Id).ToList();
+            viewModel.User.UserEductions = context.UserEducations.Include("Education").Where(e => e.Fk_User == Id).ToList();
+            viewModel.User.UserSkills = context.UserSkills.Include("Skill").Where(e => e.Fk_User == Id).ToList();
 
-            //viewModel.Educations = context.Educations.ToList();
-            //viewModel.Skills = context.Skills.ToList();
-            //viewModel.Countries = context.Countries.ToList();
+            string userId = User.Identity.GetUserId();
+            List<Friend> friendship = context.Friends.Where(e => e.Fk_UserOne == userId && e.Fk_UserTwo == Id || e.Fk_UserOne == Id && e.Fk_UserTwo == userId).ToList();
+            if (friendship == null || friendship.Count == 0)
+            {
+                ViewBag.friendState = "noRequest";
+            }
+            else
+            {
+                if (friendship[0].isAccepted)
+                {
+                    ViewBag.friendState = "accepted";
+                }
+                else
+                {
+                    ViewBag.friendState = "notAccepted";
+                }
+            }
 
-            //viewModel.DropDownListForEducationsOfUser = new List<Education>();
-
-            //for (int i = 0; i < viewModel.User.UserEductions.Count; i++)
-            //{
-            //    int temp = viewModel.User.UserEductions[i].Fk_Education;
-            //    viewModel.DropDownListForEducationsOfUser.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
-            //}
 
             ViewBag.User = context.Users.Find(User.Identity.GetUserId());
             ViewBag.IsCurrentUserPage = false;
             return View("Index",viewModel);
         }
 
+        [HttpPost]
+        public void FriendRequest(string Id)
+        {
+            string userId = User.Identity.GetUserId();
+            List<Friend> friendship = context.Friends.Where(e => e.Fk_UserOne == userId && e.Fk_UserTwo == Id || e.Fk_UserOne == Id && e.Fk_UserTwo == userId).ToList();
+            if (friendship == null || friendship.Count == 0)
+            {
+                Friend newOne = new Friend()
+                {
+                    Fk_UserOne = userId,
+                    Fk_UserTwo = Id,
+                    isAccepted = false
+                };
+                context.Friends.Add(newOne);
+                context.SaveChanges();
+            }
+            else
+            {
+                context.Friends.Remove(friendship[0]);
+                context.SaveChanges();
+            }
+
+        }
     }
 }
 

@@ -108,22 +108,32 @@
     border-right: 1px solid rgba(0,0,0,.15);
     border-top: 1px solid rgba(0,0,0,.15);
 }
-#img-circle{
+.home_img_circle {
     position: relative;
     top: 11px;
     left: 16px;
 }
-#profil_name{
+.home_profile_name{
     position: relative;
     bottom: 32px;
     left: 65px;
     font-size: 15px;
 }
-#profil_job{
+.home_profile_job {
     position: relative;
-    bottom: 35px;
-    left: 63px;
+    bottom: 30px;
+    right: 105px;
     font-size: 11px;
+}
+.home_profile_img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.home_profile_img img{
+    width: 100%;
+    height: auto;
 }
 .post_caption{
     border-left: 1px solid rgba(0,0,0,.15);
@@ -186,21 +196,27 @@
 
 
 }
-.job02{
+.home_friend_requests {
     padding: 10px;
-   width: 300px;
-    height: 400px;
-    background-color:white;
-    position:relative;
+    width: 300px;
+    min-height: 100px;
+    background-color: white;
+    position: relative;
     bottom: 10px;
     right: 10px;
     top: -7px;
     border-right: 1px solid rgba(0,0,0,.15);
     border-left: 1px solid rgba(0,0,0,.15);
     border-top: 1px solid rgba(0,0,0,.15);
-    box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397)   
-
+    box-shadow: 0px 1px .5px rgba(0, 0, 0, 0.397)
 }
+
+.home_friend_requests div div:last-child{
+    padding: 0 10px;
+    text-align: end;
+}
+
+
 .job03{
     position:relative;
     right: 10px;

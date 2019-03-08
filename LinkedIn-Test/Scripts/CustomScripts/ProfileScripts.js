@@ -13,7 +13,6 @@
 $(document).on("click", "#Edit_Education_Submit", function () {
 
     $.ajax({
-
         url: '/Profile/EditEducationAjax/',
         method: "POST",
         data: $("#edit_education form").serialize(),
@@ -21,11 +20,9 @@ $(document).on("click", "#Edit_Education_Submit", function () {
             console.log(result);
             $("#edit_education").modal("toggle");
             $('#education_data').replaceWith(result);
-
         }
     });
 });
-
 
 function Deleteducation(element) {
 
@@ -42,7 +39,6 @@ function Deleteducation(element) {
     });
 }
 
-
 $(document).on("click", "#Delete_Education_Submit", function () {
 
     $.ajax({
@@ -56,7 +52,6 @@ $(document).on("click", "#Delete_Education_Submit", function () {
         }
     });
 });
-
 
 function Editskill(element) {
 
@@ -86,7 +81,6 @@ $(document).on("click", "#Edit_Skill_Submit", function () {
     });
 });
 
-
 function Deleteskill(element) {
 
     $.ajax({
@@ -102,7 +96,6 @@ function Deleteskill(element) {
     });
 }
 
-
 $(document).on("click", "#Delete_Skill_Submit", function () {
 
     $.ajax({
@@ -115,7 +108,6 @@ $(document).on("click", "#Delete_Skill_Submit", function () {
         }
     });
 });
-
 
 $("#add-skill-search").focus(function () {
 
@@ -157,8 +149,31 @@ $("#add-skill-search").keyup(function () {
 
 });
 
-
 function setSkillText(name) {
     $("#add-skill-search").val(name);
     $("#profile_skill_menu_underlay").addClass("hidden");
+}
+
+
+function sendFriendRequest(Id) {
+
+    $.ajax({
+        url: "/Profile/FriendRequest",
+        type: 'POST',
+        data: { Id: Id },
+        success: function (result) {
+            if ($("#profile_friend").hasClass("sent") || $("#profile_friend").hasClass("friend")) {
+                $("#profile_friend").removeClass("sent");
+                $("#profile_friend").removeClass("friend");
+                $("#profile_friend").text("Send Friend Request");
+            }
+            else {
+                $("#profile_friend").addClass("sent");
+                $("#profile_friend").text("Remove Request");
+            }
+        },
+        error: function (error) {
+
+        }
+    });
 }
