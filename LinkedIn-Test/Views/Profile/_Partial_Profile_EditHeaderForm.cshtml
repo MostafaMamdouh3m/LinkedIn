@@ -17,14 +17,14 @@
         HttpMethod = "post",
         UpdateTargetId = "user",
         InsertionMode = InsertionMode.Replace,
-        OnSuccess = "$('#myModal').modal('hide')"
+        OnSuccess = "$('#header-form-edit').modal('hide')"
     };
 }
 
 
 @using (Ajax.BeginForm("EditHeaderFormAjex", "profile", ajaxopt_editform, new { @class = "editform" }))
 {
-    <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade " id="header-form-edit" tabindex="-1" role="dialog" aria-labelledby="header-form-edit">
         <div class="modal-dialog" role="document" style="width: 744px;">
             <div class="modal-content">
                 <div class="modal-header">
@@ -39,36 +39,36 @@
                     <div class="profileimage">
                         @if (@Model.User.ProfilePicture == "" || @Model.User.ProfilePicture == null)
                         {
-                            <img src="~/images/default.png" alt="" height="128" width="128">
+                            <img src="~/content/images/default.png" alt="" height="128" width="128">
                         }
                         else
                         {
-                            <img src=@Model.User.ProfilePicture alt="" height="128" width="128">
+                            <img src="~/content/images/@Model.User.ProfilePicture" alt="" height="128" width="128">
                         }
 
+          
                     </div>
 
-                    <button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
+                    @*<button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
                         <i class="fas fa-pen peneditform"></i>
-                    </button>
+                    </button>*@
 
 
                 </div>
 
 
-                <div class="profile_modal_body">
+                <div class="profile_modal_body editform_body">
 
-
-                    @Html.HiddenFor(e => e.User.Id)
+                        @Html.HiddenFor(e => e.User.Id)
 
                     <div class="fullname">
-                        <div class="form-group">
+                        <div class="form-group first_name_edit">
                             @Html.LabelFor(m => m.User.FirstName, new { @class = "required labels" })
                             @Html.TextBoxFor(m => m.User.FirstName, new { @class = "form-control " })
                             @Html.ValidationMessageFor(m => m.User.FirstName)
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group last_name_edit">
                             @Html.LabelFor(m => m.User.LastName, new { @class = "required labels" })
                             @Html.TextBoxFor(m => m.User.LastName, new { @class = "form-control " })
                             @Html.ValidationMessageFor(m => m.User.LastName)
@@ -78,7 +78,7 @@
 
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.User.Headline, new { @class = "required labels" })
+                        @Html.LabelFor(m => m.User.Headline, new { @class = " labels" })
                         @Html.TextAreaFor(m => m.User.Headline, new { @class = "form-control largetextarea" })
                         @Html.ValidationMessageFor(m => m.User.Headline)
                     </div>
@@ -90,9 +90,9 @@
                         @Html.TextBoxFor(m => m.User.CurrentPosition, new { @class = "form-control largetextbox" })
                         @Html.ValidationMessageFor(m => m.User.CurrentPosition)
 
-                        <button type="button" class="btn btn-link add-new-position " data-toggle="modal" data-target="#myModal">
+                        @*<button type="button" class="btn btn-link add-new-position " data-toggle="modal" data-target="#myModal">
                             Add new position
-                        </button>
+                        </button>*@
 
                     </div>
 
@@ -102,13 +102,13 @@
                         @Html.DropDownListFor(m => m.User.Fk_CurrentEducation, new SelectList(Model.DropDownListForEducationsOfUser, "Id", "Name"), "Select School/University", new { @class = "form-control largedroplist" })
                         @Html.ValidationMessageFor(m => m.User.CurrentEducation)
 
-                        <button type="button" class="btn btn-link add-new-education" data-toggle="modal" data-target="#myModal">
+                        @*<button type="button" class="btn btn-link add-new-education" data-toggle="modal" data-target="#myModal">
                             Add new education
-                        </button>
+                        </button>*@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.User.Country, new { @class = "required labels" })
+                        @Html.LabelFor(m => m.User.Country, new { @class = " labels" })
                         @Html.DropDownListFor(m => m.User.Fk_Country, new SelectList(Model.Countries, "Id", "Name"), "Select Country", new { @class = "form-control largedroplist" })
                         @Html.ValidationMessageFor(m => m.User.Country)
                     </div>

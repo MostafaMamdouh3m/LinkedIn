@@ -7,8 +7,8 @@
 @{
     AjaxOptions ajaxOpt = new AjaxOptions()
     {
-        //OnFailure = "alert('error')",
-        HttpMethod = "POST",
+       
+        HttpMethod = "POST",       
         OnSuccess = "myFunc"
     };
 }
@@ -35,12 +35,16 @@
                 @*@using (Html.BeginForm("UploadProfilePictureAjax","Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))*@
                 @using (Ajax.BeginForm("UploadProfilePictureAjax", "Profile", ajaxOpt, new { enctype = "multipart/form-data", id = "ajaxForm" }))
                 {
-                    <label class="btn btn-link pen" id="btnProfile" style="z-index: 5; position: relative; top: -37px; left:116px; border-radius: 50%; background-color: #ffffff78; padding: 4px; font-size: 20%;">
-                        <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21.71,5L19,2.29a1,1,0,0,0-1.41,0L4,15.85,2,22l6.15-2L21.71,6.45A1,1,0,0,0,22,5.71,1,1,0,0,0,21.71,5ZM6.87,18.64l-1.5-1.5L15.92,6.57l1.5,1.5ZM18.09,7.41l-1.5-1.5,1.67-1.67,1.5,1.5Z" class="large-icon" style="fill: currentColor"></path></svg>
+                    if (ViewBag.IsCurrentUserPage == true)
+                    {
+                        <label class="btn btn-link pen" id="btnProfile" style="z-index: 5; position: relative; top: -37px; left:116px; border-radius: 50%; background-color: #ffffff78; padding: 4px; font-size: 20%;">
+                            <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21.71,5L19,2.29a1,1,0,0,0-1.41,0L4,15.85,2,22l6.15-2L21.71,6.45A1,1,0,0,0,22,5.71,1,1,0,0,0,21.71,5ZM6.87,18.64l-1.5-1.5L15.92,6.57l1.5,1.5ZM18.09,7.41l-1.5-1.5,1.67-1.67,1.5,1.5Z" class="large-icon" style="fill: currentColor"></path></svg>
 
-                        <input id="uploadbtn" type="file" name="upload" style="display:none;" onchange="$('#ajaxForm').submit()" />
-                        @*<input type="submit"/>*@
-                    </label>
+                            <input id="uploadbtn" type="file" name="upload" style="display:none;" onchange="$('#ajaxForm').submit()" />
+                            @*<input type="submit"/>*@
+                        </label>
+                    }
+
                 }
             </div>
 
@@ -71,7 +75,7 @@
 
             @if (ViewBag.IsCurrentUserPage == true)
             {
-                <button type="button" class="btn btn-link pen" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-link pen" data-toggle="modal" data-target="#header-form-edit">
                     <svg viewBox="0 0 24 24" width="24px" height="24px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21.71,5L19,2.29a1,1,0,0,0-1.41,0L4,15.85,2,22l6.15-2L21.71,6.45A1,1,0,0,0,22,5.71,1,1,0,0,0,21.71,5ZM6.87,18.64l-1.5-1.5L15.92,6.57l1.5,1.5ZM18.09,7.41l-1.5-1.5,1.67-1.67,1.5,1.5Z" class="large-icon" style="fill: currentColor"></path></svg>
                 </button>
             }
@@ -98,20 +102,6 @@
                 }
 
 
-                <div>
-                    <button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
-                        <i class="far fa-address-book"></i>
-                        See contact info
-                    </button>
-                </div>
-
-                <div class="friends">
-                    <button type="button" class="btn btn-link " data-toggle="modal" data-target="#myModal">
-                        <i class="fas fa-user-friends"></i>
-                        See connections
-                    </button>
-                </div>
-
             </div>
 
         </div>
@@ -136,7 +126,7 @@
 
 <script>
     function myFunc(data) {
-        $('#profilePicture').attr('src', data);
+        $('#profilePicture').attr('src', data)
     }
 </script>
 

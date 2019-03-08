@@ -205,9 +205,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903071316522_update3.cs" />
-    <Compile Include="Migrations\201903071316522_update3.Designer.cs">
-      <DependentUpon>201903071316522_update3.cs</DependentUpon>
+    <Compile Include="Migrations\201903080346136_6th.cs" />
+    <Compile Include="Migrations\201903080346136_6th.Designer.cs">
+      <DependentUpon>201903080346136_6th.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903080349057_8th.cs" />
+    <Compile Include="Migrations\201903080349057_8th.Designer.cs">
+      <DependentUpon>201903080349057_8th.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -375,8 +379,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903071316522_update3.resx">
-      <DependentUpon>201903071316522_update3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903080346136_6th.resx">
+      <DependentUpon>201903080346136_6th.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903080349057_8th.resx">
+      <DependentUpon>201903080349057_8th.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
