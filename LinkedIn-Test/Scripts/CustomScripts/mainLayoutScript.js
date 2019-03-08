@@ -88,7 +88,11 @@
         $("#nav_search input").toggleClass("fouced");
         $("#nav_search input").attr("placeholder", "Search");
 
-        $("#nav_search_result_underlay").addClass("hidden");
+        setTimeout(fun, 150);
+        var fun = function () {
+            $("#nav_search_result_underlay").addClass("hidden");
+        }
+        
     });
 
     $("#nav_search input").keyup(function () {
@@ -116,3 +120,7 @@
 
 
 });
+
+function GotoUserPage(Id) {
+    window.location.href = "/Profile/userProfile/" + Id;
+}
