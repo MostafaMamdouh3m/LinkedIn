@@ -63,6 +63,37 @@ function WriteComment(id) {
 
 }
 
+function addLike(id) {
+
+   
+   
+    var data = { Fk_Post: id };
+    var element = $(`#like-count-${id}`);
+    var linkeNumder = new Number(element.text());
+
+    $.ajax({
+        url: "/Home/AjaxAddLike",
+        type: 'POST',
+        data: data,
+        success: function () {
+            if (element.attr("isLiked") == "false") {
+                element.attr("isLiked", "true");
+                linkeNumder++;
+            }
+            else {
+                element.attr("isLiked", "false");
+                linkeNumder--;
+            }
+            element.text(linkeNumder);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+
+
+}
+
 
 function acceptRequest(Id) {
     $.ajax({

@@ -1,12 +1,31 @@
-﻿<div class="profil01">
+﻿@model  HomeViewModel
+
+<div class="profil01">
     <div class="profil02">
 
         <div class="img">
             <img class="cover" src="~/Content/images/10.png" width="200" height="60">
-            <img src="~/Content/images/05.jpg" class="img-circle" alt="Cinque Terre" width="65" height="65">
+            @{
+                if (Model.User.ProfilePicture == null)
+                {
+                    <img id="HomeProfileImge" src="~/images/default.png" class="img-circle" alt="Cinque Terre" width="65" height="65">
+
+                }
+                else
+                {
+                    <img id="HomeProfileImge" src="~/Content/images/@Model.User.ProfilePicture" class="img-circle" alt="Cinque Terre" width="65" height="65">
+
+                }
+            }
         </div>
-        <div class="profil_name"> Amr Rizk </div>
-        <div class="profil_job"> Civil Engineering Informatics </div>
+        <div class="profil_name"> @Model.User.FirstName @Model.User.LastName </div>
+        @{ 
+            if (Model.User.UserEductions!=null)
+            {
+
+        <div class="profil_job">@Model.User.UserWorkplaces</div>
+            }
+        }
     </div>
     <div class="profil03">
         <ul class="list-unstyled list-group">

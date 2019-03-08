@@ -108,7 +108,7 @@
     border-right: 1px solid rgba(0,0,0,.15);
     border-top: 1px solid rgba(0,0,0,.15);
 }
-.home_img_circle {
+#img-OwnerPost{
     position: relative;
     top: 11px;
     left: 16px;
@@ -263,7 +263,7 @@
     left: 63px;
     font-style: unset;
   }
-  .img-circle{
+  #HomeProfileImge{
    position: relative;
     left: 55px;
     bottom: 40px;
@@ -293,6 +293,13 @@
  }
  .profil_name{
     top: 43px;
+    font-size:15px;
+    font-weight:500;
+    color:black;
+ }
+  #ProfileNameLink{ 
+    font-weight:500;
+    color:black;
  }
  #list li{
     font-size: 11px;
@@ -483,4 +490,48 @@ cursor: pointer
 }
 input, select, textarea {
    max-width: 600px;
+}
+/* Cooment Style*/
+
+.CommentList{
+    width:550px;
+    margin-bottom: 20px;
+    border-left: 2px solid rgba(0,0,0,.15);
+    border-right: 2px solid rgba(0,0,0,.15);
+    border-bottom:1px solid rgba(0,0,0,.15);
+    border-top:1px solid rgba(0,0,0,.15);
+}
+
+.Comment{
+    background-color:white;
+    width:546px;
+    height: 60px;
+    margin-bottom: -1px;
+    border-top:1px solid rgba(0,0,0,.15);
+    border-bottom:1px solid rgba(0,0,0,.15);
+}
+#Comment_Owner{
+    position: relative;
+    bottom: -3px;
+    left: 12px;
+    font-size:12px;
+    font-weight:600;
+    color:black;
+
+}
+#CommentImag{
+    position: relative;
+    left: 11px;
+    bottom: -17px;
+    width:25px;
+    height:25px;
+}
+#Comment_Body{
+    position: relative;
+    left: 155px;
+    bottom: 5px;
+}
+#LikeText{
+    position: relative;
+    right: 170px
 }

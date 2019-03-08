@@ -3,9 +3,20 @@
 
 
 <div class="Comment">
-    <p>@Model.CommentOwner.FirstName</p>
-    <p>@Model.Body</p>
+   
+    @{
+        if (Model.CommentOwner.ProfilePicture == null)
+        {
+            <img id="CommentImag" src="~/Content/images/default.png" class="img-circle" alt="Cinque Terre" width="40" height="40">
+        }
+        else
+        {
+            <img id="CommentImag" src="~/Content/images/@Model.CommentOwner.ProfilePicture" class="img-circle"  alt="Cinque Terre" width="40" height="40">
+            }
+     }
+    @*<p id="Comment_Owner">@Model.CommentOwner.FirstName @Model.CommentOwner.LastName</p>*@
+    <a href="~/Views/Profile/Index" id="Comment_Owner">@Model.CommentOwner.FirstName @Model.CommentOwner.LastName</a>
+    <p class="text-justify" id="Comment_Body">@Model.Body</p>
 </div>
-
 
 
