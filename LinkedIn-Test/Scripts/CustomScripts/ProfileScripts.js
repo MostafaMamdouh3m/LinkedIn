@@ -50,7 +50,6 @@ $(document).on("click", "#Delete_Education_Submit", function () {
         method: "POST",
         data: $("#delete_education form").serialize(),
         success: function (result) {
-            alert('done')
             console.log(result);
             $("#delete_education").modal("toggle");
             $('#education_data').replaceWith(result);
@@ -111,8 +110,6 @@ $(document).on("click", "#Delete_Skill_Submit", function () {
         method: "POST",
         data: $("#delete_skill form").serialize(),
         success: function (result) {
-            alert('done')
-            console.log(result);
             $("#delete_skill").modal("toggle");
             $('#skill_data').replaceWith(result);
         }

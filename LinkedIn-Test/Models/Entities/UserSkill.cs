@@ -14,7 +14,7 @@ namespace LinkedIn_Test.Models.Entities
 
         public int MyProperty { get; set; }
 
-        public SkillLevel Level { get; set; }
+        public SkillLevel? Level { get; set; }
 
         [ForeignKey("User")]
         public string Fk_User { get; set; }

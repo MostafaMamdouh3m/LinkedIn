@@ -16,6 +16,9 @@ namespace LinkedIn_Test.Models.Entities
 
         [Required]
         public string Name { get; set; }
+
+        [Required]
+
         public EducationType Type { get; set; }
 
 

@@ -49,6 +49,7 @@ namespace LinkedIn_Test.Controllers
         [HttpPost]
         public ActionResult EditHeaderFormAjex(ApplicationUser User)                   //by: mostafa
         {
+            ViewBag.IsCurrentUserPage = true;
 
             if (ModelState.IsValid)
             {
@@ -74,14 +75,23 @@ namespace LinkedIn_Test.Controllers
                 viewModel.User.UserEductions = context.UserEducations.Where(e => e.Fk_User == User.Id).ToList();
                 viewModel.Educations= context.Educations.ToList();
 
-                ViewBag.IsCurrentUserPage = true;
+                
 
                 return PartialView("_Partial_Profile_Header_Work_Education", viewModel);
             }
 
             else
             {
-                return PartialView("_Partial_Profile_EditHeaderForm");
+                viewModel.User = context.Users.Find(User.Id);
+                viewModel.User.FirstName = viewModel.User.FirstName;
+                viewModel.User.LastName = viewModel.User.LastName;
+
+                viewModel.User.CurrentEducation = context.Educations.Find(User.Fk_CurrentEducation);
+                viewModel.User.Country = context.Countries.Find(User.Fk_Country);
+                viewModel.Users = context.Users.ToList();
+                viewModel.User.UserEductions = context.UserEducations.Where(e => e.Fk_User == User.Id).ToList();
+                viewModel.Educations = context.Educations.ToList();
+                return PartialView("_Partial_Profile_Header_Work_Education", viewModel);
 
             }
         }
@@ -109,13 +119,11 @@ namespace LinkedIn_Test.Controllers
         public ActionResult AddEducationAjax(UserViewModel userViewModel)
         {
             ViewBag.IsCurrentUserPage = true;
+            string userId = User.Identity.GetUserId();
 
             if (ModelState.IsValid)
             {
-                //Education DB
-
-                string userId = User.Identity.GetUserId();
-        
+                //Education DB                    
                 Education existedEducation = new Education();
                 Education newEducation = new Education();
 
@@ -166,7 +174,12 @@ namespace LinkedIn_Test.Controllers
                 return PartialView("_Partial_Education_Data", viewModel.User.UserEductions);
             }
             else
-                return PartialView("_Partial_Add_Education");
+            {
+                viewModel.User = context.Users.Find(userId);
+                viewModel.User.UserEductions = context.UserEducations.Include("Education").Where(e => e.Fk_User == userId).ToList();
+                return PartialView("_Partial_Education_Data", viewModel.User.UserEductions);
+
+            }
         }
 
 
@@ -195,8 +208,9 @@ namespace LinkedIn_Test.Controllers
 
             string userId = User.Identity.GetUserId();
             UserEducation oldEducation = context.UserEducations.Find(userViewModel.UserEducation.Id);
+            UserEducation userEducation = context.UserEducations.Where(e => e.Id == userViewModel.UserEducation.Id).ToList()[0];
 
-            if (ModelState.IsValid)
+           if (ModelState.IsValid)
             {
                 // Education database
 
@@ -222,7 +236,7 @@ namespace LinkedIn_Test.Controllers
 
                 // UserEducation database
 
-                UserEducation userEducation = context.UserEducations.Where(e => e.Id == userViewModel.UserEducation.Id).ToList()[0];
+
                 oldEducation.Fk_User = userId;
                 oldEducation.Activities = userViewModel.UserEducation.Activities;
                 oldEducation.Degree = userViewModel.UserEducation.Degree;
@@ -249,11 +263,18 @@ namespace LinkedIn_Test.Controllers
 
                 viewModel.User.UserEductions = context.UserEducations.Include("Education").Where(e => e.Fk_User == userId).ToList();
                 return PartialView("_Partial_Education_Data", viewModel.User.UserEductions);
+
             }
+
 
             else
             {
-                return PartialView("_Partial_Edit_Education", viewModel);
+                viewModel.User = context.Users.Where(e => e.Id == userEducation.Fk_User).ToArray()[0];
+
+
+                viewModel.User.UserEductions = context.UserEducations.Include("Education").Where(e => e.Fk_User == userId).ToList();
+                return PartialView("_Partial_Education_Data", viewModel.User.UserEductions);
+
             }
 
 
@@ -346,7 +367,11 @@ namespace LinkedIn_Test.Controllers
                 return PartialView("_Partial_Skill_Data", viewModel.User.UserSkills);
             }
             else
-                return PartialView("_Partial_Add_Skill", viewModel);
+            {
+                viewModel.User = context.Users.Find(userId);
+                viewModel.User.UserSkills = context.UserSkills.Include("Skill").Where(e => e.Fk_User == userId).ToList();
+                return PartialView("_Partial_Skill_Data", viewModel.User.UserSkills);
+            }
 
         }
 
@@ -370,11 +395,12 @@ namespace LinkedIn_Test.Controllers
         {
 
             ViewBag.IsCurrentUserPage = true;
+            string userId = User.Identity.GetUserId();
 
             if (ModelState.IsValid)
             {
                 // Skill database
-                string userId = User.Identity.GetUserId();
+                
                 userSkill.Fk_User = userId;
 
                 Skill newSkill = new Skill();
@@ -418,7 +444,10 @@ namespace LinkedIn_Test.Controllers
             }
             else
             {
-                return PartialView("_Partial_Edit_Skill", viewModel.User.UserSkills);
+                viewModel.User = context.Users.Where(e => e.Id == userSkill.Fk_User).ToArray()[0];
+
+                viewModel.User.UserSkills = context.UserSkills.Include("Skill").Where(e => e.Fk_User == userId).ToList();
+                return PartialView("_Partial_Skill_Data", viewModel.User.UserSkills);
             }
             
 

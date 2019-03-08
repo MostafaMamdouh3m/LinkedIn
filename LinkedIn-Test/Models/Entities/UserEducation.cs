@@ -15,11 +15,13 @@ namespace LinkedIn_Test.Models.Entities
 
         public int Id { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:MM/yyyy}", ApplyFormatInEditMode = true)]        // add: by mostafa
+        // add: by mostafa
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:MM/yyyy}", ApplyFormatInEditMode = true)]        // add: by mostafa
+        // add: by mostafa
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
 
@@ -27,7 +29,7 @@ namespace LinkedIn_Test.Models.Entities
 
         public string Degree { get; set; }          // add: by mostafa
         public string FieldOfStudy { get; set; }        // add: by mostafa
-        public EducationGrade Grade { get; set; }            // add: by mostafa
+        public EducationGrade? Grade { get; set; }            // add: by mostafa
         public string Activities { get; set; }        // add: by mostafa
         public string Description { get; set; }        // add: by mostafa
 
