@@ -366,6 +366,7 @@
     <Content Include="Views\Notification\Index.cshtml" />
     <Content Include="Views\Profile\_Partial_SendMessage.cshtml" />
     <Content Include="Views\Home\_Partial_FriendRequests.cshtml" />
+    <Content Include="Views\Profile\_Partial_Skill_Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
