@@ -201,6 +201,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\MynetworkController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -363,6 +364,8 @@
     <Content Include="Views\Messages\_PartialUsersToMessages.cshtml" />
     <Content Include="Views\Shared\_Partial_UnderConstruction.cshtml" />
     <Content Include="Views\Mynetwork\Index.cshtml" />
+    <Content Include="Views\Messages\_PartialNewMessage.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

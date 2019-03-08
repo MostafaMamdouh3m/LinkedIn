@@ -114,6 +114,10 @@ namespace LinkedIn_Test.Controllers
         [HttpPost] // Done
         public bool CheckChats()
         {
+            if (context.Users.Find(User.Identity.GetUserId()) == null)
+            {
+                return false;
+            }
             return context.Users.Find(User.Identity.GetUserId()).MessageUpdated;
         }
 
@@ -218,7 +222,7 @@ namespace LinkedIn_Test.Controllers
             return PartialView("_PartialMessageUpdatePanes", viewModel.lastMessages);
         }
 
-        [HttpPost]
+        [HttpPost] //Done
         public PartialViewResult SearchUsers(string str)
         {
             int spacesNum = 0;
@@ -278,10 +282,14 @@ namespace LinkedIn_Test.Controllers
                     break;
             }
 
+            users.Remove(context.Users.Find(User.Identity.GetUserId()));
             return PartialView("_PartialUsersToMessages", users);
         }
 
-
+        public PartialViewResult StartNewMessage(string Id)
+        {
+            return PartialView("_PartialNewMessage", context.Users.Find(Id));
+        }
 
         #region Private methods
 

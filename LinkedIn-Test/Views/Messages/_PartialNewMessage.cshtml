@@ -1,0 +1,15 @@
+﻿@model ApplicationUser
+
+<div class="chatter_pane" onclick="LoadChat('@Model.Id')" userId="@Model.Id">
+    <div class="chatter_pane_sidebar"></div>
+    <div class="chatter_pane_pic">
+        <div>
+            <img src="@Model.ProfilePicture">
+        </div>
+    </div>
+    <div class="chatter_pane_info">
+        <div>@Model.FirstName @Model.LastName</div>
+        <div><span>new message</span></div>
+    </div>
+    <div class="chatter_pane_time">--:--</div>
+</div>

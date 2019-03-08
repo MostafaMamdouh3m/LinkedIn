@@ -41,7 +41,7 @@ namespace LinkedIn_Test.Controllers
                 viewModel.DropDownListForEducationsOfUser.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
             }
 
-            ViewBag.User = context.Users.Find(User.Identity.GetUserId());
+            ViewBag.User = viewModel.User;
             ViewBag.IsCurrentUserPage = true;
             return View(viewModel);
         }
@@ -85,7 +85,6 @@ namespace LinkedIn_Test.Controllers
 
             }
         }
-
         [HttpPost]
         public ActionResult AddWorkplaceAjax(UserWorkplace userAtWorkplace)  //By: Mesawy
         {
@@ -103,8 +102,6 @@ namespace LinkedIn_Test.Controllers
             else
                 return PartialView("_Partial_Add_Experience");
         }
-
-
         [HttpPost]
         public ActionResult AddEducationAjax(UserViewModel userViewModel)
         {
@@ -519,6 +516,34 @@ namespace LinkedIn_Test.Controllers
             return null;
         }
 
+
+        
+        public ActionResult UserProfile(string Id)
+        {
+            viewModel.User = context.Users.Find(Id);
+            if (viewModel.User == null)
+            {
+                // Go to not fount page
+            }
+            viewModel.User.UserEductions = context.UserEducations.Where(e => e.Fk_User == Id).ToList();
+            viewModel.User.UserSkills = context.UserSkills.Where(e => e.Fk_User == Id).ToList();
+
+            //viewModel.Educations = context.Educations.ToList();
+            //viewModel.Skills = context.Skills.ToList();
+            //viewModel.Countries = context.Countries.ToList();
+
+            //viewModel.DropDownListForEducationsOfUser = new List<Education>();
+
+            //for (int i = 0; i < viewModel.User.UserEductions.Count; i++)
+            //{
+            //    int temp = viewModel.User.UserEductions[i].Fk_Education;
+            //    viewModel.DropDownListForEducationsOfUser.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
+            //}
+
+            ViewBag.User = context.Users.Find(User.Identity.GetUserId());
+            ViewBag.IsCurrentUserPage = false;
+            return View("Index",viewModel);
+        }
 
     }
 }
