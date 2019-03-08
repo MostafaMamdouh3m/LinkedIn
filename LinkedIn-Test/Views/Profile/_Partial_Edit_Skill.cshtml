@@ -18,7 +18,7 @@
                     @Html.HiddenFor(e => e.UserSkill.Fk_Skill)
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.UserSkill.Skill.Name)
+                        @Html.LabelFor(m => m.UserSkill.Skill.Name, new { @class = "labels required" })
                         @Html.TextBoxFor(m => m.UserSkill.Skill.Name, new { @class = "form-control largetextbox" })
                         @Html.ValidationMessageFor(m => m.UserSkill.Skill.Name, "", new { @class = "notvalid" })
                         <div id="profile_skill_menu_underlay" class="hidden">
