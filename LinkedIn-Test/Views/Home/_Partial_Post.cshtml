@@ -7,9 +7,21 @@
 <div class="Post">
     <div class="post_info">
         <div>
-            <img id="img-circle" src="~/Content/images/@Model.PostOwner.ProfilePicture" class="img-circle" alt="Cinque Terre" width="40" height="40">
-            <div id="profil_name">@Model.PostOwner.FirstName @Model.PostOwner.LastName</div>
-            <div id="profil_job"> Civil Engineering Informatics </div>
+            @{
+                if (Model.PostOwner.ProfilePicture == null)
+                {
+            <img id="img-OwnerPost" src="~/Content/images/default.png" class="img-circle" alt="Cinque Terre" width="40" height="40">
+
+                }
+                else
+                {
+            <img id="img-OwnerPost" src="~/Content/images/@Model.PostOwner.ProfilePicture" class="img-circle" alt="Cinque Terre" width="40" height="40">
+
+                }
+            }
+            <div id="profil_name"> <a href="" id="ProfileNameLink">@Model.PostOwner.FirstName @Model.PostOwner.LastName</a>
+            </div>
+            <div id="profil_job"> @Model.PostOwner.CurrentPosition</div>
         </div>
     </div>
     <div class="post_caption">
@@ -17,16 +29,14 @@
             @Model.Body
         </p>
     </div>
-    <div class="post_media">
+    @*<div class="post_media">
         <img id="" src="~/Content/images/012.jpg" width="550" height="300">
-    </div>
+    </div>*@
 
     <div class="post_Engagment01">
         <div id="like_comment_share">
             <span id="like-count-@Model.Id" isLiked="false">5</span>
-            <span>like</span>
-            <span id="comment-count"></span>
-            <span>Comment</span>
+            <span id="LikeText">like</span>
         </div>
     </div>
     <div class="post_Engagment02">
@@ -47,7 +57,7 @@
         </div>
     </div>
     @*ListOfCommnets*@
-    <div id="ListOfCommnets-@Model.Id" CommentList="@Model.Id">
+    <div id="ListOfCommnets-@Model.Id" CommentList="@Model.Id" class="CommentList">
         @if (Model.Comments != null)
         {
             for (int i = 0; i < Model.Comments.Count; i++)
@@ -58,51 +68,3 @@
 
     </div>
 </div>
-
-
-<script>
-
-    function addLike(id) {
-
-        //var FK_PostID = element;
-        alert("sassssss");
-        var data = { Fk_Post: id };
-        var linkeNumder = new Number($(`#like-count-${id}`).text());
-
-        $.ajax({
-            url: "/Home/AjaxAddLike",
-            type: 'POST',
-            data: data,
-            success: function () {
-                if ($(`#like-count-${id}`).attr("isLiked") == "false") {
-                    $(`#like-count-${id}`).attr("isLiked", "true");
-                    linkeNumder++;
-                }
-                else {
-                    $(`#like-count-${id}`).attr("isLiked", "false");
-                    linkeNumder--;
-                }
-                $(`#like-count-${id}`).text(linkeNumder);
-            }
-        });
-
-
-    }
-
-    //function addLike(id) {
-    //    {
-    //        var FK_PostID = id;
-    //        var data = { id: "", FK_postId: FK_PostID, Fk_User: "" };
-    //        $.ajax({
-    //            url: "/Home/AjaxAddLike",
-    //            type: 'POST',
-    //            data: data,
-    //            success: function (result) {
-    //                $(`#like-count-${id}`).text(result);
-    //               //document.getElementById(`like-count-${id}`).textContent(result);
-    //            }
-    //        });
-    //    }
-
-    //}
-</script>

@@ -31,9 +31,12 @@ namespace LinkedIn_Test.Controllers
 
           
             var currUserId = User.Identity.GetUserId();
+            var CurrentUser = context.Users.Find(currUserId);
+            
             // Get user friends Posts   //++++++++++++++++++++++++++++++++++++++++//
             HomeViewModel homeViewModel = new HomeViewModel();
             homeViewModel.Posts = new List<Post>();
+            homeViewModel.User = CurrentUser;
             homeViewModel.Comments = new List<Comment>();
 
             //homeViewModel.FriendsOfUser = new List<ApplicationUser>();// From DataBase
@@ -47,9 +50,10 @@ namespace LinkedIn_Test.Controllers
                     foreach (var post in userFriend.Posts)
                         post.Comments = context.Comments.Where(m => m.FK_postId == post.Id).ToList();
                     homeViewModel.Posts.AddRange(userFriend.Posts);
+                    
                 }
             }
-
+            //homeViewModel.Posts.AddRange(CurrentUser.Posts);
             homeViewModel.Posts.OrderByDescending(e => e.Date);
             ViewBag.User = context.Users.Find(User.Identity.GetUserId());
 

@@ -205,9 +205,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903071138544_remigration.cs" />
-    <Compile Include="Migrations\201903071138544_remigration.Designer.cs">
-      <DependentUpon>201903071138544_remigration.cs</DependentUpon>
+    <Compile Include="Migrations\201903071339279_intial.cs" />
+    <Compile Include="Migrations\201903071339279_intial.Designer.cs">
+      <DependentUpon>201903071339279_intial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -246,6 +246,7 @@
     <Content Include="Content\CustomStyles\MessagePopupStyle.css" />
     <Content Include="Content\CustomStyles\NavbarStyle.css" />
     <Content Include="Content\icons\three-bars-loader.gif" />
+    <Content Include="Content\images\default.png" />
     <Content Include="Content\jquery-confirm.css" />
     <Content Include="Content\ProfilePageStyle.css" />
     <Content Include="Content\images\012.jpg" />
@@ -375,8 +376,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903071138544_remigration.resx">
-      <DependentUpon>201903071138544_remigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903071339279_intial.resx">
+      <DependentUpon>201903071339279_intial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
