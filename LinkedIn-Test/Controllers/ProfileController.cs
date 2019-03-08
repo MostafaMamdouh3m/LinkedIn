@@ -14,6 +14,7 @@ using System.Web.Mvc;
 
 namespace LinkedIn_Test.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         ApplicationDbContext context = new ApplicationDbContext();

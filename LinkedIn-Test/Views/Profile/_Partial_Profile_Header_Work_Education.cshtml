@@ -7,8 +7,8 @@
 @{
     AjaxOptions ajaxOpt = new AjaxOptions()
     {
-        HttpMethod = "POST",
         //OnFailure = "alert('error')",
+        HttpMethod = "POST",
         OnSuccess = "myFunc"
     };
 }
@@ -136,7 +136,7 @@
 
 <script>
     function myFunc(data) {
-        $('#profilePicture').attr('src', data)
+        $('#profilePicture').attr('src', data);
     }
 </script>
 
