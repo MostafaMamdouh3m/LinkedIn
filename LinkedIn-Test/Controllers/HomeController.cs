@@ -54,11 +54,6 @@ namespace LinkedIn_Test.Controllers
             ViewBag.User = context.Users.Find(User.Identity.GetUserId());
 
             return View(homeViewModel);
-
-
-
-
-
         }
 
 
@@ -160,6 +155,30 @@ namespace LinkedIn_Test.Controllers
             return PartialView("_PartialComment", Comment);
         }
 
+        [HttpPost]
+        public void AjaxAddLike(UserLikePost userLikePost)
+        {
 
+            var currUserId = User.Identity.GetUserId();
+            var currUser = context.Users.SingleOrDefault(e => e.Id == currUserId);
+
+            userLikePost.Fk_User = currUserId;
+            var post = context.Posts.SingleOrDefault(e => e.Id == userLikePost.Fk_Post);
+
+            if ( context.UserLikePost.Where(p => p.Fk_Post == post.Id && p.Fk_User == currUserId)== null)
+            {
+                context.UserLikePost.Find(post.Id);
+                post.LikeCount++;
+                context.UserLikePost.Add(userLikePost);
+                context.SaveChanges();
+            }
+            else
+            {
+                post.LikeCount--;
+                context.UserLikePost.Remove(userLikePost);
+                context.SaveChanges();
+            }
+          
+        }
     }
 }
