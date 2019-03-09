@@ -1,29 +1,17 @@
 ﻿@model UserViewModel
-@{
-    AjaxOptions Add_Experience_ajaxOptions = new AjaxOptions()
-    {
-        HttpMethod = "POST",
-        UpdateTargetId = "experience_data",
-        InsertionMode = InsertionMode.ReplaceWith,
-        OnSuccess = "$('#add_experienceModal').modal('hide')"
-    };
-}
 
-@using (Ajax.BeginForm("AddWorkplaceAjax", "Profile", Add_Experience_ajaxOptions, new { @class = "Add_Education_form" }))
-{
-    <!-- Modal -->
-    <div class="modal fade" id="add_experienceModal" tabindex="-1" role="dialog" aria-labelledby="add_experienceModal">
-        <div class="modal-dialog" role="document" style="width: 765px;">
+<div class="modal fade " id="edit_experience" tabindex="-1" role="dialog" aria-labelledby="edit_experience">
+    <form class="Edit_Education_form">
+        <div class="modal-dialog" role="document" style="width: 744px;">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Add Experience</h4>
+                    <p class="modal-title" id="myModalLabel" style="color: rgba(0, 0, 0, 0.6); font-size:140%;">Edit Experience</p>
                 </div>
 
                 <div class="profile_modal_body">
-                    @Html.HiddenFor(e => e.UserWorkplace.Fk_User)
+                    @Html.HiddenFor(e => e.UserWorkplace.Id)
 
-                    <!--Company-->
                     <div class="form-group">
                         @Html.LabelFor(m => m.UserWorkplace.Title, new { @class = "labels" })
                         @Html.TextBoxFor(m => m.UserWorkplace.Title, new { @class = "form-control largetextbox", placeholder = "Ex: Manager" })
@@ -37,15 +25,15 @@
                         @Html.ValidationMessageFor(m => m.Workplace.Name)
                     </div>
                     @*<div class="form-group">
-                        @Html.LabelFor(m => m.UserWorkplace.Workplace.Name, new { @class = "labels required" })
-                        @Html.TextBoxFor(m => m.UserWorkplace.Workplace.Name, new { @class = "form-control", id = "add-skill-search", autocomplete = "off" })
-                        @Html.ValidationMessageFor(m => m.UserWorkplace.Workplace.Name, "", new { @class = "notvalid" })
-                        <div id="profile_skill_menu_underlay" class="hidden">
-                            <div id="profile_skill_menu">
-                                @Html.Partial("_Partial_Workplace_Search", new List<Workplace>())
-                            </div>
-                        </div>
-                    </div>*@
+            @Html.LabelFor(m => m.UserWorkplace.Workplace.Name, new { @class = "labels required" })
+            @Html.TextBoxFor(m => m.UserWorkplace.Workplace.Name, new { @class = "form-control", id = "add-skill-search", autocomplete = "off" })
+            @Html.ValidationMessageFor(m => m.UserWorkplace.Workplace.Name, "", new { @class = "notvalid" })
+            <div id="profile_skill_menu_underlay" class="hidden">
+                <div id="profile_skill_menu">
+                    @Html.Partial("_Partial_Workplace_Search", new List<Workplace>())
+                </div>
+            </div>
+        </div>*@
 
 
                     <div class="form-group">
@@ -54,7 +42,7 @@
                         @Html.ValidationMessageFor(m => m.UserWorkplace.Location)
                     </div>
 
-                    <div class="form-group  duration-addeducation">
+                    <div class="form-group  duration-editeducation">
                         <div class="startdate">
                             @Html.LabelFor(m => m.UserWorkplace.StartDate, new { @class = "labels required" })
                             @Html.EditorFor(m => m.UserWorkplace.StartDate, new { htmlAttributes = new { @class = "form-control" } })
@@ -66,12 +54,13 @@
                             @Html.EditorFor(m => m.UserWorkplace.EndDate, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(m => m.UserWorkplace.EndDate, "", new { @class = "notvalid" })
                         </div>
+
                     </div>
 
                     @*<div>
-                        <label for="currentwork">I currently work in role</label>
-                        <input type="checkbox" name="currentwork" aria-label="...">
-                    </div>*@
+            <label for="currentwork">I currently work in role</label>
+            <input type="checkbox" name="currentwork" aria-label="...">
+        </div>*@
 
                     <div class="form-group">
                         @Html.LabelFor(m => m.UserWorkplace.Industry, new { @class = "labels" })
@@ -91,12 +80,14 @@
                         @Html.ValidationMessageFor(m => m.UserWorkplace.Description)
                     </div>
                 </div>
+                
+                
+                <div class="modal-footer profile_custom_modal_footer">
 
+                    <input type="button" id="Edit_Experience_Submit" value="Save" class="btn btn-primary" style="border-radius:3px;  padding-top:5px; padding-bottom:5px; padding-left:15px;  padding-right:15px; " />
 
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" style="border-radius:3px;  padding-top:5px; padding-bottom:5px; padding-left:15px;  padding-right:15px; ">Save</button>
                 </div>
             </div>
         </div>
-    </div>
-}
+    </form>
+</div>

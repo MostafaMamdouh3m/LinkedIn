@@ -205,13 +205,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903080346136_6th.cs" />
-    <Compile Include="Migrations\201903080346136_6th.Designer.cs">
-      <DependentUpon>201903080346136_6th.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903080349057_8th.cs" />
-    <Compile Include="Migrations\201903080349057_8th.Designer.cs">
-      <DependentUpon>201903080349057_8th.cs</DependentUpon>
+    <Compile Include="Migrations\201903080456112_update.cs" />
+    <Compile Include="Migrations\201903080456112_update.Designer.cs">
+      <DependentUpon>201903080456112_update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -367,6 +363,8 @@
     <Content Include="Views\Messages\_PartialUsersToMessages.cshtml" />
     <Content Include="Views\Shared\_Partial_UnderConstruction.cshtml" />
     <Content Include="Views\Mynetwork\Index.cshtml" />
+    <Content Include="Views\Profile\_Partial_Edit_Experience.cshtml" />
+    <Content Include="Views\Profile\_Partial_Delete_Experience.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -379,11 +377,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903080346136_6th.resx">
-      <DependentUpon>201903080346136_6th.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903080349057_8th.resx">
-      <DependentUpon>201903080349057_8th.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903080456112_update.resx">
+      <DependentUpon>201903080456112_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

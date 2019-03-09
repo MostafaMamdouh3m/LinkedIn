@@ -7,7 +7,6 @@
 @{
     AjaxOptions ajaxOpt = new AjaxOptions()
     {
-       
         HttpMethod = "POST",       
         OnSuccess = "myFunc"
     };
@@ -116,8 +115,10 @@
 
 
     @*Education part*@
-
     @Html.Partial("_Partial_Education_Data", Model.User.UserEductions)
+
+    @*Experience part*@
+    @Html.Partial("_Partial_Experience", Model.User.UserWorkplaces)
 
 </div>
 
@@ -129,4 +130,3 @@
         $('#profilePicture').attr('src', data)
     }
 </script>
-

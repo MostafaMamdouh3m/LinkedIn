@@ -21,7 +21,6 @@ namespace LinkedIn_Test.Controllers
         UserViewModel viewModel = new UserViewModel();
 
         public ActionResult Index()                           //by: mostafa
-
         {
            //List<ApplicationUser>  users = context.Users.ToList();
 
@@ -29,10 +28,13 @@ namespace LinkedIn_Test.Controllers
             viewModel.User = context.Users.Where(e => e.Id == userId).ToList()[0];
             viewModel.User.UserEductions = context.UserEducations.Where(e => e.Fk_User == userId).ToList();
             viewModel.User.UserSkills = context.UserSkills.Where(e => e.Fk_User == userId).ToList();
+            viewModel.User.UserWorkplaces = context.UserWorkplaces.Where(e => e.Fk_User == userId).ToList();
 
             viewModel.Educations = context.Educations.ToList();
             viewModel.Skills = context.Skills.ToList();
             viewModel.Countries = context.Countries.ToList();
+            viewModel.Workplaces = context.Workplaces.ToList();
+
 
             viewModel.DropDownListForEducationsOfUser = new List<Education>();
 
@@ -41,6 +43,9 @@ namespace LinkedIn_Test.Controllers
                 int temp = viewModel.User.UserEductions[i].Fk_Education;
                 viewModel.DropDownListForEducationsOfUser.Add(context.Educations.Where(e => e.Id == temp).ToList()[0]);
             }
+
+
+
 
             ViewBag.User = context.Users.Find(User.Identity.GetUserId());
             ViewBag.IsCurrentUserPage = true;
@@ -97,26 +102,164 @@ namespace LinkedIn_Test.Controllers
             }
         }
 
+
+        //**************************    Workplace   **************************//
         [HttpPost]
-        public ActionResult AddWorkplaceAjax(UserWorkplace userAtWorkplace)  //By: Mesawy
+        public ActionResult AddWorkplaceAjax(UserViewModel userViewModel)  //By: Mesawy
         {
+            ViewBag.IsCurrentUserPage = true;
+            userViewModel.UserWorkplace.StartDate = DateTime.Now;
+            userViewModel.UserWorkplace.EndDate = DateTime.Now;
 
             string userId = User.Identity.GetUserId();
+            var currUser = context.Users.Find(userId);
 
             if (ModelState.IsValid)
             {
-                context.UserWorkplaces.Add(userAtWorkplace);
-                context.SaveChanges();
+                Workplace existedWorkplace = new Workplace();
+                Workplace newWorkplace = new Workplace();
 
+                bool workplaceIsExistedInDB = false;
+                List<Workplace> workplacesAll = context.Workplaces.ToList();
+                List<UserWorkplace> userWorkplacesAll = context.UserWorkplaces.ToList();
+
+                for (int i = 0; i < workplacesAll.Count; i++)
+                {
+                    if (userViewModel.Workplace.Name == workplacesAll[i].Name)
+                    {
+                        workplaceIsExistedInDB = true;
+                        break;
+                    }
+                }
+
+                if (!workplaceIsExistedInDB)
+                {
+                    newWorkplace.Name = userViewModel.Workplace.Name;
+                    context.Workplaces.Add(newWorkplace);
+                }
+                else
+                    existedWorkplace = context.Workplaces.Where(e => e.Name == userViewModel.Workplace.Name).FirstOrDefault();
+
+                userViewModel.UserWorkplace.Fk_User = userId;
+                if (!workplaceIsExistedInDB)
+                    userViewModel.UserWorkplace.Fk_Workplace = newWorkplace.Id;
+                else
+                    userViewModel.UserWorkplace.Fk_Workplace = existedWorkplace.Id;
+
+                userViewModel.UserWorkplace.User = currUser;
+                
+                context.UserWorkplaces.Add(userViewModel.UserWorkplace);
+                context.SaveChanges();
+              
+                viewModel.User = currUser;
                 viewModel.User.UserWorkplaces = context.UserWorkplaces.Include("Workplace").Where(e => e.Fk_User == userId).ToList();
-                return PartialView("_PartialExperience", viewModel);
+
+                return PartialView("_Partial_Experience", viewModel.User.UserWorkplaces);
             }
             else
-                return PartialView("_Partial_Add_Experience");
+            {
+                viewModel.User = currUser;
+                viewModel.User.UserWorkplaces = context.UserWorkplaces.Include("Workplace").Where(e => e.Fk_User == userId).ToList();
+                return PartialView("_Partial_Experience", viewModel.User.UserWorkplaces);
+            }
         }
 
+        [HttpGet]
+        public ActionResult EditWorkplaceAjax(int id)
+        {
+            viewModel.UserWorkplace = context.UserWorkplaces.Include("Workplace").Where(e => e.Id == id).FirstOrDefault();
+            viewModel.Workplace = context.Workplaces.Find(viewModel.UserWorkplace.Fk_Workplace);
 
+            return PartialView("_Partial_Edit_Experience", viewModel);
+        }
         [HttpPost]
+        public ActionResult EditWorkplaceAjax(UserViewModel userViewModel)
+        {
+            ViewBag.IsCurrentUserPage = true;
+
+            string userId = User.Identity.GetUserId();
+            var currUser = context.Users.Find(userId);
+            viewModel.User = currUser;
+
+            UserWorkplace oldUserWorkplace = context.UserWorkplaces.Find(userViewModel.UserWorkplace.Id);
+
+            if (ModelState.IsValid)
+            {
+                userViewModel.UserWorkplace.Fk_User = userId;
+                Workplace newWorkplace = new Workplace();
+                bool workplaceIsExistedInDB = false;
+
+                List<Workplace> workplacesAll = context.Workplaces.ToList();
+
+                for (int i = 0; i < workplacesAll.Count; i++)
+                {
+                    if (userViewModel.Workplace.Name == workplacesAll[i].Name)
+                    {
+                        workplaceIsExistedInDB = true;
+                        oldUserWorkplace.Fk_Workplace = workplacesAll[i].Id;
+                        break;
+                    }
+                }
+                if (!workplaceIsExistedInDB)
+                {
+                    newWorkplace.Name = userViewModel.Workplace.Name;
+                    context.Workplaces.Add(newWorkplace);
+                    context.SaveChanges();
+                }
+                
+                oldUserWorkplace.Fk_User = userId;
+                oldUserWorkplace.Title = userViewModel.UserWorkplace.Title;
+                oldUserWorkplace.StartDate = userViewModel.UserWorkplace.StartDate;
+                oldUserWorkplace.EndDate = userViewModel.UserWorkplace.EndDate;
+                oldUserWorkplace.Description = userViewModel.UserWorkplace.Description;
+                oldUserWorkplace.HeadLine = userViewModel.UserWorkplace.HeadLine;
+                oldUserWorkplace.Location = userViewModel.UserWorkplace.Location;
+                oldUserWorkplace.Industry = userViewModel.UserWorkplace.Industry;
+                oldUserWorkplace.Workplace = context.Workplaces.Find(oldUserWorkplace.Fk_Workplace);
+
+                context.SaveChanges();
+
+
+                viewModel.User.UserWorkplaces = context.UserWorkplaces.Include("Workplace").Where(e => e.Fk_User == userId).ToList();
+
+                viewModel.User.UserWorkplaces = context.UserWorkplaces.Include("Workplace").Where(e => e.Fk_User == userId).ToList();
+                return PartialView("_Partial_Experience", viewModel.User.UserWorkplaces);
+            }
+            else
+            {
+                viewModel.User.UserWorkplaces = context.UserWorkplaces.Include("Workplace").Where(e => e.Fk_User == userId).ToList();
+                return PartialView("_Partial_Experience", viewModel.User.UserWorkplaces);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult DeleteWorkplaceAjax(int id)
+        {
+            var userId = User.Identity.GetUserId();
+
+            viewModel.User = context.Users.Find(userId);
+            viewModel.UserWorkplace = context.UserWorkplaces.Include("Workplace").Where(e => e.Id == id).FirstOrDefault();
+
+
+            return PartialView("_Partial_Delete_Experience", viewModel);
+        }
+        [HttpPost]
+        public ActionResult DeleteWorkplaceAjax(UserWorkplace userWorkplace)
+        {
+            ViewBag.IsCurrentUserPage = true;
+            var userId = User.Identity.GetUserId();
+
+            context.UserWorkplaces.Attach(userWorkplace);
+            context.UserWorkplaces.Remove(userWorkplace);
+            context.SaveChanges();
+
+
+            viewModel.User = context.Users.Find(userId);
+            viewModel.User.UserWorkplaces = context.UserWorkplaces.Include("Workplace").Where(e => e.Fk_User == userId).ToList();
+            return PartialView("_Partial_Experience", viewModel.User.UserWorkplaces);
+        }
+        //**************************    Education   **************************//
+       [HttpPost]
         public ActionResult AddEducationAjax(UserViewModel userViewModel)
         {
             ViewBag.IsCurrentUserPage = true;
@@ -178,12 +321,10 @@ namespace LinkedIn_Test.Controllers
             {
                 viewModel.User = context.Users.Find(userId);
                 viewModel.User.UserEductions = context.UserEducations.Include("Education").Where(e => e.Fk_User == userId).ToList();
-                return PartialView("_Partial_Education_Data", viewModel.User.UserEductions);
 
+                return PartialView("_Partial_Education_Data", viewModel.User.UserEductions);
             }
         }
-
-
 
         [HttpGet]
         public ActionResult EditEducationAjax(int id)
@@ -255,7 +396,7 @@ namespace LinkedIn_Test.Controllers
                 }
                 else
                 {
-                    oldEducation.Fk_Education = context.Educations.Where(e => e.Name == userViewModel.Education.Name).ToList()[0].Id;
+                    oldEducation.Fk_Education = context.Educations.Where(e => e.Name == userViewModel.Education.Name).Where(m => m.Type==userViewModel.Education.Type).ToList()[0].Id;
                 }
                 context.SaveChanges();
 
@@ -266,20 +407,13 @@ namespace LinkedIn_Test.Controllers
                 return PartialView("_Partial_Education_Data", viewModel.User.UserEductions);
 
             }
-
-
             else
             {
                 viewModel.User = context.Users.Where(e => e.Id == userEducation.Fk_User).ToArray()[0];
 
-
                 viewModel.User.UserEductions = context.UserEducations.Include("Education").Where(e => e.Fk_User == userId).ToList();
                 return PartialView("_Partial_Education_Data", viewModel.User.UserEductions);
-
             }
-
-
-
         }
 
         [HttpGet]
@@ -377,6 +511,7 @@ namespace LinkedIn_Test.Controllers
         }
 
 
+        //**************************    Skill   **************************//
         [HttpGet]
         public ActionResult EditSkillAjax(int id)
         {

@@ -1,0 +1,42 @@
+﻿@model UserViewModel
+
+
+
+<div class="modal fade " id="delete_experience" tabindex="-1" role="dialog" aria-labelledby="delete_education">
+    <form class="Delete_Education_form">
+        <div class="modal-dialog" role="document" style="width: 744px;">
+            <div class="modal-content">
+                <div class="modal-delete-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="modal-title" id="myModalLabel" style="color: rgba(0, 0, 0, 0.6); font-size:140%;">Delete Experience</p>
+                </div>
+
+                @if (Model.UserEducation != null)
+                {
+                    @Html.HiddenFor(e => e.UserWorkplace.Id)
+                    @Html.HiddenFor(e => e.UserWorkplace.Fk_Workplace)
+                    @Html.HiddenFor(e => e.UserWorkplace.Fk_User)
+                    @Html.HiddenFor(e => e.UserWorkplace.HeadLine)
+                    @Html.HiddenFor(e => e.UserWorkplace.Description)
+                    @Html.HiddenFor(e => e.UserWorkplace.Location)
+                    @Html.HiddenFor(e => e.UserWorkplace.Title)
+                    @Html.HiddenFor(e => e.UserWorkplace.StartDate)
+                    @Html.HiddenFor(e => e.UserWorkplace.EndDate)
+
+                }
+
+                <p style="font-size:120%; font-weight:bold; margin:15px;"> <i class="fas fa-times-circle" style="color:red; padding:15px; font-size:120%;"></i> Delete This Item?</p>
+
+                <div class="modal-footer">
+
+                    <input type="button" id="Delete_Experience_Submit" value="Delete" class="btn btn-primary" style="border-radius:3px;  padding-top:5px; padding-bottom:5px; padding-left:15px;  padding-right:15px; " />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+

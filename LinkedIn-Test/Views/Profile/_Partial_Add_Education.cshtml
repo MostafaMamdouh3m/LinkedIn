@@ -1,8 +1,5 @@
-﻿
-
-@model UserViewModel
+﻿@model UserViewModel
 @{
-
     AjaxOptions Add_Education_ajaxopt = new AjaxOptions()
     {
         HttpMethod = "post",
@@ -29,19 +26,17 @@
                     @*@Html.HiddenFor(e => e.UserHadEducation.Id)*@
                     @Html.HiddenFor(e => e.UserEducation.Fk_User)
             
-                         <div class="form-group">
-                            @Html.LabelFor(m => m.Education.Name, new { @class = "labels required" })
-                            @Html.TextBoxFor(m => m.Education.Name, new { @class = "form-control largetextbox" })
-                            @Html.ValidationMessageFor(m => m.Education.Name, "", new { @class = "notvalid" })
-                        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Education.Name, new { @class = "labels required" })
+                        @Html.TextBoxFor(m => m.Education.Name, new { @class = "form-control largetextbox" })
+                        @Html.ValidationMessageFor(m => m.Education.Name, "", new { @class = "notvalid" })
+                    </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.Education.Type, new { @class = "labels required" })
-                            @Html.EnumDropDownListFor(e => e.Education.Type, "Select Type", new { @class = "form-control largedroplist" })
-                            @Html.ValidationMessageFor(m => m.Education.Type, "", new { @class = "notvalid" })
-                        </div>
-
-                    
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Education.Type, new { @class = "labels required" })
+                        @Html.EnumDropDownListFor(e => e.Education.Type, "Select Type", new { @class = "form-control largedroplist" })
+                        @Html.ValidationMessageFor(m => m.Education.Type, "", new { @class = "notvalid" })
+                    </div>
 
                     <div class="form-group">
                         @Html.LabelFor(m => m.UserEducation.Degree, new { @class = "labels" })

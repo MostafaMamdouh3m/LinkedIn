@@ -44,7 +44,6 @@ function Deleteducation(element) {
 
 
 $(document).on("click", "#Delete_Education_Submit", function () {
-
     $.ajax({
         url: '/Profile/DeleteEducationAjax/',
         method: "POST",
@@ -53,6 +52,55 @@ $(document).on("click", "#Delete_Education_Submit", function () {
             console.log(result);
             $("#delete_education").modal("toggle");
             $('#education_data').replaceWith(result);
+        }
+    });
+});
+
+//      Experience      //
+function Editexperience(element) {
+    $.ajax({
+        url: "/Profile/EditWorkplaceAjax/" + element.id,
+        method: "GET",
+        success: function (result) {
+            $('#edit_experience').replaceWith(result);
+            $('#edit_experience').modal("toggle");
+        }
+    });
+}
+
+$(document).on("click", "#Edit_Experience_Submit", function () {
+    $.ajax({
+        url: "/Profile/EditWorkplaceAjax",
+        method: "POST",
+        data: $("#edit_experience form").serialize(),
+        success: function (result) {
+            $("#edit_experience").modal("toggle");
+            $('#experience_data').replaceWith(result);
+        }
+    });
+});
+
+
+function Deleteexperience(element) {
+    $.ajax({
+        url: "/Profile/DeleteWorkplaceAjax/" + element.id,
+        method: "GET",
+        success: function (result) {
+            $('#delete_experience').replaceWith(result);
+            $("#delete_experience").modal("toggle");
+        }
+    });
+
+}
+$(document).on("click", "#Delete_Experience_Submit", function () {
+    $.ajax({
+        url: "/Profile/DeleteWorkplaceAjax",
+        method: "POST",
+        data: $("#edit_experience form").serialize(),
+        success: function (result) {
+            console.log(result);
+            $("#delete_experience").modal("toggle");
+            $('#experience_data').replaceWith(result);
         }
     });
 });
@@ -115,6 +163,7 @@ $(document).on("click", "#Delete_Skill_Submit", function () {
         }
     });
 });
+
 
 
 $("#add-skill-search").focus(function () {
