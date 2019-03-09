@@ -1,0 +1,25 @@
+﻿@model List<ApplicationUser>
+
+@for (int i = 0; i < Model.Count; i++)
+{
+    <div requestId='@Model[i].Id'>
+        <div>
+            <div class="home_profile_img">
+                @if (@Model[i].ProfilePicture == null || @Model[i].ProfilePicture == "")
+                {
+                    <img src="~/images/default.png" />
+                }
+                else
+                {
+                    <img src="@Model[i].ProfilePicture">
+                }
+            </div>
+            <div class="home_profile_name">@Model[i].FirstName @Model[i].LastName</div>
+            <div class="home_profile_job">@Model[i].Headline</div>
+        </div>
+        <div>
+            <button class="btn btn-default" type="button" onclick="acceptRequest('@Model[i].Id')">Accept <span class="glyphicon glyphicon-plus"></span></button>
+            <button class="btn btn-default" type="button" onclick="removeRequest('@Model[i].Id')">Decline</button>
+        </div>
+    </div>
+}

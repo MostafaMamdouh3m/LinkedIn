@@ -17,5 +17,6 @@ namespace LinkedIn_Test.ViewModels
         public ApplicationUser User { get; set; }
         public List<ApplicationUser> FriendsOfUser { get; set; }
         public List<Friend> Friends { get; set; }
+        public List<ApplicationUser> FriendRequest { get; set; }
     }
 }

@@ -23,6 +23,7 @@ namespace LinkedIn_Test.Controllers
 
         public ActionResult Index()
         {
+            //home
 
             if (User.Identity.Name == "" )
             {
@@ -31,9 +32,12 @@ namespace LinkedIn_Test.Controllers
 
           
             var currUserId = User.Identity.GetUserId();
+            var CurrentUser = context.Users.Find(currUserId);
+            
             // Get user friends Posts   //++++++++++++++++++++++++++++++++++++++++//
             HomeViewModel homeViewModel = new HomeViewModel();
             homeViewModel.Posts = new List<Post>();
+            homeViewModel.User = CurrentUser;
             homeViewModel.Comments = new List<Comment>();
 
             //homeViewModel.FriendsOfUser = new List<ApplicationUser>();// From DataBase
@@ -47,12 +51,23 @@ namespace LinkedIn_Test.Controllers
                     foreach (var post in userFriend.Posts)
                         post.Comments = context.Comments.Where(m => m.FK_postId == post.Id).ToList();
                     homeViewModel.Posts.AddRange(userFriend.Posts);
+                    
+                }
+            }
+            homeViewModel.Posts.OrderByDescending(e => e.Date);
+
+
+            List<Friend> friendRequest = context.Friends.Include("UserOne").Where(e => e.Fk_UserOne == currUserId || e.Fk_UserTwo == currUserId && e.isAccepted == false).ToList();
+            homeViewModel.FriendRequest = new List<ApplicationUser>();
+            for (int i = 0; i < friendRequest.Count; i++)
+            {
+                if (friendRequest[i].Fk_UserTwo == currUserId)
+                {
+                    homeViewModel.FriendRequest.Add(friendRequest[i].UserOne);
                 }
             }
 
-            homeViewModel.Posts.OrderByDescending(e => e.Date);
             ViewBag.User = context.Users.Find(User.Identity.GetUserId());
-
             return View(homeViewModel);
         }
 
@@ -179,6 +194,24 @@ namespace LinkedIn_Test.Controllers
                 context.SaveChanges();
             }
           
+        }
+
+
+        [HttpPost]
+        public void AcceptRequest(string Id)
+        {
+            string userId = User.Identity.GetUserId();
+            Friend request = context.Friends.Where(e => e.Fk_UserOne == userId && e.Fk_UserTwo == Id || e.Fk_UserOne == Id && e.Fk_UserTwo == userId).ToList()[0];
+            request.isAccepted = true;
+            context.SaveChanges();
+        }
+        [HttpPost]
+        public void RemoveRequest(string Id)
+        {
+            string userId = User.Identity.GetUserId();
+            Friend request = context.Friends.Where(e => e.Fk_UserOne == userId && e.Fk_UserTwo == Id || e.Fk_UserOne == Id && e.Fk_UserTwo == userId).ToList()[0];
+            context.Friends.Remove(request);
+            context.SaveChanges();
         }
     }
 }

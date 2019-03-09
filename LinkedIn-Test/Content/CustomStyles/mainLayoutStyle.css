@@ -21,6 +21,7 @@ body {
 #underConstractionPage div {
     height: auto;
     width: 350px;
+    fill: #283e4a;
 }
 
 #underConstractionPage p{
@@ -28,4 +29,5 @@ body {
     font-size: 30px;
     font-style: oblique;
     user-select: none;
+    fill: #283e4a;
 }

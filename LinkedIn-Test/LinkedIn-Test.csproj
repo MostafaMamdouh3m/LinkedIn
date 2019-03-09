@@ -201,13 +201,14 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\MynetworkController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903080456112_update.cs" />
-    <Compile Include="Migrations\201903080456112_update.Designer.cs">
-      <DependentUpon>201903080456112_update.cs</DependentUpon>
+    <Compile Include="Migrations\201903081114095_start.cs" />
+    <Compile Include="Migrations\201903081114095_start.Designer.cs">
+      <DependentUpon>201903081114095_start.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -246,6 +247,11 @@
     <Content Include="Content\CustomStyles\MessagePopupStyle.css" />
     <Content Include="Content\CustomStyles\NavbarStyle.css" />
     <Content Include="Content\icons\three-bars-loader.gif" />
+    <Content Include="Content\images\1.jpg" />
+    <Content Include="Content\images\default.png" />
+    <Content Include="Content\images\Mesawy.jpg" />
+    <Content Include="Content\images\Untitled.png" />
+    <Content Include="Content\images\‪+20 106 310 4736‬ 20170819_214946.jpg" />
     <Content Include="Content\jquery-confirm.css" />
     <Content Include="Content\ProfilePageStyle.css" />
     <Content Include="Content\images\012.jpg" />
@@ -304,8 +310,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -363,8 +367,11 @@
     <Content Include="Views\Messages\_PartialUsersToMessages.cshtml" />
     <Content Include="Views\Shared\_Partial_UnderConstruction.cshtml" />
     <Content Include="Views\Mynetwork\Index.cshtml" />
-    <Content Include="Views\Profile\_Partial_Edit_Experience.cshtml" />
-    <Content Include="Views\Profile\_Partial_Delete_Experience.cshtml" />
+    <Content Include="Views\Messages\_PartialNewMessage.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\Profile\_Partial_SendMessage.cshtml" />
+    <Content Include="Views\Home\_Partial_FriendRequests.cshtml" />
+    <Content Include="Views\Profile\_Partial_Skill_Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -377,8 +384,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903080456112_update.resx">
-      <DependentUpon>201903080456112_update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903081114095_start.resx">
+      <DependentUpon>201903081114095_start.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

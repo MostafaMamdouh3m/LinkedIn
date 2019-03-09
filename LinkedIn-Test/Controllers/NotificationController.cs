@@ -8,11 +8,11 @@ using System.Web.Mvc;
 
 namespace LinkedIn_Test.Controllers
 {
-    public class MynetworkController : Controller
+    public class NotificationController : Controller
     {
         ApplicationDbContext context;
 
-        public MynetworkController()
+        public NotificationController()
         {
             context = new ApplicationDbContext();
         }

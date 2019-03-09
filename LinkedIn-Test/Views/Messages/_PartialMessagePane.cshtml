@@ -7,7 +7,14 @@
         <div class="chatter_pane_sidebar"></div>
         <div class="chatter_pane_pic">
             <div>
-                <img src="@Model.Sender.ProfilePicture">
+                @if (@Model.Sender.ProfilePicture == null || @Model.Sender.ProfilePicture == "")
+                {
+                    <img src="~/images/default.png" />
+                }
+                else
+                {
+                    <img src="@Model.Sender.ProfilePicture">
+                }
             </div>
         </div>
         <div class="chatter_pane_info">
@@ -23,7 +30,14 @@ else
         <div class="chatter_pane_sidebar"></div>
         <div class="chatter_pane_pic">
             <div>
-                <img src="@Model.Reciver.ProfilePicture">
+                @if (@Model.Reciver.ProfilePicture == null || @Model.Reciver.ProfilePicture == "")
+                {
+                    <img src="~/images/default.png" />
+                }
+                else
+                {
+                    <img src="@Model.Reciver.ProfilePicture">
+                }
             </div>
         </div>
         <div class="chatter_pane_info">

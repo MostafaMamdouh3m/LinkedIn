@@ -62,3 +62,57 @@ function WriteComment(id) {
     $(`#TextArea-${id}`).val('');
 
 }
+
+function addLike(id) {
+
+   
+   
+    var data = { Fk_Post: id };
+    var element = $(`#like-count-${id}`);
+    var linkeNumder = new Number(element.text());
+
+    $.ajax({
+        url: "/Home/AjaxAddLike",
+        type: 'POST',
+        data: data,
+        success: function () {
+            if (element.attr("isLiked") == "false") {
+                element.attr("isLiked", "true");
+                linkeNumder++;
+            }
+            else {
+                element.attr("isLiked", "false");
+                linkeNumder--;
+            }
+            element.text(linkeNumder);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+
+
+}
+
+
+function acceptRequest(Id) {
+    $.ajax({
+        url: "/Home/AcceptRequest",
+        type: 'POST',
+        data: { Id : Id },
+        success: function (result) {
+            $("[requestId='" + Id + "']").remove();
+        }
+    });
+}
+
+function removeRequest(Id) {
+    $.ajax({
+        url: "/Home/RemoveRequest",
+        type: 'POST',
+        data: { Id: Id },
+        success: function (result) {
+            $("[requestId='" + Id + "']").remove();
+        }
+    });
+}

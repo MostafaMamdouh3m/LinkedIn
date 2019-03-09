@@ -7,8 +7,6 @@
 
 
 
-
-
 <div class="base_div">
 
     @Html.Partial("_Partial_Profile_Header_Work_Education", Model)
@@ -23,9 +21,11 @@
     @Html.Partial("_Partial_Edit_Skill", Model)
     @Html.Partial("_Partial_Delete_Skill", Model)
 
-    @Html.Partial("_Partial_Add_Experience", Model)
-    @Html.Partial("_Partial_Edit_Experience", Model)
-    @Html.Partial("_Partial_Delete_Experience", Model)
+    @*@Html.Partial("_Partial_Add_Experience", Model)*@
+
+    @*@Html.Partial("_Partial_Experience", Model)*@
+
+    @* Skills *@
 
 
     <div class="footer">
@@ -65,3 +65,20 @@
     </div>
 
 </div>
+
+
+@if (ViewBag.IsCurrentUserPage == true)
+{
+    @Html.Partial("_Partial_Profile_EditHeaderForm", Model)
+
+    @Html.Partial("_Partial_Add_Education", Model)
+    @Html.Partial("_Partial_Edit_Education", Model)
+    @Html.Partial("_Partial_Delete_Education", Model)
+
+    @Html.Partial("_Partial_Add_Skill", Model)
+    @Html.Partial("_Partial_Edit_Skill", Model)
+    @Html.Partial("_Partial_Delete_Skill", Model)
+}
+else {
+    @Html.Partial("_Partial_SendMessage");
+}

@@ -11,19 +11,24 @@ namespace LinkedIn_Test
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
             "~/Scripts/modernizr-*",
             "~/Scripts/jquery-{version}.js",
-            "~/Scripts/bootstrap.js",
-            "~/ Scripts/respond.js",
-            "~/Scripts/jquery.validate*",
-            "~/Scripts/jquery.validate.unobtrusive.min.js",
+            "~/Scripts/jquery.validate.js",
+            "~/Scripts/jquery.validate.unobtrusive.js",
             "~/Scripts/jquery.unobtrusive-ajax.js",
+            "~/Scripts/bootstrap.js",
+            "~/Scripts/CustomScripts/mainLayoutScript.js",
+            "~/Scripts/CustomScripts/Messages.js",
+            "~/Scripts/CustomScripts/ProfileScripts.js",
             "~/Scripts/CustomScripts/HomeScript.js"));
-
-
-
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/jquery-confirm.css",
+                      "~/Content/CustomStyles/mainLayoutStyle.css",
+                      "~/Content/CustomStyles/NavbarStyle.css",
+                      "~/Content/CustomStyles/MessagePopupStyle.css",
+                      "~/Content/CustomStyles/MessagePageStyle.css",
+                      "~/Content/ProfilePageStyle.css",
+                      "~/Content/CustomStyles/Home_page.css"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(

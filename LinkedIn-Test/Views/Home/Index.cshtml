@@ -7,7 +7,7 @@
 <div id="under_nav"></div>
 
 <div class="container01">
-    @Html.Partial("_Partial_Home_profile_part")
+    @Html.Partial("_Partial_Home_profile_part", Model)
         <!-- partial view of the profile-->
     <div class="container02">
         <div class="writepost">
@@ -77,38 +77,14 @@
 
     <div class="job01">
 
-        <div class="job02">
-            <div>
-                <spa> Add to your feed </spa>
+        <div class="home_friend_requests">
+            <div style="font-weight: 600";>
+                <span>Friend Requests</span>
             </div>
-            <div>
-                <img id="img-circle" src="~/Content/images/13.jpg" class="img-circle" alt="Cinque Terre" width="40" height="40">
-                <div id="profil_name"> Mohamed ElMesawy </div>
-                <div id="profil_job"> Developer at Kemet </div>
-                <button class="btn btn-default" type="button" aria-haspopup="true" style="border-radius:0"
-                        aria-expanded="false">
-                    Follow <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            </div>
-            <div>
-                <img id="img-circle" src="~/Content/images/13.jpg" class="img-circle" alt="Cinque Terre" width="40" height="40">
-                <div id="profil_name"> Mostafa Mamdo7 </div>
-                <div id="profil_job"> Fayum University </div>
-                <button class="btn btn-default" type="button" aria-haspopup="true" style="border-radius:0"
-                        aria-expanded="false">
-                    Follow <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            </div>
-            <div>
-                <img id="img-circle" src="~/Content/images/17.jpg" class="img-circle" alt="Cinque Terre" width="40" height="40">
-                <div id="profil_name"> Ahmed Oweda</div>
-                <div id="profil_job"> Civil Engineer </div>
-                <button class="btn btn-default" type="button" aria-haspopup="true" style="border-radius:0"
-                        aria-expanded="false">
-                    Follow <span class="glyphicon glyphicon-plus"></span>
-                </button>
-
-            </div>
+            @if (Model.FriendRequest.Count > 0)
+            {
+                @Html.Partial("_Partial_FriendRequests", Model.FriendRequest)
+            }
         </div>
 
         <div class="job03">

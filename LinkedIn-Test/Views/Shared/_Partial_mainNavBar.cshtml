@@ -1,7 +1,6 @@
 ﻿
-
-
 <nav>
+    <div id="token" val='@Html.AntiForgeryToken()'></div>
     <div id="navitgation_bar">
         <div id="nav_left_side">
             <div id="nav_logo">
@@ -49,11 +48,18 @@
                     <div id="nav_profile_container">
                         <ul class="nav_profile_menu hide_menu">
 
-<!-- profile part -->
+                            <!-- profile part -->
                             <li id="nav_profile_menu_profile" userId="@ViewBag.User.Id">
                                 <div id="nav_profile_info">
                                     <div id="nav_profile_img">
-                                        <img src="@ViewBag.User.ProfilePicture">
+                                        @if (@ViewBag.User.ProfilePicture == null || @ViewBag.User.ProfilePicture == "")
+                                        {
+                                            <img src="~/images/default.png" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@ViewBag.User.ProfilePicture">
+                                        }
                                     </div>
                                     <div id="nav_profile_name">
                                         <p>@ViewBag.User.FirstName @ViewBag.User.LastName</p>
@@ -84,8 +90,8 @@
                             <li>
                                 <p class="nav_profile_menu_headline">MANAGE</p>
                                 <div>
-                                    <div>Posts and Activites</div>
-                                    <div>Sign out</div>
+                                    <div id="lnk_ownPosts">Posts and Activites</div>
+                                    <div id="lnk_signOut">Sign out</div>
                                 </div>
                             </li>
 
