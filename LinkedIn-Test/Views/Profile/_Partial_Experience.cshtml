@@ -11,56 +11,59 @@
         </button>
     }
 
-
-    @for (int i = 0; i < Model.Count; i++)
+    @if (Model != null && Model.Count > 0)
     {
-        <div class="eduaction-data-image-button">
-            <div class="eduaction-data-image">
-                <div>
-                    <i class="fa fa-bank eduaction-image" style="font-size:35px; color:gray"></i>
+
+        for (int i = 0; i < Model.Count; i++)
+        {
+            <div class="eduaction-data-image-button">
+                <div class="eduaction-data-image">
+                    <div>
+                        <i class="fa fa-bank eduaction-image" style="font-size:35px; color:gray"></i>
+                    </div>
+                    <div class="eduaction-data">
+                        <p class="uni-name"> @Model[i].HeadLine </p>
+                        @if (Model[i].Workplace.Name != null)
+                        {
+                            <p class="uni-results">
+                                <span class="uni-certificate">
+                                    @Model[i].Workplace.Name
+                                </span>
+                            </p>
+                        }
+
+
+                        @if (@Model[i].StartDate != null && @Model[i].EndDate != null)
+                        {
+                            <p class="uni-date">@Model[i].StartDate.Year - @Model[i].EndDate.Year</p>
+                        }
+                        @if (@Model[i].Location != null && @Model[i].EndDate != null)
+                        {
+                            <p class="uni-activity"> @Model[i].Location</p>
+                        }
+
+                    </div>
                 </div>
-                <div class="eduaction-data">
-                    <p class="uni-name"> @Model[i].HeadLine </p>
-                    @if (Model[i].Workplace.Name != null)
-                    {
-                        <p class="uni-results">
-                            <span class="uni-certificate">
-                                @Model[i].Workplace.Name
-                            </span>
-                        </p>
-                    }
 
+                @if (ViewBag.IsCurrentUserPage == true)
+                {
+                    <div class="education-buttons">
+                        <div>
+                            <button type="button" class="btn btn-link " style="margin-bottom:7px;" id="@Model[i].Id" onclick="Editexperience(this)">
+                                <svg viewBox="0 0 24 24" width="22px" height="22px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21.71,5L19,2.29a1,1,0,0,0-1.41,0L4,15.85,2,22l6.15-2L21.71,6.45A1,1,0,0,0,22,5.71,1,1,0,0,0,21.71,5ZM6.87,18.64l-1.5-1.5L15.92,6.57l1.5,1.5ZM18.09,7.41l-1.5-1.5,1.67-1.67,1.5,1.5Z" class="large-icon" style="fill: currentColor"></path></svg>
+                            </button>
+                        </div>
 
-                    @if (@Model[i].StartDate != null && @Model[i].EndDate != null)
-                    {
-                        <p class="uni-date">@Model[i].StartDate.Year - @Model[i].EndDate.Year</p>
-                    }
-                    @if (@Model[i].Location != null && @Model[i].EndDate != null)
-                    {
-                        <p class="uni-activity"> @Model[i].Location</p>
-                    }
+                        <div>
+                            <button type="button" class="btn btn-link" id="@Model[i].Id" onclick="Deleteexperience(this)">
+                                <span class="glyphicon glyphicon-trash education-delete-btn" style="font-size:16px;"></span>
+                            </button>
+                        </div>
+                    </div>
+                }
 
-                </div>
             </div>
+        }
 
-            @if (ViewBag.IsCurrentUserPage == true)
-            {
-                <div class="education-buttons">
-                    <div>
-                        <button type="button" class="btn btn-link " style="margin-bottom:7px;" id="@Model[i].Id" onclick="Editexperience(this)">
-                            <svg viewBox="0 0 24 24" width="22px" height="22px" x="0" y="0" preserveAspectRatio="xMinYMin meet" class="artdeco-icon" focusable="false"><path d="M21.71,5L19,2.29a1,1,0,0,0-1.41,0L4,15.85,2,22l6.15-2L21.71,6.45A1,1,0,0,0,22,5.71,1,1,0,0,0,21.71,5ZM6.87,18.64l-1.5-1.5L15.92,6.57l1.5,1.5ZM18.09,7.41l-1.5-1.5,1.67-1.67,1.5,1.5Z" class="large-icon" style="fill: currentColor"></path></svg>
-                        </button>
-                    </div>
-
-                    <div>
-                        <button type="button" class="btn btn-link" id="@Model[i].Id" onclick="Deleteexperience(this)">
-                            <span class="glyphicon glyphicon-trash education-delete-btn" style="font-size:16px;"></span>
-                        </button>
-                    </div>
-                </div>
-            }
-
-        </div>
     }
-
-</div>
+    </div>

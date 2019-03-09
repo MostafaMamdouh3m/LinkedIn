@@ -695,6 +695,7 @@ namespace LinkedIn_Test.Controllers
             }
             viewModel.User.UserEductions = context.UserEducations.Include("Education").Where(e => e.Fk_User == Id).ToList();
             viewModel.User.UserSkills = context.UserSkills.Include("Skill").Where(e => e.Fk_User == Id).ToList();
+            viewModel.User.UserWorkplaces = context.UserWorkplaces.Where(e => e.Fk_User == Id).ToList();
 
             string userId = User.Identity.GetUserId();
             List<Friend> friendship = context.Friends.Where(e => e.Fk_UserOne == userId && e.Fk_UserTwo == Id || e.Fk_UserOne == Id && e.Fk_UserTwo == userId).ToList();
@@ -742,6 +743,16 @@ namespace LinkedIn_Test.Controllers
                 context.SaveChanges();
             }
 
+        }
+
+        [HttpPost]
+        public void SendMessage(Message msg)
+        {
+            msg.Recived = false;
+            msg.Seen = false;
+            context.Messages.Add(msg);
+            context.Users.Where(e => e.Id == msg.Fk_Reciver).ToArray()[0].MessageUpdated = true;
+            context.SaveChanges();
         }
     }
 }

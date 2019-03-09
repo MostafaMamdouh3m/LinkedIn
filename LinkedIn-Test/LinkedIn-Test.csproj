@@ -363,6 +363,11 @@
     <Content Include="Views\Messages\_PartialUsersToMessages.cshtml" />
     <Content Include="Views\Shared\_Partial_UnderConstruction.cshtml" />
     <Content Include="Views\Mynetwork\Index.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\Profile\_Partial_Delete_Experience.cshtml" />
+    <Content Include="Views\Profile\_Partial_Edit_Experience.cshtml" />
+    <Content Include="Views\Profile\_Partial_SendMessage.cshtml" />
+    <Content Include="Views\Profile\_Partial_Skill_Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

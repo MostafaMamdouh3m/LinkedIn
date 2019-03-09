@@ -56,18 +56,18 @@
                     {
                         <div id="profile_connect">
 
-                        @if (ViewBag.friendState == "noRequest")
-                        {
-                            <div id="profile_friend" onclick="sendFriendRequest('@Model.User.Id')">Send Friend Request</div>
-                        }
-                        else if (ViewBag.friendState == "notAccepted")
-                        {
-                            <div id="profile_friend" onclick="sendFriendRequest('@Model.User.Id')" class="sent">Remove Request</div>
-                        }
-                        else
-                        {
-                            <div id="profile_friend" onclick="sendFriendRequest('@Model.User.Id')" class="friend">Friends</div>
-                        }
+                            @if (ViewBag.friendState == "noRequest")
+                            {
+                                <div id="profile_friend" onclick="sendFriendRequest('@Model.User.Id')">Send Friend Request</div>
+                            }
+                            else if (ViewBag.friendState == "notAccepted")
+                            {
+                                <div id="profile_friend" onclick="sendFriendRequest('@Model.User.Id')" class="sent">Remove Request</div>
+                            }
+                            else
+                            {
+                                <div id="profile_friend" onclick="sendFriendRequest('@Model.User.Id')" class="friend">Friends</div>
+                            }
                             <div id="profile_message" data-toggle="modal" data-target="#profile_message_modal">Send Message</div>
                         </div>
                     }
@@ -131,8 +131,10 @@
     @*Education part*@
     @Html.Partial("_Partial_Education_Data", Model.User.UserEductions)
 
+
     @*Experience part*@
     @Html.Partial("_Partial_Experience", Model.User.UserWorkplaces)
+
 
 </div>
 

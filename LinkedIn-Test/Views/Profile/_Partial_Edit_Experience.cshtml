@@ -24,17 +24,6 @@
                         @Html.TextBoxFor(m => m.Workplace.Name, new { @class = "form-control largetextbox", placeholder = "Ex: Microsoft" })
                         @Html.ValidationMessageFor(m => m.Workplace.Name)
                     </div>
-                    @*<div class="form-group">
-            @Html.LabelFor(m => m.UserWorkplace.Workplace.Name, new { @class = "labels required" })
-            @Html.TextBoxFor(m => m.UserWorkplace.Workplace.Name, new { @class = "form-control", id = "add-skill-search", autocomplete = "off" })
-            @Html.ValidationMessageFor(m => m.UserWorkplace.Workplace.Name, "", new { @class = "notvalid" })
-            <div id="profile_skill_menu_underlay" class="hidden">
-                <div id="profile_skill_menu">
-                    @Html.Partial("_Partial_Workplace_Search", new List<Workplace>())
-                </div>
-            </div>
-        </div>*@
-
 
                     <div class="form-group">
                         @Html.LabelFor(m => m.UserWorkplace.Location, new { @class = "labels" })
@@ -56,11 +45,6 @@
                         </div>
 
                     </div>
-
-                    @*<div>
-            <label for="currentwork">I currently work in role</label>
-            <input type="checkbox" name="currentwork" aria-label="...">
-        </div>*@
 
                     <div class="form-group">
                         @Html.LabelFor(m => m.UserWorkplace.Industry, new { @class = "labels" })
