@@ -229,18 +229,20 @@ function sendFriendRequest(Id) {
 
 $(document).on("click", "#profile_message_modal [type='submit']", function () {
 
-    var reciver = GetActivePaneId();
-    var sender = $("#nav_profile_menu_profile").attr("userId");
     var message = $("#profile_message_modal textarea").val();
-    var data = { Body: message, Date: currentDate.toISOString(), Fk_Sender: sender, Fk_Reciver: reciver };
+    if (message != "") {
+        var currentDate = new Date();
+        var reciver = $("#profile_message").attr("userId");
+        var sender = $("#nav_profile_menu_profile").attr("userId");
+        var data = { Body: message, Date: currentDate.toISOString(), Fk_Sender: sender, Fk_Reciver: reciver };
 
-    $.ajax({
-        url: "/Profile/SendMessage",
-        type: 'POST',
-        data: data,
-        success: function (result) {
-
-        }
+        $.ajax({
+            url: "/Profile/SendMessage",
+            type: 'POST',
+            data: data,
+            success: function (result) {
+                $("#profile_message_modal").modal("toggle");
+            }
+        });
     }
-
 });

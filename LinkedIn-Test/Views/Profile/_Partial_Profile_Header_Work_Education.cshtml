@@ -68,7 +68,7 @@
                             {
                                 <div id="profile_friend" onclick="sendFriendRequest('@Model.User.Id')" class="friend">Friends</div>
                             }
-                            <div id="profile_message" data-toggle="modal" data-target="#profile_message_modal">Send Message</div>
+                            <div id="profile_message" data-toggle="modal" data-target="#profile_message_modal" userId="@Model.User.Id">Send Message</div>
                         </div>
                     }
                 </div>
