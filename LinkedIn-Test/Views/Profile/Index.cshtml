@@ -1,8 +1,10 @@
 ﻿@model UserViewModel
 
 @{
-    ViewBag.Title = Model.User.FirstName + " " + Model.User.LastName;
-    Layout = "~/Views/Shared/_Layout_mainLayout.cshtml";
+                /**/
+
+                ViewBag.Title = Model.User.FirstName + " " + Model.User.LastName;
+                Layout = "~/Views/Shared/_Layout_mainLayout.cshtml";
 }
 
 
@@ -21,11 +23,9 @@
     @Html.Partial("_Partial_Edit_Skill", Model)
     @Html.Partial("_Partial_Delete_Skill", Model)
 
-    @*@Html.Partial("_Partial_Add_Experience", Model)*@
-
-    @*@Html.Partial("_Partial_Experience", Model)*@
-
-    @* Skills *@
+    @Html.Partial("_Partial_Add_Experience", Model)
+    @Html.Partial("_Partial_Edit_Experience", Model)
+    @Html.Partial("_Partial_Delete_Experience", Model)
 
 
     <div class="footer">
@@ -78,7 +78,14 @@
     @Html.Partial("_Partial_Add_Skill", Model)
     @Html.Partial("_Partial_Edit_Skill", Model)
     @Html.Partial("_Partial_Delete_Skill", Model)
+
+    @Html.Partial("_Partial_Add_Experience", Model)
+    @Html.Partial("_Partial_Edit_Experience", Model)
+    @Html.Partial("_Partial_Delete_Experience", Model)
+    @* Skills *@
+
 }
-else {
-    @Html.Partial("_Partial_SendMessage");
+else
+{
+@Html.Partial("_Partial_SendMessage");
 }
